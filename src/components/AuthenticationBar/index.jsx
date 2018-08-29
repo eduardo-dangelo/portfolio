@@ -1,6 +1,6 @@
 import React from 'react'
 import { Bar, Form, Button, Title, Input } from './Elements'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -182,4 +182,4 @@ export default compose(
   graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
   graphql(LOGGED_IN_USER_QUERY, {name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }}),
   graphql(ALL_USERS_QUERY, {name: 'allUsersQuery'})
-)(withRouter(AuthenticationBar))
+)(AuthenticationBar)
