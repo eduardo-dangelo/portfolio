@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { withRouter } from 'react-router-dom'
+import { graphql, compose } from 'react-apollo'
+import gql from 'graphql-tag'
 
 const Bar = styled.div`
   background: #cdd2ef;
@@ -23,7 +26,7 @@ const Input = styled.input`
   }
 `;
 
-const Form = styled.form`
+const Form = styled.div`
   padding: 0 15px;
 `;
 
@@ -46,6 +49,10 @@ const Title = styled.h3`
 class AuthenticationBar extends React.Component {
   state = {
     isAuth: false,
+    email: '',
+    password: '',
+    name: '',
+    emailSubscription: false,
   }
 
   handleSubmit = () => {
@@ -76,15 +83,69 @@ class AuthenticationBar extends React.Component {
 
     return (
       <Bar>
-        <Title>Login</Title>
+        <Title>Welcome</Title>
         <Form>
-          <Input type="text" placeholder="user name"/>
-          <Input type="password" placeholder="password"/>
-          <Button onClick={this.handleSubmit}>Submit</Button>
+          <Input
+            type="text"
+            placeholder="email"
+            value={this.state.email}
+            onChange={(e) => this.setState({email: e.target.value})}
+          />
+          <Input
+            type='password'
+            value={this.state.password}
+            placeholder='Password'
+            onChange={(e) => this.setState({password: e.target.value})}
+          />
+          <Input
+            value={this.state.name}
+            placeholder='Name'
+            onChange={(e) => this.setState({name: e.target.value})}
+          />
+          <Button onClick={this.signupUser}>Submit</Button>
         </Form>
       </Bar>
     )
   }
+
+  signupUser = async () => {
+    const { email, password, name } = this.state
+    console.log('hello')
+
+    try {
+      const user = await this.props.signupUserMutation({variables: {email, password, name}})
+      localStorage.setItem('graphcoolToken', user.data.signupUser.token)
+      // this.props.history.replace('/')
+      return console.log('heyy you have created an user')
+    } catch (e) {
+      console.error(`An error occured: `, e)
+      // this.props.history.replace('/')
+    }
+
+  }
 }
 
-export default AuthenticationBar
+const SIGNUP_USER_MUTATION = gql`
+  mutation SignupUserMutation ($email: String!, $password: String!, $name: String) {
+    signupUser(email: $email, password: $password, name: $name) {
+      id
+      token
+    }
+  }
+`
+
+const LOGGED_IN_USER_QUERY = gql`
+  query LoggedInUserQuery {
+    loggedInUser {
+      id
+    }
+  }
+`
+
+export default compose(
+  graphql(SIGNUP_USER_MUTATION, {name: 'signupUserMutation'}),
+  graphql(LOGGED_IN_USER_QUERY, {
+    name: 'loggedInUserQuery',
+    options: { fetchPolicy: 'network-only' }
+  })
+)(withRouter(AuthenticationBar))
