@@ -1,0 +1,3 @@
+targets:
+  portfolio: shared-us-west-2/cjlff6bg55guo0104m4lg6s6e
+  default: portfolio
