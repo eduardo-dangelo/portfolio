@@ -37,22 +37,14 @@ class AuthenticationBar extends React.Component {
     }
   }
 
-  handleSubmit = () => {
-    this.setState({
-      isAuth: true,
-    })
-  }
-
   handleLogOut = () => {
-    this.setState({
-      isAuth: false,
-    })
+    localStorage.removeItem('graphcoolToken')
+    window.location.reload()
   }
 
 
   render() {
     const { allUsersQuery, loggedInUserQuery } = this.props
-    console.log('this.props', this.props)
     const allUsers = allUsersQuery.allUsers
     const hasUsers = allUsers && allUsers.length > 0
     const loggedInUser = loggedInUserQuery.loggedInUser
@@ -140,7 +132,8 @@ class AuthenticationBar extends React.Component {
 
     const response = await this.props.authenticateUserMutation({variables: {email, password}})
     localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
-    // this.props.history.replace('/')
+    console.log('this.props', this.props)
+    this.props.loggedInUserQuery.refetch()
   }
 }
 

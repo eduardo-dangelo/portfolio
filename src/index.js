@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-// import {BrowserRouter as Router, Route} from 'react-router-dom'
+import AuthenticationBar from './components/AuthenticationBar'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import { ApolloClient } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { createHttpLink } from 'apollo-link-http'
@@ -30,14 +31,23 @@ const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 })
 
+const TempApp = () => {
+  return (
+    <div>
+      <h1>hellu</h1>
+    </div>
+  )
+}
+
 ReactDOM.render((
     <ApolloProvider client={client}>
-      {/*<Router>*/}
-        {/*<div>*/}
-          {/*<Route exact path='/' component={App} />*/}
-        {/*</div>*/}
-      {/*</Router>*/}
-      <App/>
+      <Router>
+        <div>
+          <Route exact path='/admin' component={AuthenticationBar} />
+          <Route path='/' component={TempApp} />
+        </div>
+      </Router>
+      {/*<App/>*/}
     </ApolloProvider>
   ),
   document.getElementById('root')
