@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const Bar = styled.div`
   background: #cdd2ef;
@@ -24,13 +24,18 @@ const Input = styled.input`
 
 const Form = styled.div`
   padding: 0 15px;
+  display: flex;
 `;
 
 const Button = styled.button`
-  padding: 8px 15px;
+  padding: 6px 15px;
   background: transparent;
   border: 1px solid #3a3a3a;
   transition: .2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
   
   &:hover {
     box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
@@ -42,4 +47,22 @@ const Title = styled.h3`
   font-weight: lighter;
 `;
 
-export { Bar, Title, Input, Button, Form }
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Spin = styled.div`
+  animation: ${rotate360} 1s linear infinite;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  justify-content: space-around;
+`;
+
+export { Bar, Title, Input, Button, Form, Spin }

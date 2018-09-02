@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import AuthenticationBar from './components/AuthenticationBar'
+import App from './components/App/App'
+import AdminBar from './components/AdminBar'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import { ApolloClient } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
@@ -43,8 +43,8 @@ ReactDOM.render((
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Route exact path='/admin' component={AuthenticationBar} />
-          <Route path='/' component={TempApp} />
+          <Route exact path='/admin' component={AdminBar} />
+          <Route path='/' component={App} />
         </div>
       </Router>
       {/*<App/>*/}

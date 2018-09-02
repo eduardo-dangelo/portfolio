@@ -1,11 +1,12 @@
 import React from 'react'
-import { Bar, Form, Button, Title, Input } from './Elements'
+import { Bar, Form, Button, Title, Input, Spin } from './Elements'
 // import { withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
+import { FaSpinner } from 'react-icons/fa'
 
 
-class AuthenticationBar extends React.Component {
+class AdminBar extends React.Component {
   state = {
     isAuth: false,
     email: '',
@@ -14,6 +15,8 @@ class AuthenticationBar extends React.Component {
     emailSubscription: false,
     hasUsers: false,
     isUserLoggedIn: false,
+    isLoading: false,
+    error: ''
   }
   
   componentWillReceiveProps(nextProps) {
@@ -38,6 +41,7 @@ class AuthenticationBar extends React.Component {
   }
 
   handleLogOut = () => {
+    this.setState({ isLoading: true })
     localStorage.removeItem('graphcoolToken')
     window.location.reload()
   }
@@ -45,6 +49,7 @@ class AuthenticationBar extends React.Component {
 
   render() {
     const { allUsersQuery, loggedInUserQuery } = this.props
+    const { isLoading, error } = this.state
     const allUsers = allUsersQuery.allUsers
     const hasUsers = allUsers && allUsers.length > 0
     const loggedInUser = loggedInUserQuery.loggedInUser
@@ -53,7 +58,9 @@ class AuthenticationBar extends React.Component {
     if (!allUsers) {
       return (
         <Bar>
-          loading...
+          <Title>
+            <Spin><FaSpinner/></Spin>
+          </Title>
         </Bar>
       )
     }
@@ -63,7 +70,10 @@ class AuthenticationBar extends React.Component {
         <Bar>
           <Title>Hello Eduardo</Title>
           <Form>
-            <Button onClick={this.handleLogOut}>Logout</Button>
+            <Button onClick={this.handleLogOut}>
+              {isLoading && <Spin><FaSpinner/></Spin>}
+              Logout
+            </Button>
           </Form>
         </Bar>
       )
@@ -72,44 +82,53 @@ class AuthenticationBar extends React.Component {
     return (
       <Bar>
         <Title>{hasUsers ? 'Login' : 'Welcome'}</Title>
-        <Form>
-          <Input
-            type="text"
-            placeholder="email"
-            value={this.state.email}
-            onChange={(e) => this.setState({email: e.target.value})}
-          />
-          <Input
-            type='password'
-            value={this.state.password}
-            placeholder='Password'
-            onChange={(e) => this.setState({password: e.target.value})}
-          />
-          {!hasUsers && (
+        <form onSubmit={this.handleSubmit}>
+          <Form>
+            {error && error}
             <Input
-              value={this.state.name}
-              placeholder='Name'
-              onChange={(e) => this.setState({name: e.target.value})}
+              type="text"
+              placeholder="email"
+              value={this.state.email}
+              onChange={(e) => this.setState({email: e.target.value})}
             />
-          )}
-          {!hasUsers ? (
-            <Button
-              disabled={!this.state.email || !this.state.password || !this.state.name}
-              onClick={this.signupUser}
-            >
-              Submit
-            </Button>
-          ) : (
-            <Button
-              disabled={!this.state.email || !this.state.password}
-              onClick={this.authenticateUser}
-            >
-              Log In
-            </Button>
-          )}
-        </Form>
+            <Input
+              type='password'
+              value={this.state.password}
+              placeholder='Password'
+              onChange={(e) => this.setState({password: e.target.value})}
+            />
+            {!hasUsers && (
+              <Input
+                value={this.state.name}
+                placeholder='Name'
+                onChange={(e) => this.setState({name: e.target.value})}
+              />
+            )}
+            {!hasUsers ? (
+              <Button
+                disabled={!this.state.email || !this.state.password || !this.state.name}
+                onClick={this.signupUser}
+              >
+                Submit
+              </Button>
+            ) : (
+              <Button
+                disabled={!this.state.email || !this.state.password}
+                onClick={this.authenticateUser}
+              >
+                {isLoading && <Spin><FaSpinner/></Spin>}
+                Log In
+              </Button>
+            )}
+          </Form>
+        </form>
       </Bar>
     )
+  }
+
+  handleSubmit = (e) => {
+    console.log('e', e)
+    e.preventDefault()
   }
 
   signupUser = async () => {
@@ -129,11 +148,16 @@ class AuthenticationBar extends React.Component {
 
   authenticateUser = async () => {
     const {email, password} = this.state
+    this.setState({ isLoading: true })
 
     const response = await this.props.authenticateUserMutation({variables: {email, password}})
-    localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
-    console.log('this.props', this.props)
-    this.props.loggedInUserQuery.refetch()
+    Promise.resolve(
+      localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
+    ).then(
+      this.props.loggedInUserQuery.refetch()
+    ).catch(e => {
+      this.setState({ error: 'Invalid Credentials'})
+    })
   }
 }
 
@@ -175,4 +199,4 @@ export default compose(
   graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
   graphql(LOGGED_IN_USER_QUERY, {name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }}),
   graphql(ALL_USERS_QUERY, {name: 'allUsersQuery'})
-)(AuthenticationBar)
+)(AdminBar)
