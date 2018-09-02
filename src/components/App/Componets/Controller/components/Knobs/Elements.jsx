@@ -5,7 +5,7 @@ const Button = styled.button`
   height: 16px;
   border: 1px solid #9b9b9b;
   background: ${(props) => (props.color)};
-  margin-right: 10px;
+  margin-right: 0;
 `;
 
 const HiddenElement = styled.div`
@@ -19,6 +19,7 @@ const HiddenElement = styled.div`
 
 const OverlayContainer = styled.div`
   position: absolute;
+  right: 15px;
   z-index: 2;
 `;
 

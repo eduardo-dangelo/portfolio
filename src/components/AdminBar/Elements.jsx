@@ -42,7 +42,7 @@ const Button = styled.button`
   }
 `;
 
-const Title = styled.h3`
+const Title = styled.h4`
   padding: 0 15px;
   font-weight: lighter;
 `;

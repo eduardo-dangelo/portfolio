@@ -9,7 +9,7 @@ const ButtonToolbarWapper = styled(ButtonToolbar)`
   
   .dropdown-toggle {
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid ${(props) => props.color};
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     padding: 2px;
     width: 30px;
@@ -34,8 +34,11 @@ const ButtonToolbarWapper = styled(ButtonToolbar)`
     min-width: 280px;
     padding: 15px 0!important;
     background: rgba(255,255,255,0.9);
-    //top: 45px;
-    //right: -30px;
+    transition: .3s ease;
+    
+    &:hover {
+      background: rgba(255,255,255,1);
+    }
   }
   `;
 

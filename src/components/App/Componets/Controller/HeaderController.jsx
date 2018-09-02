@@ -21,6 +21,10 @@ class HeaderController extends React.PureComponent {
             action={onColorChange}
           />
         </ListItem>
+        <ListItem>
+          <strong>Header style:</strong>
+          none
+        </ListItem>
       </List>
     )
   }
