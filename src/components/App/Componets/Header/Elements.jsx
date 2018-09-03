@@ -20,15 +20,30 @@ const Input = styled.input`
   border: 2px dashed transparent;
   width: 100%;
   margin: auto;
-  padding: 5px;
+  padding: 8px;
   overflow: visible;
   transition: .3s ease;
   
-  &:hover, &:focus {
+  &:hover {
     border: 2px dashed ${(props) => props.bgColor};
     outline: none;
   }
   
+  &:focus {
+    outline: none;
+    border: 1px solid ${(props) => props.bgColor};
+    box-shadow: inset 0 0 6px ${(props) => props.bgColor};
+  }
+  
 `;
 
-export { Header, Input }
+const H1 =styled.h1`
+  position: relative;
+  
+  &:hover {
+    border: 2px dashed ${(props) => props.bgColor};
+    outline: none;
+  }
+`;
+
+export { Header, Input, H1 }

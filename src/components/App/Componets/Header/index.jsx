@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header as AppHeader, Input } from './Elements'
+import { Header as AppHeader, Input, H1 } from './Elements'
 import { Dropdown, HeaderController } from '../Controller'
 import AutosizeInput from 'react-input-autosize';
 
@@ -21,7 +21,11 @@ class Header extends React.PureComponent {
         onMouseLeave={this.handleCardMouseLeave}
       >
         {showDropdown && (
-          <Dropdown color={this.getInvertColor(bgColor)}>
+          <Dropdown
+            top={15}
+            right={15}
+            color={this.getInvertColor(bgColor)}
+          >
             <HeaderController
               color={color}
               bgColor={bgColor}
@@ -30,7 +34,19 @@ class Header extends React.PureComponent {
             />
           </Dropdown>
         )}
-        <h1>
+        <H1>
+          <Dropdown
+            bottom={-15}
+            right={-15}
+            color={this.getInvertColor(bgColor)}
+          >
+            <HeaderController
+              color={color}
+              bgColor={bgColor}
+              onBgColorChange={this.updateValue('bgColor')}
+              onColorChange={this.updateValue('color')}
+            />
+          </Dropdown>
           <Input
             name="test"
             value={title}
@@ -38,7 +54,7 @@ class Header extends React.PureComponent {
             style={{ bg: 'transparent' }}
             onChange={this.handleChangeTitle}
           />
-        </h1>
+        </H1>
       </AppHeader>
     )
   }

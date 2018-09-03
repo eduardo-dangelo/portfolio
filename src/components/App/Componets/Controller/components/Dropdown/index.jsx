@@ -5,9 +5,14 @@ import { FaEllipsisH } from 'react-icons/fa'
 
 class Dropdown extends React.PureComponent {
   render() {
-    const { children, color } = this.props
+    const { children, color, top, bottom, right } = this.props
     return (
-      <ButtonToolbarWapper color={color}>
+      <ButtonToolbarWapper
+        color={color}
+        top={top}
+        bottom={bottom}
+        right={right}
+      >
         <DropdownButton
           bsStyle="default"
           title={<FaEllipsisH/>}

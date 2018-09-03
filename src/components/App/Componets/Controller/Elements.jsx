@@ -3,8 +3,11 @@ import { ButtonToolbar } from "react-bootstrap";
 
 const ButtonToolbarWapper = styled(ButtonToolbar)`
   position: absolute;
-  top: 15px;
-  right: 15px;
+  ${(props) => props.top && `top: ${props.top}px`};
+  ${(props) => props.right && `right: ${props.right}px`};
+  ${(props) => props.bottom && `bottom: ${props.bottom}px`};
+  
+  
   color: black;
   
   .dropdown-toggle {

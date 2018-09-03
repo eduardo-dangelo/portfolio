@@ -41,7 +41,7 @@ const TempApp = () => {
 
 ReactDOM.render((
     <ApolloProvider client={client}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
           <Route exact path='/admin' component={AdminBar} />
           <Route path='/' component={App} />

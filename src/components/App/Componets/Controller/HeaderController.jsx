@@ -23,7 +23,6 @@ class HeaderController extends React.PureComponent {
         </ListItem>
         <ListItem>
           <strong>Header style:</strong>
-          none
         </ListItem>
       </List>
     )
