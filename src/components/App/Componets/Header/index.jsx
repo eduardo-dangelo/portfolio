@@ -12,6 +12,7 @@ class Header extends React.PureComponent {
   }
 
   render() {
+    const { isAuth } = this.props
     const { bgColor, color, showDropdown, title } = this.state
     return (
       <AppHeader
@@ -20,7 +21,7 @@ class Header extends React.PureComponent {
         onMouseOver={this.handleCardMouseHover}
         onMouseLeave={this.handleCardMouseLeave}
       >
-        {showDropdown && (
+        {showDropdown && isAuth && (
           <Dropdown
             top={15}
             right={15}

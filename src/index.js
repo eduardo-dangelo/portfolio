@@ -10,8 +10,7 @@ import { ApolloLink} from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
 
-// __SIMPLE_API_ENDPOINT__ looks like: 'https://api.graph.cool/simple/v1/__SERVICE_ID__'
-const httpLink = createHttpLink({ uri: 'https://api.graph.cool/simple/v1/cjlff6bg55guo0104m4lg6s6e' })
+const httpLink = createHttpLink({ uri: process.env.REACT_APP_API_KEY })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('graphcoolToken')
@@ -31,14 +30,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 })
 
-const TempApp = () => {
-  return (
-    <div>
-      <h1>hellu</h1>
-    </div>
-  )
-}
-
 ReactDOM.render((
     <ApolloProvider client={client}>
       <Router basename={process.env.PUBLIC_URL}>
@@ -47,7 +38,6 @@ ReactDOM.render((
           <Route path='/' component={App} />
         </div>
       </Router>
-      {/*<App/>*/}
     </ApolloProvider>
   ),
   document.getElementById('root')
