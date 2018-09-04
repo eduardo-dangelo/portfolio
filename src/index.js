@@ -36,6 +36,7 @@ ReactDOM.render((
         <div>
           <Route exact path='/admin' component={AdminBar} />
           <Route path='/' component={App} />
+          <h1>version 01</h1>
         </div>
       </Router>
     </ApolloProvider>
