@@ -19,27 +19,6 @@ class AdminBar extends React.Component {
     error: ''
   }
   
-  componentWillReceiveProps(nextProps) {
-    const { allUsersQuery } = this.props
-    const allUsers = allUsersQuery.allUsers
-    const allUsersNext = nextProps.allUsersQuery.allUsers
-    const allUsersChanged = allUsers !== allUsersNext;
-    const loggedInUserQuery = nextProps.loggedInUserQuery
-
-    if (loggedInUserQuery.loggedInUser && loggedInUserQuery.loggedInUser.id) {
-      this.setState({
-        isUserLoggedIn: true,
-      })
-    }
-
-
-    if (allUsers && allUsersChanged && allUsersNext.lenght > 0) {
-      this.setState({
-        hasUsers: true,
-      })
-    }
-  }
-
   handleLogOut = () => {
     this.setState({ isLoading: true })
     localStorage.removeItem('graphcoolToken')
@@ -50,10 +29,12 @@ class AdminBar extends React.Component {
   render() {
     const { allUsersQuery, loggedInUserQuery } = this.props
     const { isLoading, error } = this.state
+
     const allUsers = allUsersQuery.allUsers
     const hasUsers = allUsers && allUsers.length > 0
+
     const loggedInUser = loggedInUserQuery.loggedInUser
-    const isUserLoggedIn = loggedInUser && loggedInUser.id
+    const isAuth = loggedInUser && loggedInUser.id
 
     if (!allUsers) {
       return (
@@ -65,7 +46,7 @@ class AdminBar extends React.Component {
       )
     }
 
-    if (isUserLoggedIn) {
+    if (isAuth) {
       return (
         <Bar>
           <Title>Hello Eduardo</Title>
@@ -147,14 +128,15 @@ class AdminBar extends React.Component {
   }
 
   authenticateUser = async () => {
-    const {email, password} = this.state
+    const { onRefetch, authenticateUserMutation } = this.props
+    const { email, password } = this.state
     this.setState({ isLoading: true })
 
-    const response = await this.props.authenticateUserMutation({variables: {email, password}})
+    const response = await authenticateUserMutation({ variables: { email, password }})
     Promise.resolve(
       localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
     ).then(
-      this.props.loggedInUserQuery.refetch()
+      onRefetch()
     ).catch(e => {
       this.setState({ error: 'Invalid Credentials'})
     })
@@ -178,25 +160,7 @@ const AUTHENTICATE_USER_MUTATION = gql`
   }
 `
 
-const LOGGED_IN_USER_QUERY = gql`
-  query LoggedInUserQuery {
-    loggedInUser {
-      id
-    }
-  }
-`
-
-const ALL_USERS_QUERY = gql`
-  query AllUsersQuery {
-    allUsers {
-      id
-    }
-  }
-`
-
 export default compose(
   graphql(SIGNUP_USER_MUTATION, {name: 'signupUserMutation'}),
   graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
-  graphql(LOGGED_IN_USER_QUERY, {name: 'loggedInUserQuery', options: { fetchPolicy: 'network-only' }}),
-  graphql(ALL_USERS_QUERY, {name: 'allUsersQuery'})
 )(AdminBar)

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Header as AppHeader, Input, H1 } from './Elements'
-import { Dropdown, HeaderController } from '../Controller'
-import AutosizeInput from 'react-input-autosize';
+import { Dropdown, HeaderController } from '../Controllers'
 
 class Header extends React.PureComponent {
   state = {
@@ -16,8 +15,8 @@ class Header extends React.PureComponent {
     const { bgColor, color, showDropdown, title } = this.state
     return (
       <AppHeader
-        bgColor={bgColor}
         color={color}
+        bgColor={bgColor}
         onMouseOver={this.handleCardMouseHover}
         onMouseLeave={this.handleCardMouseLeave}
       >
@@ -30,8 +29,8 @@ class Header extends React.PureComponent {
             <HeaderController
               color={color}
               bgColor={bgColor}
-              onBgColorChange={this.updateValue('bgColor')}
               onColorChange={this.updateValue('color')}
+              onBgColorChange={this.updateValue('bgColor')}
             />
           </Dropdown>
         )}
@@ -44,16 +43,16 @@ class Header extends React.PureComponent {
             <HeaderController
               color={color}
               bgColor={bgColor}
-              onBgColorChange={this.updateValue('bgColor')}
               onColorChange={this.updateValue('color')}
+              onBgColorChange={this.updateValue('bgColor')}
             />
           </Dropdown>
           <Input
             name="test"
             value={title}
-            bgColor={this.getInvertColor(bgColor)}
             style={{ bg: 'transparent' }}
             onChange={this.handleChangeTitle}
+            bgColor={this.getInvertColor(bgColor)}
           />
         </H1>
       </AppHeader>

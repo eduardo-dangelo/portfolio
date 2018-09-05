@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App/App'
-import AdminBar from './components/AdminBar'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Application from './Application'
 import { ApolloClient } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { createHttpLink } from 'apollo-link-http'
@@ -32,13 +30,7 @@ const client = new ApolloClient({
 
 ReactDOM.render((
     <ApolloProvider client={client}>
-      <Router basename={process.env.PUBLIC_URL}>
-        <div>
-          <Route exact path='/admin' component={AdminBar} />
-          <Route path='/' component={App} />
-          <h1>version 02</h1>
-        </div>
-      </Router>
+      <Application/>
     </ApolloProvider>
   ),
   document.getElementById('root')

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import AutosizeInput from 'react-input-autosize';
 
 const Header = styled.div`
   background: ${(props) => props.bgColor}
