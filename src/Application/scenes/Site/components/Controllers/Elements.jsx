@@ -6,8 +6,6 @@ const ButtonToolbarWapper = styled(ButtonToolbar)`
   ${(props) => props.top && `top: ${props.top}px`};
   ${(props) => props.right && `right: ${props.right}px`};
   ${(props) => props.bottom && `bottom: ${props.bottom}px`};
-  
-  
   color: black;
   
   .dropdown-toggle {
@@ -63,4 +61,17 @@ const ListItem = styled.li`
   }
 `;
 
-export { ButtonToolbarWapper, List, ListItem }
+const FiexedContainerBox = styled.div`
+  position: absolute;
+  background: white;
+  color: black;
+  font-size: 14px;
+  top: calc(100% + 15px);
+  left: 0;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+
+`;
+
+export { ButtonToolbarWapper, List, ListItem, FiexedContainerBox }

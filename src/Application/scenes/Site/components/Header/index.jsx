@@ -1,26 +1,31 @@
 import React from 'react'
 import { Header as AppHeader, Input, H1 } from './Elements'
-import { Dropdown, HeaderController } from '../Controllers'
+import { Dropdown, HeaderController, TextController } from '../Controllers'
 
 class Header extends React.PureComponent {
   state = {
+    bold: false,
+    italic: false,
     title: 'title',
     color: '#ffffff',
     bgColor: '#001b44',
-    showDropdown: false
+    textAlign: 'center',
+    showDropdown: false,
   }
 
   render() {
     const { isAuth } = this.props
-    const { bgColor, color, showDropdown, title } = this.state
+    const { bgColor, color, showDropdown, title, textAlign, bold, italic } = this.state
+    console.log(italic)
     return (
       <AppHeader
         color={color}
         bgColor={bgColor}
+        textAlign={textAlign}
         onMouseOver={this.handleCardMouseHover}
         onMouseLeave={this.handleCardMouseLeave}
       >
-        {showDropdown && isAuth && (
+        {showDropdown && (
           <Dropdown
             top={15}
             right={15}
@@ -34,29 +39,46 @@ class Header extends React.PureComponent {
             />
           </Dropdown>
         )}
-        <H1>
-          <Dropdown
-            bottom={-15}
-            right={-15}
-            color={this.getInvertColor(bgColor)}
-          >
-            <HeaderController
-              color={color}
-              bgColor={bgColor}
-              onColorChange={this.updateValue('color')}
-              onBgColorChange={this.updateValue('bgColor')}
-            />
-          </Dropdown>
+        <H1 textAlign={textAlign}>
           <Input
+            bold={bold}
             name="test"
             value={title}
-            style={{ bg: 'transparent' }}
+            italic={italic}
+            textAlign={textAlign}
             onChange={this.handleChangeTitle}
             bgColor={this.getInvertColor(bgColor)}
           />
+          <TextController
+            bold={bold}
+            italic={italic}
+            textAlign={textAlign}
+            onToggleBold={this.handleToggleBold}
+            onToggleItalic={this.handleToggleItalic}
+            OnTextAlignChange={this.handleTextAlignChange}
+          />  
         </H1>
       </AppHeader>
     )
+  }
+
+  handleTextAlignChange = (value) => () => {
+    this.setState({
+      textAlign: value
+    })
+  }
+
+  handleToggleBold = () => {
+    this.setState(preState => ({
+      bold: !preState.bold
+    }))
+  }
+
+  handleToggleItalic = () => {
+    console.log('aaaaa')
+    this.setState(preState => ({
+      italic: !preState.italic
+    }))
   }
 
   handleChangeTitle = (e) => {

@@ -8,7 +8,7 @@ import { ApolloLink} from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
 
-const httpLink = createHttpLink({ uri: process.env.REACT_APP_API_KEY })
+const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/cjlff6bg55guo0104m4lg6s6e` })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('graphcoolToken')
@@ -30,7 +30,7 @@ const client = new ApolloClient({
 
 ReactDOM.render((
     <ApolloProvider client={client}>
-      <Application/>
+      <App/>
     </ApolloProvider>
   ),
   document.getElementById('root')

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const Header = styled.div`
-  background: ${(props) => props.bgColor}
+  background: ${(props) => props.bgColor};
   color: ${(props) => props.color};
-  text-align: center;
+  text-align: ${(props) => props.textAlign};
   padding: 15px;
   position: relative;
   display: flex;
@@ -19,18 +19,20 @@ const Input = styled.input`
   border: 2px dashed transparent;
   width: 100%;
   margin: auto;
-  padding: 8px;
+  padding: 8px 0;
   overflow: visible;
   transition: .3s ease;
-  
-  &:hover {
-    border: 2px dashed ${(props) => props.bgColor};
-    outline: none;
+  text-align: ${(props) => props.textAlign};
+  ${(props) => props.bold && 
+  `font-weight: bold;`
+  }
+  ${(props) => props.italic && 
+  `font-style: italic;`
   }
   
   &:focus {
     outline: none;
-    border: 1px solid ${(props) => props.bgColor};
+    border: 0px solid ${(props) => props.bgColor};
     box-shadow: inset 0 0 6px ${(props) => props.bgColor};
   }
   
@@ -38,11 +40,16 @@ const Input = styled.input`
 
 const H1 =styled.h1`
   position: relative;
+  transition: .3s ease;
+  border: 2px dashed transparent;
+  text-align: ${(props) => props.textAlign};
   
   &:hover {
     border: 2px dashed ${(props) => props.bgColor};
     outline: none;
   }
 `;
+
+
 
 export { Header, Input, H1 }
