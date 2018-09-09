@@ -1,55 +1,69 @@
 import styled from 'styled-components'
 
 const Header = styled.div`
-  background: ${(props) => props.bgColor};
-  color: ${(props) => props.color};
-  text-align: ${(props) => props.textAlign};
-  padding: 15px;
-  position: relative;
+  padding: 10px;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   height: 180px;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  color: ${(props) => props.color};
+  background: ${(props) => props.bgColor};
+  text-align: ${(props) => props.textAlign};
 `;
 
 const Input = styled.input`
-  background: transparent !important;
-  box-sizing: content-box;
-  text-align: center;
-  border: 2px dashed transparent;
   width: 100%;
   margin: auto;
-  padding: 8px 0;
+  padding: 8px 5px;
   overflow: visible;
   transition: .3s ease;
-  text-align: ${(props) => props.textAlign};
-  ${(props) => props.bold && 
-  `font-weight: bold;`
-  }
-  ${(props) => props.italic && 
-  `font-style: italic;`
-  }
+  box-sizing: padding-box;
+  background: transparent;
+  text-align: ${(props) => props.cssProps.textAlign};
+  ${(props) => props.cssProps.bold && `font-weight: bold;`}
+  ${(props) => props.cssProps.italic && `font-style: italic;`}
+  border: 1px dashed ${(props) => props.cssProps.inputActive ? props.cssProps.bgColorInvert : 'transparent'};
   
   &:focus {
     outline: none;
-    border: 0px solid ${(props) => props.bgColor};
-    box-shadow: inset 0 0 6px ${(props) => props.bgColor};
+    border: 1px dashed ${(props) => props.cssProps.bgColorInvert};
+    //box-shadow: 0 0 6px ${(props) => props.cssProps.bgColorInvert};
   }
-  
-`;
-
-const H1 =styled.h1`
-  position: relative;
-  transition: .3s ease;
-  border: 2px dashed transparent;
-  text-align: ${(props) => props.textAlign};
   
   &:hover {
-    border: 2px dashed ${(props) => props.bgColor};
     outline: none;
+    border: 1px dashed ${(props) => props.cssProps.bgColorInvert};
   }
+  
+`;
+
+const Heading =styled.h1`
+  flex: 1;
+  padding: 0;
+  z-index: 2;
+  position: relative;
+  transition: .3s ease;
+  text-align: ${(props) => props.textAlign};
+`;
+
+const OusideClickContainer = styled.div`
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0,0,20,0.3);
+`;
+
+const TopHeader = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 
 
-export { Header, Input, H1 }
+export { Header, Input, Heading, OusideClickContainer, TopHeader }
