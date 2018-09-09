@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Application from './Application'
+import App from './App'
 import { ApolloClient } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { createHttpLink } from 'apollo-link-http'

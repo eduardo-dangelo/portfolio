@@ -10,7 +10,7 @@ class SocialMediaLinks extends PureComponent {
     twitter: '',
     facebook: '',
     linkedIn: '',
-    activeLink: ''
+    activeLink: '',
     showInput: false,
   }
 
