@@ -2,44 +2,100 @@ import React, { PureComponent } from 'react'
 import { SocialMediaLinksContainer, IconContainer } from "./Elements";
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa'
 import SocialMediaLinksController from '../../../Controllers/SocialMediaLinksController'
+import { OusideClickContainer } from "../../Elements";
 
 class SocialMediaLinks extends PureComponent {
   state = {
-    github: '',
-    codepen: '',
-    twitter: '',
+    github: 'github',
+    codepen: 'codepen',
+    twitter: 'twitter',
     facebook: '',
     linkedIn: '',
-    activeLink: '',
+    activeKey: '',
+    inputValue: '',
     showInput: false,
   }
 
   handleIconClick = (key) => () => {
-    this.state({
+    this.setState({
       showInput: true,
-      activeLink: key
+      activeKey: key,
+      inputValue: this.state[key]
+    })
+  }
+
+  handleInputBlur = (e) => {
+    const { activeKey } = this.state
+    this.setState({
+      activeKey: '',
+      showInput: false,
+      [activeKey]: e.target.value
+    })
+  }
+
+  handleInputChange = (e) => {
+    this.setState({
+      inputValue: e.target.value
     })
   }
 
   render() {
+    const {
+      github,
+      codepen,
+      twitter,
+      facebook,
+      linkedIn,
+      activeKey,
+      showInput,
+      inputValue,
+    } = this.state
+
     return (
-      <SocialMediaLinksContainer>
-        <IconContainer onClick={this.handleIconClick('codepen')}>
+      <SocialMediaLinksContainer hasActiveItem={activeKey}>
+        <IconContainer
+          hasValue={codepen}
+          active={activeKey === 'codepen'}
+          onClick={this.handleIconClick('codepen')}
+        >
           <FaCodepen/>
         </IconContainer>
-        <IconContainer onClick={this.handleIconClick('facebook')}>
+        <IconContainer
+          hasValue={facebook}
+          active={activeKey === 'facebook'}
+          onClick={this.handleIconClick('facebook')}
+        >
           <FaFacebook/>
         </IconContainer>
-        <IconContainer onClick={this.handleIconClick('github')}>
+        <IconContainer
+          hasValue={github}
+          active={activeKey === 'github'}
+          onClick={this.handleIconClick('github')}
+        >
           <FaGithub/>
         </IconContainer>
-        <IconContainer onClick={this.handleIconClick('linkedIn')}>
+        <IconContainer
+          hasValue={linkedIn}
+          active={activeKey === 'linkedIn'}
+          onClick={this.handleIconClick('linkedIn')}
+        >
           <FaLinkedin/>
         </IconContainer>
-        <IconContainer onClick={this.handleIconClick('twitter')}>
+        <IconContainer
+          hasValue={twitter}
+          active={activeKey === 'twitter'}
+          onClick={this.handleIconClick('twitter')}
+        >
           <FaTwitter/>
         </IconContainer>
-        <SocialMediaLinksController/>
+        {showInput && (
+          <SocialMediaLinksController
+            inputValue={inputValue}
+            onBlur={this.handleInputBlur}
+            onChange={this.handleInputChange}
+          />
+        )}
+        {showInput && <OusideClickContainer onClick={this.handleInputBlur}/>}
       </SocialMediaLinksContainer>
     );
   }
