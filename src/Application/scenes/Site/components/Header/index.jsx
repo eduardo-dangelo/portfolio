@@ -2,6 +2,7 @@ import React from 'react'
 import { Header as AppHeader, Input, Heading, OusideClickContainer, TopHeader } from './Elements'
 import { Dropdown, HeaderController, TextController } from '../Controllers'
 import SocialMediaLinks from './components/SocialMediaLinks'
+import UserNameDisplay from './components/UserNameDisplay'
 
 class Header extends React.PureComponent {
   state = {
@@ -135,9 +136,7 @@ class Header extends React.PureComponent {
         onMouseLeave={this.handleCardMouseLeave}
       >
         <TopHeader>
-          <span>
-            Eduardo Dangelo
-          </span>
+          <UserNameDisplay/>
           <SocialMediaLinks/>
         </TopHeader>
         {/*{showDropdown && (*/}
