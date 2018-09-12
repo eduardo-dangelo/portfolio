@@ -9,6 +9,7 @@ class Header extends React.PureComponent {
   state = {
     color: '#ffffff',
     bgColor: '#001b44',
+    boxSize: 'medium'
   }
 
   handleCardMouseHover = () => {
@@ -57,10 +58,18 @@ class Header extends React.PureComponent {
     return "#" + padZero(r) + padZero(g) + padZero(b);
   }
 
+  onBoxSizeChange = (value) => {
+    console.log('value', value)
+    this.setState({
+      boxSize: value,
+    })
+  }
+
   render() {
     const { isAuth } = this.props
     const {
       color,
+      boxSize,
       bgColor,
       textAlign,
     } = this.state
@@ -71,6 +80,7 @@ class Header extends React.PureComponent {
       <AppHeader
         color={color}
         bgColor={bgColor}
+        cssProps={{ boxSize }}
         textAlign={textAlign}
         onMouseOver={this.handleCardMouseHover}
         onMouseLeave={this.handleCardMouseLeave}
@@ -94,7 +104,7 @@ class Header extends React.PureComponent {
         {/*</Dropdown>*/}
         {/*)}*/}
         <HeaderBody>
-          <PageTitle bgInvert={bgInvert}/>
+          <PageTitle bgInvert={bgInvert} onBoxSizeChange={this.onBoxSizeChange}/>
         </HeaderBody>
       </AppHeader>
     )

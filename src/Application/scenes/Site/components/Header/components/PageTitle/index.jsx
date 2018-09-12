@@ -7,6 +7,7 @@ class Header extends React.Component {
     bold: false,
     italic: false,
     title: 'title',
+    boxSize: 'medium',
     inputActive: false,
     textSize: 'medium',
     textAlign: 'center',
@@ -42,11 +43,19 @@ class Header extends React.Component {
   }
 
   handleTextSizeChange = (value) => () => {
-    console.log('value', value)
     this.setState({
       textSize: value,
       inputActive: true
     })
+  }
+
+  handleBoxSizeChange = (value) => () => {
+    const { onBoxSizeChange } = this.props
+    this.setState({
+      boxSize: value,
+      inputActive: false
+    })
+    onBoxSizeChange(value)
   }
 
   handleToggleBold = () => {
@@ -75,12 +84,12 @@ class Header extends React.Component {
       bold,
       title,
       italic,
+      boxSize,
       textSize,
       textAlign,
       inputActive,
       showTextController,
     } = this.state
-    console.log('textSize', textSize)
 
     return (
       <div>
@@ -98,8 +107,9 @@ class Header extends React.Component {
               onToggleBold={this.handleToggleBold}
               onToggleItalic={this.handleToggleItalic}
               onTextSizeChange={this.handleTextSizeChange}
+              onBoxSizeChange={this.handleBoxSizeChange}
               OnTextAlignChange={this.handleTextAlignChange}
-              cssProps={{ bold, italic, textAlign, textSize }}
+              cssProps={{ bold, italic, textAlign, textSize, boxSize }}
             />
           )}
         </Heading>

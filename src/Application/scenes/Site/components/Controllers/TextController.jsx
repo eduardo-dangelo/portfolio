@@ -22,12 +22,14 @@ export default class TextController extends PureComponent {
       cssProps: {
         bold,
         italic,
+        boxSize,
         textSize,
         textAlign,
       },
       onBlur,
       onToggleBold,
       onToggleItalic,
+      onBoxSizeChange,
       onTextSizeChange,
       OnTextAlignChange,
     } = this.props
@@ -122,6 +124,45 @@ export default class TextController extends PureComponent {
                 eventKey="5"
                 active={textSize === 'x-small'}
                 onClick={onTextSizeChange('x-small')}
+              >
+                x-small
+              </MenuItem>
+            </DropdownButton>
+          </ButtonGroup>
+          <ButtonGroup>
+            <DropdownButton bsSize="small" title="Box size" id="bg-nested-dropdown">
+              <MenuItem
+                eventKey="1"
+                active={boxSize === 'x-large'}
+                onClick={onBoxSizeChange('x-large')}
+              >
+                x-large
+              </MenuItem>
+              <MenuItem
+                eventKey="2"
+                active={boxSize === 'large'}
+                onClick={onBoxSizeChange('large')}
+              >
+                large
+              </MenuItem>
+              <MenuItem
+                eventKey="3"
+                active={boxSize === 'medium'}
+                onClick={onBoxSizeChange('medium')}
+              >
+                medium
+              </MenuItem>
+              <MenuItem
+                eventKey="4"
+                active={boxSize === 'small'}
+                onClick={onBoxSizeChange('small')}
+              >
+                small
+              </MenuItem>
+              <MenuItem
+                eventKey="5"
+                active={boxSize === 'x-small'}
+                onClick={onBoxSizeChange('x-small')}
               >
                 x-small
               </MenuItem>

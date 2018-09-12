@@ -108,13 +108,11 @@ class AdminBar extends React.Component {
   }
 
   handleSubmit = (e) => {
-    console.log('e', e)
     e.preventDefault()
   }
 
   signupUser = async () => {
     const { email, password, name } = this.state
-    console.log('hello')
 
     try {
       const user = await this.props.signupUserMutation({variables: {email, password, name}})

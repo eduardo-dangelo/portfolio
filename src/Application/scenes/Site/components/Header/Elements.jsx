@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Header = styled.div`
   padding: 10px;
   display: flex;
-  height: 180px;
+  height: ${(props) => getBoxSize(props.cssProps.boxSize)}px;
   flex-direction: column;
   position: relative;
   align-items: center;
@@ -12,12 +12,27 @@ const Header = styled.div`
   text-align: ${(props) => props.textAlign};
 `;
 
+const getBoxSize = (boxSize) => {
+  switch (boxSize) {
+    case 'x-large':
+      return 300
+    case 'large':
+      return 250
+    case 'medium':
+      return 200
+    case 'small':
+      return 150
+    case 'x-small':
+      return 100
+  }
+}
+
 const Input = styled.input`
   width: 100%;
   margin: auto;
   padding: 8px 5px;
   overflow: visible;
-  transition: .3s linear;
+  //transition: .3s linear;
   box-sizing: padding-box;
   background: transparent;
   text-align: ${(props) => props.cssProps.textAlign};
@@ -39,7 +54,6 @@ const Input = styled.input`
 `;
 
 const getFontSize = (fontSize) => {
-  console.log('fontSize', fontSize)
   switch (fontSize) {
     case 'x-large':
       return 55
@@ -59,7 +73,7 @@ const Heading = styled.h1`
   padding: 0;
   z-index: 2;
   position: relative;
-  transition: .3s linear;
+  //transition: .3s linear;
   text-align: ${(props) => props.cssProps.textAlign};
   font-size: ${(props) => getFontSize(props.cssProps.textSize)}px;
 `;
@@ -71,7 +85,7 @@ const OusideClickContainer = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  background: rgba(0,0,20,0.3);
+  background: rgba(0,0,20,0);
 `;
 
 const TopHeader = styled.div`
@@ -87,6 +101,7 @@ const HeaderBody = styled.div`
   //border: 1px solid orange;
   display: flex;
   align-items: center;
+
   
   & > div {
     width: 100%;
