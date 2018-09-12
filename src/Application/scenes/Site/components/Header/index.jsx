@@ -1,68 +1,14 @@
 import React from 'react'
-import { Header as AppHeader, Input, Heading, OusideClickContainer, TopHeader } from './Elements'
-import { Dropdown, HeaderController, TextController } from '../Controllers'
+import { Header as AppHeader, TopHeader, HeaderBody } from './Elements'
+import { Dropdown, HeaderController } from '../Controllers'
 import SocialMediaLinks from './components/SocialMediaLinks'
 import UserNameDisplay from './components/UserNameDisplay'
+import PageTitle from './components/PageTitle'
 
 class Header extends React.PureComponent {
   state = {
-    bold: false,
-    italic: false,
-    title: 'title',
     color: '#ffffff',
     bgColor: '#001b44',
-    textAlign: 'center',
-    inputActive: false,
-    showDropdown: false,
-    showTextController: false,
-  }
-
-  handleInputFocus = () => {
-    this.setState({
-      inputActive: true,
-      showTextController: true
-    })
-  }
-
-  handleInputBlur = () => {
-    this.setState({
-      inputActive: false
-    })
-  }
-
-  handleInputAndControllerBlur = () => {
-    this.setState({
-      inputActive: false,
-      showTextController: false
-    })
-  }
-
-  handleTextAlignChange = (value) => () => {
-    this.setState({
-      textAlign: value,
-      inputActive: true
-    })
-  }
-
-  handleToggleBold = () => {
-    this.setState(preState => ({
-      bold: !preState.bold,
-      inputActive: true
-    }))
-  }
-
-  handleToggleItalic = () => {
-    console.log('aaaaa')
-    this.setState(preState => ({
-      italic: !preState.italic,
-      inputActive: true
-    }))
-  }
-
-  handleChangeTitle = (e) => {
-    this.setState({
-      title: e.target.value
-    })
   }
 
   handleCardMouseHover = () => {
@@ -114,18 +60,12 @@ class Header extends React.PureComponent {
   render() {
     const { isAuth } = this.props
     const {
-      bold,
       color,
-      title,
-      italic,
       bgColor,
       textAlign,
-      inputActive,
-      showDropdown,
-      showTextController,
     } = this.state
 
-    const bgColorInvert = this.getInvertColor(bgColor)
+    const bgInvert = this.getInvertColor(bgColor)
 
     return (
       <AppHeader
@@ -140,38 +80,22 @@ class Header extends React.PureComponent {
           <SocialMediaLinks/>
         </TopHeader>
         {/*{showDropdown && (*/}
-          {/*<Dropdown*/}
-            {/*top={15}*/}
-            {/*right={15}*/}
-            {/*color={this.getInvertColor(bgColor)}*/}
-          {/*>*/}
-            {/*<HeaderController*/}
-              {/*color={color}*/}
-              {/*bgColor={bgColor}*/}
-              {/*onColorChange={this.updateValue('color')}*/}
-              {/*onBgColorChange={this.updateValue('bgColor')}*/}
-            {/*/>*/}
-          {/*</Dropdown>*/}
+        {/*<Dropdown*/}
+        {/*top={15}*/}
+        {/*right={15}*/}
+        {/*color={this.getInvertColor(bgColor)}*/}
+        {/*>*/}
+        {/*<HeaderController*/}
+        {/*color={color}*/}
+        {/*bgColor={bgColor}*/}
+        {/*onColorChange={this.updateValue('color')}*/}
+        {/*onBgColorChange={this.updateValue('bgColor')}*/}
+        {/*/>*/}
+        {/*</Dropdown>*/}
         {/*)}*/}
-        <Heading textAlign={textAlign}>
-          <Input
-            name="test"
-            value={title}
-            onFocus={this.handleInputFocus}
-            onBlur={this.handleInputBlur}
-            onChange={this.handleChangeTitle}
-            cssProps={{ bold, italic, textAlign, bgColorInvert, inputActive }}
-          />
-          {showTextController && (
-            <TextController
-              onToggleBold={this.handleToggleBold}
-              onToggleItalic={this.handleToggleItalic}
-              OnTextAlignChange={this.handleTextAlignChange}
-              cssProps={{ bold, italic, textAlign }}
-            />
-          )}
-        </Heading>
-        {showTextController && <OusideClickContainer onClick={this.handleInputAndControllerBlur}/>}
+        <HeaderBody>
+          <PageTitle bgInvert={bgInvert}/>
+        </HeaderBody>
       </AppHeader>
     )
   }

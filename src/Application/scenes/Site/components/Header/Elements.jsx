@@ -17,7 +17,7 @@ const Input = styled.input`
   margin: auto;
   padding: 8px 5px;
   overflow: visible;
-  transition: .3s ease;
+  transition: .3s linear;
   box-sizing: padding-box;
   background: transparent;
   text-align: ${(props) => props.cssProps.textAlign};
@@ -38,13 +38,30 @@ const Input = styled.input`
   
 `;
 
-const Heading =styled.h1`
+const getFontSize = (fontSize) => {
+  console.log('fontSize', fontSize)
+  switch (fontSize) {
+    case 'x-large':
+      return 55
+    case 'large':
+      return 45
+    case 'medium':
+      return 35
+    case 'small':
+      return 25
+    case 'x-small':
+      return 18
+  }
+}
+
+const Heading = styled.h1`
   flex: 1;
   padding: 0;
   z-index: 2;
   position: relative;
-  transition: .3s ease;
-  text-align: ${(props) => props.textAlign};
+  transition: .3s linear;
+  text-align: ${(props) => props.cssProps.textAlign};
+  font-size: ${(props) => getFontSize(props.cssProps.textSize)}px;
 `;
 
 const OusideClickContainer = styled.div`
@@ -64,6 +81,18 @@ const TopHeader = styled.div`
   justify-content: space-between;
 `;
 
+const HeaderBody = styled.div`
+  width: 100%;
+  height: 100%;
+  //border: 1px solid orange;
+  display: flex;
+  align-items: center;
+  
+  & > div {
+    width: 100%;
+  }
+`;
 
 
-export { Header, Input, Heading, OusideClickContainer, TopHeader }
+
+export { Header, Input, Heading, OusideClickContainer, TopHeader, HeaderBody }

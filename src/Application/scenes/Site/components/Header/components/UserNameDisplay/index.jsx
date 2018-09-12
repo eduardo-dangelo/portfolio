@@ -17,7 +17,7 @@ const Input = styled.input`
 
 class UserNameDisplay extends React.Component {
   state = {
-    inputValue: ''
+    inputValue: 'Eduardo D`Angelo'
   }
 
   handleChange = (e) => {

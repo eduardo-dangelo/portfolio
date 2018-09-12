@@ -1,7 +1,20 @@
 import React, { PureComponent } from 'react'
 import FixedContainer from './components/FixedContainer'
-import { ButtonGroup, Button, DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap'
-import { FaAlignCenter, FaAlignLeft, FaAlignRight, FaBold, FaItalic, FaTextHeight } from 'react-icons/fa'
+import {
+  Button,
+  MenuItem,
+  ButtonGroup,
+  ButtonToolbar,
+  DropdownButton,
+} from 'react-bootstrap'
+import {
+  FaBold,
+  FaItalic,
+  FaAlignLeft,
+  FaAlignRight,
+  FaAlignCenter,
+  FaTextHeight,
+} from 'react-icons/fa'
 
 export default class TextController extends PureComponent {
   render() {
@@ -9,11 +22,13 @@ export default class TextController extends PureComponent {
       cssProps: {
         bold,
         italic,
+        textSize,
         textAlign,
       },
       onBlur,
       onToggleBold,
       onToggleItalic,
+      onTextSizeChange,
       OnTextAlignChange,
     } = this.props
 
@@ -72,6 +87,45 @@ export default class TextController extends PureComponent {
             >
               <FaItalic/>
             </Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <DropdownButton bsSize="small" title="Text size" id="bg-nested-dropdown">
+              <MenuItem
+                eventKey="1"
+                active={textSize === 'x-large'}
+                onClick={onTextSizeChange('x-large')}
+              >
+                x-large
+              </MenuItem>
+              <MenuItem
+                eventKey="2"
+                active={textSize === 'large'}
+                onClick={onTextSizeChange('large')}
+              >
+                large
+              </MenuItem>
+              <MenuItem
+                eventKey="3"
+                active={textSize === 'medium'}
+                onClick={onTextSizeChange('medium')}
+              >
+                medium
+              </MenuItem>
+              <MenuItem
+                eventKey="4"
+                active={textSize === 'small'}
+                onClick={onTextSizeChange('small')}
+              >
+                small
+              </MenuItem>
+              <MenuItem
+                eventKey="5"
+                active={textSize === 'x-small'}
+                onClick={onTextSizeChange('x-small')}
+              >
+                x-small
+              </MenuItem>
+            </DropdownButton>
           </ButtonGroup>
         </ButtonToolbar>
       </FixedContainer>
