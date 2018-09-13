@@ -103,8 +103,21 @@ class Header extends React.PureComponent {
         {/*/>*/}
         {/*</Dropdown>*/}
         {/*)}*/}
+        {/*<HeaderController*/}
+          {/*color={color}*/}
+          {/*bgColor={bgColor}*/}
+          {/*onColorChange={this.updateValue('color')}*/}
+          {/*onBgColorChange={this.updateValue('bgColor')}*/}
+        {/*/>*/}
         <HeaderBody>
-          <PageTitle bgInvert={bgInvert} onBoxSizeChange={this.onBoxSizeChange}/>
+          <PageTitle
+            color={color}
+            bgColor={bgColor}
+            bgInvert={bgInvert}
+            onBoxSizeChange={this.onBoxSizeChange}
+            onColorChange={this.updateValue('color')}
+            onBgColorChange={this.updateValue('bgColor')}
+          />
         </HeaderBody>
       </AppHeader>
     )

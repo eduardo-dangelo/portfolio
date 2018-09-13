@@ -15,21 +15,26 @@ import {
   FaAlignCenter,
   FaTextHeight,
 } from 'react-icons/fa'
+import ColorKnob from "./components/Knobs/components/ColorKnob";
 
 export default class TextController extends PureComponent {
   render() {
     const {
       cssProps: {
         bold,
+        color,
         italic,
         boxSize,
+        bgColor,
         textSize,
         textAlign,
       },
       onBlur,
       onToggleBold,
+      onColorChange,
       onToggleItalic,
       onBoxSizeChange,
+      onBgColorChange,
       onTextSizeChange,
       OnTextAlignChange,
     } = this.props
@@ -167,6 +172,18 @@ export default class TextController extends PureComponent {
                 x-small
               </MenuItem>
             </DropdownButton>
+          </ButtonGroup>
+          <ButtonGroup>
+            <ColorKnob
+              value={bgColor}
+              action={onBgColorChange}
+            />
+          </ButtonGroup>
+          <ButtonGroup>
+            <ColorKnob
+              value={color}
+              action={onColorChange}
+            />
           </ButtonGroup>
         </ButtonToolbar>
       </FixedContainer>

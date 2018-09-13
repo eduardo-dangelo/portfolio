@@ -29,7 +29,6 @@ class ColorKnob extends React.Component {
     return (
       <div>
         <Button color={value} onClick={this.handleClick} />
-        {/*{value}*/}
         {showColorPicker && (
           <OverlayContainer >
             <ChromePicker

@@ -1,6 +1,7 @@
 import React from 'react'
 import { TextController } from '../../../Controllers'
 import { Input, Heading, OusideClickContainer } from '../../Elements'
+import HeaderController from "../../../Controllers/HeaderController";
 
 class Header extends React.Component {
   state = {
@@ -79,7 +80,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { bgInvert } = this.props
+    const { onColorChange, onBgColorChange, bgInvert, bgColor, color, } = this.props
     const {
       bold,
       title,
@@ -104,12 +105,14 @@ class Header extends React.Component {
           />
           {showTextController && (
             <TextController
+              onColorChange={onColorChange}
+              onBgColorChange={onBgColorChange}
               onToggleBold={this.handleToggleBold}
               onToggleItalic={this.handleToggleItalic}
-              onTextSizeChange={this.handleTextSizeChange}
               onBoxSizeChange={this.handleBoxSizeChange}
+              onTextSizeChange={this.handleTextSizeChange}
               OnTextAlignChange={this.handleTextAlignChange}
-              cssProps={{ bold, italic, textAlign, textSize, boxSize }}
+              cssProps={{ bold, italic, textAlign, textSize, boxSize, bgColor, color }}
             />
           )}
         </Heading>
