@@ -7,6 +7,10 @@ import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink} from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import { rootEpic, rootReducer } from "./Application/redux";
+import { createEpicMiddleware } from 'redux-observable';
 
 const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/cjlff6bg55guo0104m4lg6s6e` })
 
@@ -23,14 +27,27 @@ const middlewareLink = new ApolloLink((operation, forward) => {
 
 const httpLinkWithAuthToken = middlewareLink.concat(httpLink)
 
+
 const client = new ApolloClient({
   link: httpLinkWithAuthToken,
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 })
 
+// const createStoreWithMiddleware = applyMiddleware()(createStore)
+const epicMiddleware = createEpicMiddleware();
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(epicMiddleware)
+);
+
+epicMiddleware.run(rootEpic);
+
 ReactDOM.render((
     <ApolloProvider client={client}>
-      <App/>
+      <Provider store={store}>
+        <App/>
+      </Provider>
     </ApolloProvider>
   ),
   document.getElementById('root')
