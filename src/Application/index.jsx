@@ -6,20 +6,15 @@ import { loggedInUserQuery, allUsersQuery } from './queries'
 import { graphql, compose } from 'react-apollo'
 
 class Application extends React.Component {
-  handleRefetch = () => {
-    const { loggedInUserQuery } = this.props
-    loggedInUserQuery.refetch()
-  }
-
   render() {
-    const { loggedInUserQuery, allUsersQuery } = this.props
+    const { loggedInUserQuery } = this.props
 
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div>
           <Route
             path='/admin'
-            render={() => <AdminBar onRefetch={this.handleRefetch} {...this.props}/>}/>
+            render={() => <AdminBar {...this.props}/>}/>
           <Route
             path='/'
             render={() => <Site {...this.props}/>} />
@@ -31,5 +26,4 @@ class Application extends React.Component {
 
 export default compose(
   graphql(loggedInUserQuery, {name: 'loggedInUserQuery'}),
-  graphql(allUsersQuery, {name: 'allUsersQuery'})
 )(Application)

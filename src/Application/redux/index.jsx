@@ -1,13 +1,8 @@
 import { combineReducers } from 'redux';
-import { combineEpics } from 'redux-observable';
-
-
-const rootEpic = combineEpics(
-
-);
+import { reducer as account } from './userAccountReducer'
 
 const rootReducer = combineReducers({
-
+  account
 });
 
-export { rootReducer, rootEpic };
+export { rootReducer };

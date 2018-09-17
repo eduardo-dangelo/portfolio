@@ -4,30 +4,80 @@ import { Bar, Form, Button, Title, Input, Spin } from './Elements'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import { FaSpinner } from 'react-icons/fa'
+import { connect } from 'react-redux'
+import { bindActionCreators } from "redux";
+import { actions as authActions } from '../../redux/userAccountReducer'
+import { allUsersQuery } from "../../queries";
 
 
 class AdminBar extends React.Component {
   state = {
-    isAuth: false,
-    email: '',
-    password: '',
     name: '',
-    emailSubscription: false,
+    email: '',
+    error: '',
+    password: '',
+    isAuth: false,
     hasUsers: false,
-    isUserLoggedIn: false,
     isLoading: false,
-    error: ''
+    isUserLoggedIn: false,
+    emailSubscription: false,
   }
   
   handleLogOut = () => {
-    this.setState({ isLoading: true })
-    localStorage.removeItem('graphcoolToken')
-    window.location.reload()
+    const { actions } = this.props
+    actions.loading(true)
+    setTimeout(() => {
+      localStorage.removeItem('graphcoolToken')
+      actions.logOut()
+      window.location.reload()
+    }, 1000);
+    // this.setState({ isLoading: true })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
+  handleSignupUser = async () => {
+    const { email, password, name } = this.state
+
+    try {
+      const user = await this.props.signupUserMutation({variables: {email, password, name}})
+      localStorage.setItem('graphcoolToken', user.data.signupUser.token)
+      // this.props.history.replace('/')
+      return console.log('heyy you have created an user')
+    } catch (e) {
+      console.error(`An error occured: `, e)
+      // this.props.history.replace('/')
+    }
+  }
+
+  handleAuthenticateUser = async () => {
+    const { actions, authenticateUserMutation, loggedInUserQuery } = this.props
+    const { email, password } = this.state
+
+    actions.loading(true)
+    authenticateUserMutation({
+      variables: { email, password },
+    })
+    .then((response) =>
+      localStorage.setItem('graphcoolToken', response.data.authenticateUser.token),
+    )
+    .then(() => {
+        loggedInUserQuery.refetch();
+        actions.loading(false)
+      }
+    )
+    .catch(() => {
+      this.setState({ error: 'Invalid Credentials'})
+      setTimeout(() => this.setState({ error: '' }), 3000)
+      actions.loading(false)
+    })
   }
 
 
   render() {
-    const { allUsersQuery, loggedInUserQuery } = this.props
+    const { allUsersQuery, loggedInUserQuery, account } = this.props
     const { isLoading, error } = this.state
 
     const allUsers = allUsersQuery.allUsers
@@ -52,7 +102,7 @@ class AdminBar extends React.Component {
           <Title>Hello Eduardo</Title>
           <Form>
             <Button onClick={this.handleLogOut}>
-              {isLoading && <Spin><FaSpinner/></Spin>}
+              {account.loading && <Spin><FaSpinner/></Spin>}
               Logout
             </Button>
           </Form>
@@ -88,16 +138,16 @@ class AdminBar extends React.Component {
             {!hasUsers ? (
               <Button
                 disabled={!this.state.email || !this.state.password || !this.state.name}
-                onClick={this.signupUser}
+                onClick={this.handleSignupUser}
               >
                 Submit
               </Button>
             ) : (
               <Button
                 disabled={!this.state.email || !this.state.password}
-                onClick={this.authenticateUser}
+                onClick={this.handleAuthenticateUser}
               >
-                {isLoading && <Spin><FaSpinner/></Spin>}
+                {account.loading && <Spin><FaSpinner/></Spin>}
                 Log In
               </Button>
             )}
@@ -105,39 +155,6 @@ class AdminBar extends React.Component {
         </form>
       </Bar>
     )
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault()
-  }
-
-  signupUser = async () => {
-    const { email, password, name } = this.state
-
-    try {
-      const user = await this.props.signupUserMutation({variables: {email, password, name}})
-      localStorage.setItem('graphcoolToken', user.data.signupUser.token)
-      // this.props.history.replace('/')
-      return console.log('heyy you have created an user')
-    } catch (e) {
-      console.error(`An error occured: `, e)
-      // this.props.history.replace('/')
-    }
-  }
-
-  authenticateUser = async () => {
-    const { onRefetch, authenticateUserMutation } = this.props
-    const { email, password } = this.state
-    this.setState({ isLoading: true })
-
-    const response = await authenticateUserMutation({ variables: { email, password }})
-    Promise.resolve(
-      localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
-    ).then(
-      onRefetch()
-    ).catch(e => {
-      this.setState({ error: 'Invalid Credentials'})
-    })
   }
 }
 
@@ -161,4 +178,13 @@ const AUTHENTICATE_USER_MUTATION = gql`
 export default compose(
   graphql(SIGNUP_USER_MUTATION, {name: 'signupUserMutation'}),
   graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
+  graphql(allUsersQuery, {name: 'allUsersQuery'}),
+  connect(
+    (state) => ({
+      account: state.account
+    }),
+    (dispatch) => ({
+      actions: bindActionCreators(authActions, dispatch)
+    })
+  )
 )(AdminBar)

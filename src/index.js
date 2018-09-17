@@ -9,8 +9,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import { rootEpic, rootReducer } from "./Application/redux";
+import { rootReducer } from "./Application/redux";
 import { createEpicMiddleware } from 'redux-observable';
+import { compose } from 'redux';
+import thunk from 'redux-thunk'
 
 const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/cjlff6bg55guo0104m4lg6s6e` })
 
@@ -33,15 +35,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 })
 
-// const createStoreWithMiddleware = applyMiddleware()(createStore)
-const epicMiddleware = createEpicMiddleware();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(epicMiddleware)
+  composeEnhancers(
+    applyMiddleware(thunk)
+  )
 );
-
-epicMiddleware.run(rootEpic);
 
 ReactDOM.render((
     <ApolloProvider client={client}>

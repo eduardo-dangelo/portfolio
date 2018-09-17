@@ -59,7 +59,6 @@ class Header extends React.PureComponent {
   }
 
   onBoxSizeChange = (value) => {
-    console.log('value', value)
     this.setState({
       boxSize: value,
     })
