@@ -88,26 +88,6 @@ class Header extends React.PureComponent {
           <UserNameDisplay/>
           <SocialMediaLinks/>
         </TopHeader>
-        {/*{showDropdown && (*/}
-        {/*<Dropdown*/}
-        {/*top={15}*/}
-        {/*right={15}*/}
-        {/*color={this.getInvertColor(bgColor)}*/}
-        {/*>*/}
-        {/*<HeaderController*/}
-        {/*color={color}*/}
-        {/*bgColor={bgColor}*/}
-        {/*onColorChange={this.updateValue('color')}*/}
-        {/*onBgColorChange={this.updateValue('bgColor')}*/}
-        {/*/>*/}
-        {/*</Dropdown>*/}
-        {/*)}*/}
-        {/*<HeaderController*/}
-          {/*color={color}*/}
-          {/*bgColor={bgColor}*/}
-          {/*onColorChange={this.updateValue('color')}*/}
-          {/*onBgColorChange={this.updateValue('bgColor')}*/}
-        {/*/>*/}
         <HeaderBody>
           <PageTitle
             color={color}

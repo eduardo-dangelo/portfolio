@@ -1,14 +1,14 @@
 import React from 'react'
-import { Bar, Form, Button, Title, Input, Spin } from './Elements'
-// import { withRouter } from 'react-router-dom'
-import { graphql, compose } from 'react-apollo'
-import gql from 'graphql-tag'
-import { FaSpinner } from 'react-icons/fa'
 import { connect } from 'react-redux'
-import { bindActionCreators } from "redux";
+import { FaSpinner } from 'react-icons/fa'
+import { bindActionCreators } from 'redux'
+import { allUsersQuery, loggedInUserQuery, UserQuery } from '../../queries'
+import { graphql, compose } from 'react-apollo'
 import { actions as authActions } from '../../redux/userAccountReducer'
-import { allUsersQuery } from "../../queries";
+import { Bar, Form, Button, Title, Input, Spin, Error } from './Elements'
+import { authenticateUserMutation, signupUserMutation } from '../../mutations'
 
+let userEmail = ''
 
 class AdminBar extends React.Component {
   state = {
@@ -16,22 +16,24 @@ class AdminBar extends React.Component {
     email: '',
     error: '',
     password: '',
-    isAuth: false,
     hasUsers: false,
-    isLoading: false,
     isUserLoggedIn: false,
     emailSubscription: false,
   }
-  
+
+  componentWillMount() {
+    localStorage.removeItem('graphcoolToken')
+  }
+
   handleLogOut = () => {
     const { actions } = this.props
     actions.loading(true)
     setTimeout(() => {
       localStorage.removeItem('graphcoolToken')
       actions.logOut()
+      actions.loading(false)
       window.location.reload()
     }, 1000);
-    // this.setState({ isLoading: true })
   }
 
   handleSubmit = (e) => {
@@ -53,8 +55,15 @@ class AdminBar extends React.Component {
   }
 
   handleAuthenticateUser = async () => {
-    const { actions, authenticateUserMutation, loggedInUserQuery } = this.props
+    const {
+      actions,
+      userQuery,
+      loggedInUserQuery,
+      authenticateUserMutation,
+    } = this.props
+
     const { email, password } = this.state
+    userEmail = email
 
     actions.loading(true)
     authenticateUserMutation({
@@ -64,8 +73,19 @@ class AdminBar extends React.Component {
       localStorage.setItem('graphcoolToken', response.data.authenticateUser.token),
     )
     .then(() => {
-        loggedInUserQuery.refetch();
-        actions.loading(false)
+      loggedInUserQuery.refetch()
+        .then((response) => {
+          console.log('response', response)
+          userQuery.refetch()
+            .then((response) => {
+              console.log('response.data.User', response.data.User)
+              actions.setUser(response.data.User)
+            })
+            .catch((error) => {
+              console.log('error', error)
+            })
+        })
+      actions.loading(false)
       }
     )
     .catch(() => {
@@ -75,10 +95,9 @@ class AdminBar extends React.Component {
     })
   }
 
-
   render() {
     const { allUsersQuery, loggedInUserQuery, account } = this.props
-    const { isLoading, error } = this.state
+    const { error } = this.state
 
     const allUsers = allUsersQuery.allUsers
     const hasUsers = allUsers && allUsers.length > 0
@@ -86,7 +105,7 @@ class AdminBar extends React.Component {
     const loggedInUser = loggedInUserQuery.loggedInUser
     const isAuth = loggedInUser && loggedInUser.id
 
-    if (!allUsers) {
+    if (!loggedInUserQuery.loggedInUser) {
       return (
         <Bar>
           <Title>
@@ -99,7 +118,7 @@ class AdminBar extends React.Component {
     if (isAuth) {
       return (
         <Bar>
-          <Title>Hello Eduardo</Title>
+          <Title>Hello {account.user && account.user.name}</Title>
           <Form>
             <Button onClick={this.handleLogOut}>
               {account.loading && <Spin><FaSpinner/></Spin>}
@@ -115,7 +134,7 @@ class AdminBar extends React.Component {
         <Title>{hasUsers ? 'Login' : 'Welcome'}</Title>
         <form onSubmit={this.handleSubmit}>
           <Form>
-            {error && error}
+            {error && <Error>{error}</Error>}
             <Input
               type="text"
               placeholder="email"
@@ -158,27 +177,7 @@ class AdminBar extends React.Component {
   }
 }
 
-const SIGNUP_USER_MUTATION = gql`
-  mutation SignupUserMutation ($email: String!, $password: String!, $name: String) {
-    signupUser(email: $email, password: $password, name: $name) {
-      id
-      token
-    }
-  }
-`
-
-const AUTHENTICATE_USER_MUTATION = gql`
-  mutation AuthenticateUserMutation ($email: String!, $password: String!) { 
-    authenticateUser(email: $email, password: $password) {
-      token
-    }
-  }
-`
-
 export default compose(
-  graphql(SIGNUP_USER_MUTATION, {name: 'signupUserMutation'}),
-  graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
-  graphql(allUsersQuery, {name: 'allUsersQuery'}),
   connect(
     (state) => ({
       account: state.account
@@ -186,5 +185,15 @@ export default compose(
     (dispatch) => ({
       actions: bindActionCreators(authActions, dispatch)
     })
-  )
+  ),
+  graphql(loggedInUserQuery, {name: 'loggedInUserQuery'}),
+  graphql(signupUserMutation, {name: 'signupUserMutation'}),
+  graphql(authenticateUserMutation, {name: 'authenticateUserMutation'}),
+  graphql(allUsersQuery, {name: 'allUsersQuery'}),
+  graphql(UserQuery, {
+    name: 'userQuery',
+    options: () => {
+      return { variables: { email: userEmail }}
+    }
+  }),
 )(AdminBar)

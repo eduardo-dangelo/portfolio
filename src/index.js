@@ -10,7 +10,6 @@ import 'tachyons'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { rootReducer } from "./Application/redux";
-import { createEpicMiddleware } from 'redux-observable';
 import { compose } from 'redux';
 import thunk from 'redux-thunk'
 

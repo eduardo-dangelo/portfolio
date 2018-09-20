@@ -65,4 +65,9 @@ const Spin = styled.div`
   justify-content: space-around;
 `;
 
-export { Bar, Title, Input, Button, Form, Spin }
+const Error = styled.span`
+  color: #7a0000;
+  padding: 10px 15px;
+`
+
+export { Bar, Title, Input, Button, Form, Spin, Error }
