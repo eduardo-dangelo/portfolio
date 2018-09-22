@@ -31,16 +31,16 @@ class SocialMediaLinks extends React.PureComponent {
 
   renderSocialMediaIcon = (name) => {
     switch (name) {
-      case 'codepen':
-        return <FaCodepen/>
-      case 'facebook':
-        return <FaFacebook/>
       case 'github':
         return <FaGithub/>
-      case 'linkedIn':
-        return <FaLinkedin/>
+      case 'codepen':
+        return <FaCodepen/>
       case 'twitter':
         return <FaTwitter/>
+      case 'linkedIn':
+        return <FaLinkedin/>
+      case 'facebook':
+        return <FaFacebook/>
       default:
         return null;
     }
@@ -60,8 +60,8 @@ class SocialMediaLinks extends React.PureComponent {
           {isAuth && (
             <IconContainer
               hasValue={value}
-              active={header.social.activeKey === name}
               onClick={this.handleIconClick(name)}
+              active={header.social.activeKey === name}
             >
               {this.renderSocialMediaIcon(name)}
             </IconContainer>
@@ -74,18 +74,20 @@ class SocialMediaLinks extends React.PureComponent {
   render() {
     const { isAuth, header } = this.props
     const { inputValueTemp } = this.state
+    const showInput = header.social.showInput
+    const activeItem = header.social.activeKey;
 
     return (
-      <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={header.social.activeKey}>
+      <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeItem}>
         {this.renderSocialMediaLinks()}
-        {header.social.showInput && (
+        {showInput && (
           <SocialMediaLinksController
             inputValue={inputValueTemp}
             onBlur={this.handleInputBlur}
             onChange={this.handleInputChange}
           />
         )}
-        {header.social.showInput && <OusideClickContainer onClick={this.handleInputBlur}/>}
+        {showInput && <OusideClickContainer onClick={this.handleInputBlur}/>}
       </SocialMediaLinksContainer>
     );
   }
