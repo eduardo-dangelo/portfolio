@@ -3,13 +3,13 @@ import styled from 'styled-components'
 const Header = styled.div`
   padding: 10px;
   display: flex;
-  height: ${(props) => getBoxSize(props.cssProps.boxSize)}px;
-  flex-direction: column;
   position: relative;
   align-items: center;
+  flex-direction: column;
   color: ${(props) => props.cssProps.color};
   background: ${(props) => props.cssProps.bgColor};
   text-align: ${(props) => props.cssProps.textAlign};
+  height: ${(props) => getBoxSize(props.cssProps.boxSize)}px;
 `;
 
 const getBoxSize = (boxSize) => {
@@ -32,25 +32,15 @@ const Input = styled.input`
   margin: auto;
   padding: 8px 5px;
   overflow: visible;
-  //transition: .3s linear;
   box-sizing: padding-box;
   background: transparent;
-  text-align: ${(props) => props.cssProps.textAlign};
-  ${(props) => props.cssProps.bold && `font-weight: bold;`}
-  ${(props) => props.cssProps.italic && `font-style: italic;`}
-  border: 1px dashed ${(props) => props.cssProps.inputActive ? props.cssProps.bgColorInvert : 'transparent'};
+  border: 1px dashed transparent;
+  text-align: ${(props) => props.cssProps.align};
   
-  &:focus {
+  &:focus, &:hover {
     outline: none;
-    border: 1px dashed ${(props) => props.cssProps.bgColorInvert};
-    //box-shadow: 0 0 6px ${(props) => props.cssProps.bgColorInvert};
+    border: 1px dashed;
   }
-  
-  &:hover {
-    outline: none;
-    border: 1px dashed ${(props) => props.cssProps.bgColorInvert};
-  }
-  
 `;
 
 const getFontSize = (fontSize) => {
@@ -74,8 +64,10 @@ const Heading = styled.h1`
   z-index: 2;
   position: relative;
   //transition: .3s linear;
-  text-align: ${(props) => props.cssProps.textAlign};
-  font-size: ${(props) => getFontSize(props.cssProps.textSize)}px;
+  text-align: ${(props) => props.cssProps.align};
+  font-size: ${(props) => getFontSize(props.cssProps.size)}px;
+  ${(props) => props.cssProps.bold && `font-weight: bold;`}
+  ${(props) => props.cssProps.italic && `font-style: italic;`}
 `;
 
 const OusideClickContainer = styled.div`
@@ -98,9 +90,9 @@ const TopHeader = styled.div`
 const HeaderBody = styled.div`
   width: 100%;
   height: 100%;
-  //border: 1px solid orange;
   display: flex;
   align-items: center;
+  //border: 1px solid orange;
 
   
   & > div {

@@ -4,15 +4,61 @@ import { bindActionCreators } from 'redux'
 import PageTitle from './components/PageTitle'
 import UserNameDisplay from './components/UserNameDisplay'
 import SocialMediaLinks from './components/SocialMediaLinks'
-import { Header as AppHeader, TopHeader, HeaderBody } from './elements'
+import { Header as AppHeader, TopHeader, HeaderBody, Heading, OusideClickContainer } from './elements'
 import { actions as headerActions } from '../../../../services/redux/headerReducer'
+import TextController from "../Controllers/TextController";
 
 class Header extends React.PureComponent {
   state = {
     color: '#ffffff',
     bgColor: '#001b44',
-    boxSize: 'medium'
+    boxSize: 'medium',
+    textAlign: 'left'
   }
+
+  // handleInputAndControllerBlur = () => {
+  //   this.setState({
+  //     inputActive: false,
+  //     showTextController: false
+  //   })
+  // }
+  //
+  // handleTextAlignChange = (value) => () => {
+  //   this.setState({
+  //     textAlign: value,
+  //     inputActive: true
+  //   })
+  // }
+  //
+  // handleTextSizeChange = (value) => () => {
+  //   this.setState({
+  //     textSize: value,
+  //     inputActive: true
+  //   })
+  // }
+  //
+  // handleBoxSizeChange = (value) => () => {
+  //   const { onBoxSizeChange } = this.props
+  //   this.setState({
+  //     boxSize: value,
+  //     inputActive: false
+  //   })
+  //   onBoxSizeChange(value)
+  // }
+  //
+  // handleToggleBold = () => {
+  //   this.setState(preState => ({
+  //     bold: !preState.bold,
+  //     inputActive: true
+  //   }))
+  // }
+  //
+  // handleToggleItalic = () => {
+  //   this.setState(preState => ({
+  //     italic: !preState.italic,
+  //     inputActive: true
+  //   }))
+  // }
 
   handleCardMouseHover = () => {
     this.setState({
@@ -99,15 +145,24 @@ class Header extends React.PureComponent {
         </TopHeader>
         <HeaderBody>
           <PageTitle
-            color={color}
+            header={header}
             isAuth={isAuth}
-            bgColor={bgColor}
-            bgInvert={bgInvert}
-            onBoxSizeChange={this.onBoxSizeChange}
-            onColorChange={this.updateValue('color')}
-            onBgColorChange={this.updateValue('bgColor')}
+            actions={actions}
           />
         </HeaderBody>
+        {/*{showTextController && (*/}
+          {/*<TextController*/}
+            {/*onColorChange={this.updateValue('color')}*/}
+            {/*onBgColorChange={this.updateValue('bgColor')}*/}
+            {/*onToggleBold={this.handleToggleBold}*/}
+            {/*onToggleItalic={this.handleToggleItalic}*/}
+            {/*onBoxSizeChange={this.handleBoxSizeChange}*/}
+            {/*onTextSizeChange={this.handleTextSizeChange}*/}
+            {/*OnTextAlignChange={this.handleTextAlignChange}*/}
+            {/*cssProps={{ bold, italic, textAlign, textSize, boxSize, bgColor, color }}*/}
+          {/*/>*/}
+        {/*)}*/}
+        {/*{showTextController && <OusideClickContainer onClick={this.handleInputAndControllerBlur}/>}*/}
       </AppHeader>
     )
   }

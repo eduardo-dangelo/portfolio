@@ -1,134 +1,48 @@
 import React from 'react'
-import { TextController } from '../../../Controllers'
-import { Input, Heading, OusideClickContainer } from '../../elements'
-import HeaderController from "../../../Controllers/HeaderController";
+import { Input, Heading } from '../../elements'
 
 class Header extends React.PureComponent {
   state = {
-    bold: false,
-    italic: false,
-    title: 'title',
-    boxSize: 'medium',
-    inputActive: false,
-    textSize: 'medium',
-    textAlign: 'center',
-    showDropdown: false,
-    showTextController: false,
+    inputValueTemp: ''
   }
 
-  handleInputFocus = () => {
+  componentDidMount() {
+    const { header } = this.props
     this.setState({
-      inputActive: true,
-      showTextController: true
+      inputValueTemp: header.title.content
     })
   }
 
-  handleInputBlur = () => {
-    this.setState({
-      inputActive: false
-    })
-  }
-
-  handleInputAndControllerBlur = () => {
-    this.setState({
-      inputActive: false,
-      showTextController: false
-    })
-  }
-
-  handleTextAlignChange = (value) => () => {
-    this.setState({
-      textAlign: value,
-      inputActive: true
-    })
-  }
-
-  handleTextSizeChange = (value) => () => {
-    this.setState({
-      textSize: value,
-      inputActive: true
-    })
-  }
-
-  handleBoxSizeChange = (value) => () => {
-    const { onBoxSizeChange } = this.props
-    this.setState({
-      boxSize: value,
-      inputActive: false
-    })
-    onBoxSizeChange(value)
-  }
-
-  handleToggleBold = () => {
-    this.setState(preState => ({
-      bold: !preState.bold,
-      inputActive: true
-    }))
-  }
-
-  handleToggleItalic = () => {
-    this.setState(preState => ({
-      italic: !preState.italic,
-      inputActive: true
-    }))
+  handleInputBlur = (e) => {
+    const { actions } = this.props
+    actions.updatePageTitle(e.target.value)
   }
 
   handleChangeTitle = (e) => {
     this.setState({
-      title: e.target.value
+      inputValueTemp: e.target.value
     })
   }
 
   render() {
-    const {
-      color,
-      isAuth,
-      bgColor,
-      bgInvert,
-      onColorChange,
-      onBgColorChange,
-    } = this.props
-
-    const {
-      bold,
-      title,
-      italic,
-      boxSize,
-      textSize,
-      textAlign,
-      inputActive,
-      showTextController,
-    } = this.state
+    const { isAuth, header } = this.props
+    const { inputValueTemp } = this.state
 
     return (
       <div>
-        <Heading cssProps={{ textAlign, textSize }}>
+        <Heading cssProps={{ ...header.title.props }}>
           {!isAuth ? (
-            title
+            header.title.content
           ) : (
             <Input
               name="test"
-              value={title}
+              value={inputValueTemp}
               onBlur={this.handleInputBlur}
-              onFocus={this.handleInputFocus}
               onChange={this.handleChangeTitle}
-              cssProps={{ bold, italic, textAlign, bgInvert, inputActive }}
-            />
-          )}
-          {showTextController && (
-            <TextController
-              onColorChange={onColorChange}
-              onBgColorChange={onBgColorChange}
-              onToggleBold={this.handleToggleBold}
-              onToggleItalic={this.handleToggleItalic}
-              onBoxSizeChange={this.handleBoxSizeChange}
-              onTextSizeChange={this.handleTextSizeChange}
-              OnTextAlignChange={this.handleTextAlignChange}
-              cssProps={{ bold, italic, textAlign, textSize, boxSize, bgColor, color }}
+              cssProps={{ ...header.title.props }}
             />
           )}
         </Heading>
-        {showTextController && <OusideClickContainer onClick={this.handleInputAndControllerBlur}/>}
       </div>
     )
   }
