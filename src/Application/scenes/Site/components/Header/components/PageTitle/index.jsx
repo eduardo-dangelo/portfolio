@@ -3,7 +3,7 @@ import { TextController } from '../../../Controllers'
 import { Input, Heading, OusideClickContainer } from '../../Elements'
 import HeaderController from "../../../Controllers/HeaderController";
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
   state = {
     bold: false,
     italic: false,
@@ -80,7 +80,15 @@ class Header extends React.Component {
   }
 
   render() {
-    const { onColorChange, onBgColorChange, bgInvert, bgColor, color, } = this.props
+    const {
+      color,
+      isAuth,
+      bgColor,
+      bgInvert,
+      onColorChange,
+      onBgColorChange,
+    } = this.props
+
     const {
       bold,
       title,
@@ -95,14 +103,18 @@ class Header extends React.Component {
     return (
       <div>
         <Heading cssProps={{ textAlign, textSize }}>
-          <Input
-            name="test"
-            value={title}
-            onBlur={this.handleInputBlur}
-            onFocus={this.handleInputFocus}
-            onChange={this.handleChangeTitle}
-            cssProps={{ bold, italic, textAlign, bgInvert, inputActive }}
-          />
+          {!isAuth ? (
+            title
+          ) : (
+            <Input
+              name="test"
+              value={title}
+              onBlur={this.handleInputBlur}
+              onFocus={this.handleInputFocus}
+              onChange={this.handleChangeTitle}
+              cssProps={{ bold, italic, textAlign, bgInvert, inputActive }}
+            />
+          )}
           {showTextController && (
             <TextController
               onColorChange={onColorChange}

@@ -1,6 +1,6 @@
 
 const initialState = {
-  text: {
+  title: {
     bold: false,
     italic: false,
     size: 'medium',
@@ -8,7 +8,7 @@ const initialState = {
     color: '#ffffff',
     content: 'Hello World'
   },
-  title: 'Author name',
+  displayName: 'Author name',
   box: {
     size: 'medium',
     bgColor: '#999170',

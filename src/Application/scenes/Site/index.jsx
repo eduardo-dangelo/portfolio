@@ -1,17 +1,31 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import Header from './components/Header'
+import { connect } from 'react-redux'
+import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap'
+import { bindActionCreators } from 'redux'
+import { actions as authActions } from '../../redux/userAccountReducer'
 
 class Site extends React.Component {
   render() {
-    const { account } = this.props
+    const { account, actions } = this.props
+    const isAuth = account.isAuth
 
     return (
       <div>
-        <Header isAuth={account.user}/>
+        <Header/>
         <h2>
-          {/*{isAuth ? 'authetticaded' : 'not authenticaded'}*/}
+          {isAuth ? 'authetticaded' : 'not authenticaded'}
         </h2>
+        <ButtonToolbar>
+          <ButtonGroup>
+            <Button bsStyle={isAuth ? 'info' : 'default'} onClick={() => actions.auth(true)}>
+              authetticaded
+            </Button>
+            <Button bsStyle={!isAuth ? 'info' : 'default'} onClick={() => actions.auth(false)}>
+              not authenticaded
+            </Button>
+          </ButtonGroup>
+        </ButtonToolbar>
       </div>
     )
   }
@@ -19,6 +33,9 @@ class Site extends React.Component {
 
 export default connect(
   (state) => ({
-    account: state.account
+    account: state.account,
+  }),
+  (dispatch) => ({
+    actions: bindActionCreators(authActions, dispatch)
   })
 )(Site)

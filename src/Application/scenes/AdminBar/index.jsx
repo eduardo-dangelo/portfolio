@@ -21,9 +21,9 @@ class AdminBar extends React.Component {
     emailSubscription: false,
   }
 
-  componentWillMount() {
-    localStorage.removeItem('graphcoolToken')
-  }
+  // componentWillMount() {
+  //   localStorage.removeItem('graphcoolToken')
+  // }
 
   handleLogOut = () => {
     const { actions } = this.props

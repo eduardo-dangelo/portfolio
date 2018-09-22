@@ -8,9 +8,11 @@ const SocialMediaLinksContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   
-  &:hover {
-    border: 1px dashed ${(props) => props.hasActiveItem ? 'transparent' : 'white'};
-  }
+    &:hover {
+  ${(props) => props.isAuth && `
+      border: 1px dashed ${(props) => props.hasActiveItem ? 'transparent' : 'white'};
+  `}
+    }
   
   input {
     padding: 2px 5px;
@@ -44,4 +46,18 @@ const IconContainer = styled.div`
   }
 `;
 
-export { SocialMediaLinksContainer, IconContainer }
+const IconLink = styled.a`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  opacity: 8;
+  position: relative;
+  
+  
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export { SocialMediaLinksContainer, IconContainer, IconLink }

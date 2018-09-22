@@ -1,9 +1,9 @@
 import React from 'react'
-import { Header as AppHeader, TopHeader, HeaderBody } from './Elements'
-import { Dropdown, HeaderController } from '../Controllers'
-import SocialMediaLinks from './components/SocialMediaLinks'
-import UserNameDisplay from './components/UserNameDisplay'
+import { connect } from 'react-redux'
 import PageTitle from './components/PageTitle'
+import UserNameDisplay from './components/UserNameDisplay'
+import SocialMediaLinks from './components/SocialMediaLinks'
+import { Header as AppHeader, TopHeader, HeaderBody } from './Elements'
 
 class Header extends React.PureComponent {
   state = {
@@ -65,7 +65,8 @@ class Header extends React.PureComponent {
   }
 
   render() {
-    const { isAuth } = this.props
+    const { account } = this.props
+    const isAuth = account.isAuth
     const {
       color,
       boxSize,
@@ -79,18 +80,19 @@ class Header extends React.PureComponent {
       <AppHeader
         color={color}
         bgColor={bgColor}
-        cssProps={{ boxSize }}
         textAlign={textAlign}
+        cssProps={{ boxSize }}
         onMouseOver={this.handleCardMouseHover}
         onMouseLeave={this.handleCardMouseLeave}
       >
         <TopHeader>
-          <UserNameDisplay/>
-          <SocialMediaLinks/>
+          <UserNameDisplay isAuth={isAuth}/>
+          <SocialMediaLinks isAuth={isAuth}/>
         </TopHeader>
         <HeaderBody>
           <PageTitle
             color={color}
+            isAuth={isAuth}
             bgColor={bgColor}
             bgInvert={bgInvert}
             onBoxSizeChange={this.onBoxSizeChange}
@@ -103,4 +105,9 @@ class Header extends React.PureComponent {
   }
 }
 
-export default Header
+export default connect(
+  (state) => ({
+    account: state.account,
+    header: state.header
+  })
+)(Header)
