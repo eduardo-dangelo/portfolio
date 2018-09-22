@@ -2,17 +2,15 @@ import styled from 'styled-components'
 
 const SocialMediaLinksContainer = styled.div`
   padding: 5px;
-  position: relative;
-  border: 1px dashed transparent;
   display: flex;
+  position: relative;
   align-items: center;
+  border: 1px dashed transparent;
   justify-content: space-between;
   
-    &:hover {
-  ${(props) => props.isAuth && `
-      border: 1px dashed ${(props) => props.hasActiveItem ? 'transparent' : 'white'};
-  `}
-    }
+  &:hover {
+    border: 1px dashed ${(props) => props.hasActiveItem || !props.isAuth ? 'transparent' : 'white'};
+  }
   
   input {
     padding: 2px 5px;
@@ -20,25 +18,24 @@ const SocialMediaLinksContainer = styled.div`
 `;
 
 const IconContainer = styled.div`
-  //float: right;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
   margin: 0 5px;
-  opacity: ${(props) => props.active ? 1 : (props.hasValue ? .8 : .2)};
+  display: flex;
+  cursor: pointer;
   position: relative;
+  align-items: center;
+  opacity: ${(props) => props.active ? 1 : (props.hasValue ? .8 : .2)};
   
   ${(props) => props.active && `
-  &:after {
-    content: "";
-    border-left: 15px solid transparent; 
-    border-right: 15px solid transparent; 
-    border-top: 5px solid transparent; 
-    border-bottom: 15px solid white;
-    position: absolute;
-    top: 100%;
-    right: -8px; 
-  }
+    &:after {
+      top: 100%;
+      content: "";
+      right: -8px; 
+      position: absolute;
+      border-bottom: 15px solid white;
+      border-top: 5px solid transparent; 
+      border-left: 15px solid transparent; 
+      border-right: 15px solid transparent; 
+    }
   `}
   
   &:hover {
@@ -47,16 +44,18 @@ const IconContainer = styled.div`
 `;
 
 const IconLink = styled.a`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  margin: 0 5px;
+  color: ${(props) => props.color};
   opacity: 8;
+  margin: 0 5px;
+  display: flex;
+  cursor: pointer;
   position: relative;
+  align-items: center;
   
   
-  &:hover {
+  &:hover, &:active, &.visited {
     opacity: 1;
+    color: ${(props) => props.color};
   }
 `;
 

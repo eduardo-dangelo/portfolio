@@ -87,7 +87,7 @@ class Header extends React.PureComponent {
       >
         <TopHeader>
           <UserNameDisplay isAuth={isAuth}/>
-          <SocialMediaLinks isAuth={isAuth}/>
+          <SocialMediaLinks isAuth={isAuth} cssProps={{ color }}/>
         </TopHeader>
         <HeaderBody>
           <PageTitle

@@ -1,9 +1,17 @@
 import React from 'react'
-import Header from './components/Header'
 import { connect } from 'react-redux'
-import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap'
+import styled from 'styled-components'
+import Header from './components/Header'
 import { bindActionCreators } from 'redux'
-import { actions as authActions } from '../../redux/userAccountReducer'
+import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap'
+import { actions as authActions } from '../../services/redux/userAccountReducer'
+
+const AlignCenterContainer = styled.div`
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+`
 
 class Site extends React.Component {
   render() {
@@ -13,19 +21,21 @@ class Site extends React.Component {
     return (
       <div>
         <Header/>
-        <h2>
-          {isAuth ? 'authetticaded' : 'not authenticaded'}
-        </h2>
-        <ButtonToolbar>
-          <ButtonGroup>
-            <Button bsStyle={isAuth ? 'info' : 'default'} onClick={() => actions.auth(true)}>
-              authetticaded
-            </Button>
-            <Button bsStyle={!isAuth ? 'info' : 'default'} onClick={() => actions.auth(false)}>
-              not authenticaded
-            </Button>
-          </ButtonGroup>
-        </ButtonToolbar>
+        <AlignCenterContainer>
+          <h2>
+            {isAuth ? 'authenticated' : 'not authenticated'}
+          </h2>
+          <ButtonToolbar>
+            <ButtonGroup>
+              <Button bsStyle={isAuth ? 'info' : 'default'} onClick={() => actions.auth(true)}>
+                authenticate
+              </Button>
+              <Button bsStyle={!isAuth ? 'info' : 'default'} onClick={() => actions.auth(false)}>
+                log out
+              </Button>
+            </ButtonGroup>
+          </ButtonToolbar>
+        </AlignCenterContainer>
       </div>
     )
   }

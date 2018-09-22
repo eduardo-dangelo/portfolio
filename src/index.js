@@ -9,7 +9,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import { rootReducer } from "./Application/redux";
+import { rootReducer } from "./Application/services/redux";
 import { compose } from 'redux';
 import thunk from 'redux-thunk'
 

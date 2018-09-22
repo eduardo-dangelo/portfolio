@@ -40,7 +40,7 @@ class SocialMediaLinks extends PureComponent {
   }
 
   render() {
-    const { isAuth } = this.props
+    const { isAuth, cssProps: { color } } = this.props
     const {
       github,
       codepen,
@@ -55,7 +55,7 @@ class SocialMediaLinks extends PureComponent {
     return (
       <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeKey}>
         {!isAuth && codepen && (
-          <IconLink href={codepen} target="_blank">
+          <IconLink color={color} href={codepen} target="_blank">
             <FaCodepen/>
           </IconLink>
         )}
@@ -69,7 +69,7 @@ class SocialMediaLinks extends PureComponent {
           </IconContainer>
         )}
         {!isAuth && facebook && (
-          <IconLink href={facebook} target="_blank">
+          <IconLink color={color} href={facebook} target="_blank">
             <FaFacebook/>
           </IconLink>
         )}
@@ -83,7 +83,7 @@ class SocialMediaLinks extends PureComponent {
           </IconContainer>
         )}
         {!isAuth && github && (
-          <IconLink href={github} target="_blank">
+          <IconLink color={color} href={github} target="_blank">
             <FaGithub/>
           </IconLink>
         )}
@@ -97,7 +97,7 @@ class SocialMediaLinks extends PureComponent {
           </IconContainer>
         )}
         {!isAuth && linkedIn && (
-          <IconLink href={linkedIn} target="_blank">
+          <IconLink color={color} href={linkedIn} target="_blank">
             <FaLinkedin/>
           </IconLink>
         )}
@@ -111,7 +111,7 @@ class SocialMediaLinks extends PureComponent {
           </IconContainer>
         )}
         {!isAuth && twitter && (
-          <IconLink href={twitter} target="_blank">
+          <IconLink color={color} href={twitter} target="_blank">
             <FaTwitter/>
           </IconLink>
         )}
