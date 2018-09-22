@@ -1,4 +1,7 @@
 
+const SHOW_LINK_INPUT = 'header/SHOW_LINK_INPUT'
+const UPDATE_SOCIAL_MEDIA_VALUE = 'header/UPDATE_SOCIAL_MEDIA_VALUE'
+
 const initialState = {
   title: {
     bold: false,
@@ -14,18 +17,50 @@ const initialState = {
     bgColor: '#999170',
   },
   social: {
-    github: '',
-    twitter: '',
-    codepen: '',
-    linkedIn: '',
-    facebook: '',
-    instagram: '',
+    links: {
+      github: '',
+      twitter: '',
+      codepen: '',
+      linkedIn: '',
+      facebook: '',
+    },
+    activeKey: '',
+    showInput: false,
   }
 }
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
+    case SHOW_LINK_INPUT:
+      return {
+        ...state,
+        social: {
+          ...state.social,
+          showInput: true,
+          activeKey: action.payload
+        }
+      }
+    case UPDATE_SOCIAL_MEDIA_VALUE:
+      return {
+        ...state,
+        social: {
+          activeKey: '',
+          showInput: false,
+          links: {
+            ...state.social.links,
+            [action.payload.key]: action.payload.value
+          }
+        }
+      }
     default:
       return state
   }
+}
+
+const showLinkInput = (key) => ({ type: SHOW_LINK_INPUT, payload: key })
+const updateSocialMediaValue = (key, value) => ({ type: UPDATE_SOCIAL_MEDIA_VALUE, payload: { key, value, }})
+
+export const actions = {
+  showLinkInput,
+  updateSocialMediaValue,
 }

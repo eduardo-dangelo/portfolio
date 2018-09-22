@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import PageTitle from './components/PageTitle'
 import UserNameDisplay from './components/UserNameDisplay'
 import SocialMediaLinks from './components/SocialMediaLinks'
 import { Header as AppHeader, TopHeader, HeaderBody } from './Elements'
+import { actions as headerActions } from '../../../../services/redux/headerReducer'
 
 class Header extends React.PureComponent {
   state = {
@@ -65,7 +67,7 @@ class Header extends React.PureComponent {
   }
 
   render() {
-    const { account } = this.props
+    const { account, header, actions } = this.props
     const isAuth = account.isAuth
     const {
       color,
@@ -87,7 +89,12 @@ class Header extends React.PureComponent {
       >
         <TopHeader>
           <UserNameDisplay isAuth={isAuth}/>
-          <SocialMediaLinks isAuth={isAuth} cssProps={{ color }}/>
+          <SocialMediaLinks
+            header={header}
+            isAuth={isAuth}
+            actions={actions}
+            cssProps={{ color }}
+          />
         </TopHeader>
         <HeaderBody>
           <PageTitle
@@ -109,5 +116,8 @@ export default connect(
   (state) => ({
     account: state.account,
     header: state.header
+  }),
+  (dispatch) => ({
+    actions: bindActionCreators(headerActions, dispatch)
   })
 )(Header)

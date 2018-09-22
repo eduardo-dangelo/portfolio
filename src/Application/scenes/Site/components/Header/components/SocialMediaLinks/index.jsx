@@ -1,137 +1,91 @@
-import React, { PureComponent } from 'react'
-import { SocialMediaLinksContainer, IconContainer, IconLink } from "./Elements";
+import React from 'react'
+import { map } from 'lodash'
+import { OusideClickContainer } from '../../Elements'
+import { SocialMediaLinksContainer, IconContainer, IconLink } from './Elements'
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa'
 import SocialMediaLinksController from '../../../Controllers/SocialMediaLinksController'
-import { OusideClickContainer } from "../../Elements";
 
-class SocialMediaLinks extends PureComponent {
+class SocialMediaLinks extends React.PureComponent {
   state = {
-    github: 'github',
-    codepen: 'codepen',
-    twitter: 'twitter',
-    facebook: '',
-    linkedIn: '',
-    activeKey: '',
-    inputValue: '',
-    showInput: false,
+    inputValueTemp: '',
   }
 
   handleIconClick = (key) => () => {
+    const { header, actions } = this.props
     this.setState({
-      showInput: true,
-      activeKey: key,
-      inputValue: this.state[key]
+      inputValueTemp: header.social.links[key]
     })
+    actions.showLinkInput(key)
   }
 
   handleInputBlur = (e) => {
-    const { activeKey } = this.state
-    this.setState({
-      activeKey: '',
-      showInput: false,
-      [activeKey]: e.target.value
-    })
+    const { actions, header } = this.props
+    actions.updateSocialMediaValue(header.social.activeKey, e.target.value)
   }
 
   handleInputChange = (e) => {
     this.setState({
-      inputValue: e.target.value
+      inputValueTemp: e.target.value
+    })
+  }
+
+  renderSocialMediaIcon = (name) => {
+    switch (name) {
+      case 'codepen':
+        return <FaCodepen/>
+      case 'facebook':
+        return <FaFacebook/>
+      case 'github':
+        return <FaGithub/>
+      case 'linkedIn':
+        return <FaLinkedin/>
+      case 'twitter':
+        return <FaTwitter/>
+      default:
+        return null;
+    }
+  }
+
+  renderSocialMediaLinks = () => {
+    const { header, isAuth, cssProps: { color } } = this.props
+
+    return map(header.social.links, (value, name) => {
+      return (
+        <div key={name}>
+          {!isAuth && value && (
+            <IconLink color={color} href={value} target="_blank">
+              {this.renderSocialMediaIcon(name)}
+            </IconLink>
+          )}
+          {isAuth && (
+            <IconContainer
+              hasValue={value}
+              active={header.social.activeKey === name}
+              onClick={this.handleIconClick(name)}
+            >
+              {this.renderSocialMediaIcon(name)}
+            </IconContainer>
+          )}
+        </div>
+      )
     })
   }
 
   render() {
-    const { isAuth, cssProps: { color } } = this.props
-    const {
-      github,
-      codepen,
-      twitter,
-      facebook,
-      linkedIn,
-      activeKey,
-      showInput,
-      inputValue,
-    } = this.state
+    const { isAuth, header } = this.props
+    const { inputValueTemp } = this.state
 
     return (
-      <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeKey}>
-        {!isAuth && codepen && (
-          <IconLink color={color} href={codepen} target="_blank">
-            <FaCodepen/>
-          </IconLink>
-        )}
-        {isAuth && (
-          <IconContainer
-            hasValue={codepen}
-            active={activeKey === 'codepen'}
-            onClick={this.handleIconClick('codepen')}
-          >
-            <FaCodepen/>
-          </IconContainer>
-        )}
-        {!isAuth && facebook && (
-          <IconLink color={color} href={facebook} target="_blank">
-            <FaFacebook/>
-          </IconLink>
-        )}
-        {isAuth && (
-          <IconContainer
-            hasValue={facebook}
-            active={activeKey === 'facebook'}
-            onClick={this.handleIconClick('facebook')}
-          >
-            <FaFacebook/>
-          </IconContainer>
-        )}
-        {!isAuth && github && (
-          <IconLink color={color} href={github} target="_blank">
-            <FaGithub/>
-          </IconLink>
-        )}
-        {isAuth && (
-          <IconContainer
-            hasValue={github}
-            active={activeKey === 'github'}
-            onClick={this.handleIconClick('github')}
-          >
-            <FaGithub/>
-          </IconContainer>
-        )}
-        {!isAuth && linkedIn && (
-          <IconLink color={color} href={linkedIn} target="_blank">
-            <FaLinkedin/>
-          </IconLink>
-        )}
-        {isAuth && (
-          <IconContainer
-            hasValue={linkedIn}
-            active={activeKey === 'linkedIn'}
-            onClick={this.handleIconClick('linkedIn')}
-          >
-            <FaLinkedin/>
-          </IconContainer>
-        )}
-        {!isAuth && twitter && (
-          <IconLink color={color} href={twitter} target="_blank">
-            <FaTwitter/>
-          </IconLink>
-        )}
-        {isAuth && (
-          <IconContainer
-            hasValue={twitter}
-            active={activeKey === 'twitter'}
-            onClick={this.handleIconClick('twitter')}
-          >
-            <FaTwitter/>
-          </IconContainer>
-        )}
-        {showInput && (
+      <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={header.social.activeKey}>
+        {this.renderSocialMediaLinks()}
+        {header.social.showInput && (
           <SocialMediaLinksController
-            inputValue={inputValue}
+            inputValue={inputValueTemp}
             onBlur={this.handleInputBlur}
             onChange={this.handleInputChange}
           />
         )}
-        {showInput && <OusideClickContainer onClick={this.handleInputBlur}/>}
+        {header.social.showInput && <OusideClickContainer onClick={this.handleInputBlur}/>}
       </SocialMediaLinksContainer>
     );
   }
