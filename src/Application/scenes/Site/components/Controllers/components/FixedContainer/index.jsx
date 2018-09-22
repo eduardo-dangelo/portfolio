@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FiexedContainerBox } from '../../Elements'
+import { FiexedContainerBox } from '../../elements'
 
 export default class FixedContainer extends Component {
   render() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, ListItem } from './Elements'
+import { List, ListItem } from './elements'
 import { ColorKnob } from './components/Knobs/index'
 
 class HeaderController extends React.PureComponent {

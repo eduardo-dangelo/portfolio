@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { allUsersQuery, loggedInUserQuery, UserQuery } from '../../services/queries'
 import { graphql, compose } from 'react-apollo'
 import { actions as authActions } from '../../services/redux/userAccountReducer'
-import { Bar, Form, Button, Title, Input, Spin, Error } from './Elements'
+import { Bar, Form, Button, Title, Input, Spin, Error } from './elements'
 import { authenticateUserMutation, signupUserMutation } from '../../services/mutations'
 
 let userEmail = ''

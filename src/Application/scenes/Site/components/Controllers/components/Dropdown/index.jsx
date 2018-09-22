@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonToolbarWapper } from '../../Elements'
+import { ButtonToolbarWapper } from '../../elements'
 import { DropdownButton } from "react-bootstrap"
 import { FaEllipsisH } from 'react-icons/fa'
 

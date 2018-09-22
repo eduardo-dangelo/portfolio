@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import PageTitle from './components/PageTitle'
 import UserNameDisplay from './components/UserNameDisplay'
 import SocialMediaLinks from './components/SocialMediaLinks'
-import { Header as AppHeader, TopHeader, HeaderBody } from './Elements'
+import { Header as AppHeader, TopHeader, HeaderBody } from './elements'
 import { actions as headerActions } from '../../../../services/redux/headerReducer'
 
 class Header extends React.PureComponent {
@@ -80,12 +80,9 @@ class Header extends React.PureComponent {
 
     return (
       <AppHeader
-        color={color}
-        bgColor={bgColor}
-        textAlign={textAlign}
-        cssProps={{ boxSize }}
         onMouseOver={this.handleCardMouseHover}
         onMouseLeave={this.handleCardMouseLeave}
+        cssProps={{ boxSize, color, bgColor, textAlign }}
       >
         <TopHeader>
           <UserNameDisplay

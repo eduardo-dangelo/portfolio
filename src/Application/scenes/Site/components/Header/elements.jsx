@@ -7,9 +7,9 @@ const Header = styled.div`
   flex-direction: column;
   position: relative;
   align-items: center;
-  color: ${(props) => props.color};
-  background: ${(props) => props.bgColor};
-  text-align: ${(props) => props.textAlign};
+  color: ${(props) => props.cssProps.color};
+  background: ${(props) => props.cssProps.bgColor};
+  text-align: ${(props) => props.cssProps.textAlign};
 `;
 
 const getBoxSize = (boxSize) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { TextController } from '../../../Controllers'
-import { Input, Heading, OusideClickContainer } from '../../Elements'
+import { Input, Heading, OusideClickContainer } from '../../elements'
 import HeaderController from "../../../Controllers/HeaderController";
 
 class Header extends React.PureComponent {

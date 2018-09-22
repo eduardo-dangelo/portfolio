@@ -1,7 +1,7 @@
 import React from 'react'
 import { map } from 'lodash'
-import { OusideClickContainer } from '../../Elements'
-import { SocialMediaLinksContainer, IconContainer, IconLink } from './Elements'
+import { OusideClickContainer } from '../../elements'
+import { SocialMediaLinksContainer, IconContainer, IconLink } from './elements'
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa'
 import SocialMediaLinksController from '../../../Controllers/SocialMediaLinksController'
 
