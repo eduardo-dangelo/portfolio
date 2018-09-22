@@ -88,7 +88,11 @@ class Header extends React.PureComponent {
         onMouseLeave={this.handleCardMouseLeave}
       >
         <TopHeader>
-          <UserNameDisplay isAuth={isAuth}/>
+          <UserNameDisplay
+            header={header}
+            isAuth={isAuth}
+            actions={actions}
+          />
           <SocialMediaLinks
             header={header}
             isAuth={isAuth}

@@ -3,42 +3,64 @@ import styled from 'styled-components'
 
 const Input = styled.input`
   padding: 5px;
-  background: transparent;
-  transition: .2s linear;
-  border: 1px dashed transparent;
   width: 260px;
   position: relative;
+  transition: .2s linear;
+  background: transparent;
+  border: 1px dashed transparent;
   
   &:hover, &:focus {
-    border: 1px dashed white;
     outline: none;
+    border: 1px dashed white;
   }
 `;
 
-class UserNameDisplay extends React.Component {
+class UserNameDisplay extends React.PureComponent {
   state = {
-    inputValue: 'Eduardo D`Angelo'
+    inputValueTemp: ''
   }
 
-  handleChange = (e) => {
-    const { inputValue } = this.state
+  componentDidMount() {
+    const { header } = this.props
 
-    if (inputValue.length <= 30 || inputValue.length === 31) {
+    this.setState({
+      inputValueTemp: header.displayName,
+    })
+  }
+
+  handleInputChange = (e) => {
+    const { inputValueTemp } = this.state
+
+    if (inputValueTemp.length <= 30 || inputValueTemp.length === 31) {
       this.setState({
-        inputValue: e.target.value
+        inputValueTemp: e.target.value
       })
     }
   }
 
+  handleInputBlur = (e) => {
+    const { actions } = this.props
+    actions.updateDisplayName(e.target.value)
+  }
+
   render() {
+    const { isAuth, header } = this.props
     return (
       <div>
-        <Input
-          maxlength="50"
-          placeholder="Your name here..."
-          value={this.state.inputValue}
-          onChange={this.handleChange}
-        />
+        {!isAuth && (
+          <span>
+            {header.displayName}
+          </span>
+        )}
+        {isAuth && (
+          <Input
+            maxlength="50"
+            placeholder=""
+            onBlur={this.handleInputBlur}
+            onChange={this.handleInputChange}
+            value={this.state.inputValueTemp}
+          />
+        )}
       </div>
     )
   }
