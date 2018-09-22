@@ -2,6 +2,7 @@
 const SHOW_LINK_INPUT = 'header/SHOW_LINK_INPUT'
 const UPDATE_PAGE_TITLE = 'header/UPDATE_PAGE_TITLE'
 const UPDATE_DISPLAY_NAME = 'header/UPDATE_DISPLAY_NAME'
+const UPDATE_PAGE_TITLE_PROPS = 'header/UPDATE_TITLE_PROPS'
 const UPDATE_SOCIAL_MEDIA_VALUE = 'header/UPDATE_SOCIAL_MEDIA_VALUE'
 
 const initialState = {
@@ -52,6 +53,17 @@ export function reducer(state = initialState, action) {
           content: action.payload
         },
       }
+    case UPDATE_PAGE_TITLE_PROPS:
+      return {
+        ...state,
+        title: {
+          ...state.title,
+          props: {
+            ...state.title.props,
+            [action.payload.prop]: action.payload.value
+          }
+        }
+      }
     case UPDATE_DISPLAY_NAME:
       return {
         ...state,
@@ -77,11 +89,13 @@ export function reducer(state = initialState, action) {
 const showLinkInput = (key) => ({ type: SHOW_LINK_INPUT, payload: key })
 const updatePageTitle = (value) => ({ type: UPDATE_PAGE_TITLE, payload: value })
 const updateDisplayName = (value) => ({ type: UPDATE_DISPLAY_NAME, payload: value })
+const updatePageTitleProps = (prop, value) => ({ type: UPDATE_PAGE_TITLE_PROPS, payload: { prop, value, }})
 const updateSocialMediaValue = (key, value) => ({ type: UPDATE_SOCIAL_MEDIA_VALUE, payload: { key, value, }})
 
 export const actions = {
   showLinkInput,
   updatePageTitle,
   updateDisplayName,
+  updatePageTitleProps,
   updateSocialMediaValue,
 }

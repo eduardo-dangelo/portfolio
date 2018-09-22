@@ -61,7 +61,7 @@ const ListItem = styled.li`
 `;
 
 const FiexedContainerBox = styled.div`
-  ${(props) => props.align === 'right' ? 'right: 0;' : 'left: 0'}
+  ${(props) => props.align === 'right' ? 'right: 0;' : 'left: 0;'}
   z-index: 2;
   color: black;
   padding: 5px;
@@ -74,4 +74,18 @@ const FiexedContainerBox = styled.div`
 
 `;
 
-export { ButtonToolbarWapper, List, ListItem, FiexedContainerBox }
+const FullWidthContainerBox = styled.div`
+  ${(props) => props.align === 'right' ? 'right: 0;' : 'left: 0;'}
+  z-index: 2;
+  color: black;
+  padding: 5px;
+  font-size: 14px;
+  background: white;
+  border-radius: 3px;
+  position: relative;
+  //top: calc(100% + 5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+
+`;
+
+export { ButtonToolbarWapper, List, ListItem, FiexedContainerBox, FullWidthContainerBox }
