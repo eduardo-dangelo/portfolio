@@ -14,9 +14,9 @@ const initialState = {
     bgColor: '#d5d1c0',
   },
   social: {
-    github: '',
+    github: 'http://github.com',
     twitter: '',
-    codepen: '',
+    codepen: 'http://codepen.com',
     linkedIn: '',
     facebook: '',
   },

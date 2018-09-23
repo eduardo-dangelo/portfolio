@@ -7,7 +7,7 @@ const LOG_OUT_USER = 'LOG_OUT_USER'
 
 const initialValues = {
   user: null,
-  isAuth: true,
+  isAuth: false,
   loading: false,
   authType: 'signIn',
 }

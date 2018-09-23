@@ -1,4 +1,21 @@
-import styled from 'styled-components'
+import React from 'react'
+import Flip from 'react-reveal/Flip'
+import styled, { keyframes } from 'styled-components'
+import withReveal from 'react-reveal/withReveal'
+
+const flash = keyframes`
+  0% {
+    border: 1px dashed transparent;
+  }
+  
+  50% {
+    border: 1px dashed;
+  }
+
+  100% {
+    border: 1px dashed transparent;
+  }
+`;
 
 const SocialMediaLinksContainer = styled.div`
   padding: 5px;
@@ -7,9 +24,10 @@ const SocialMediaLinksContainer = styled.div`
   align-items: center;
   border: 1px dashed transparent;
   justify-content: space-between;
+  animation: ${(props) => props.isAuth && flash} 2s ease-out;
   
   &:hover {
-    border: 1px dashed ${(props) => props.hasActiveItem || !props.isAuth ? 'transparent' : 'white'};
+    border: 1px dashed ${(props) => props.hasActiveItem || !props.isAuth ? 'transparent' : props.color };
   }
   
   input {
@@ -17,13 +35,23 @@ const SocialMediaLinksContainer = styled.div`
   }
 `;
 
+const IconList = styled.div`
+  margin: 0;
+  display: flex;
+  position: relative;
+  align-items: center;
+`;
+
+const IconListAuth = withReveal(styled(IconList)``, <Flip right cascade />);
+const IconListUnauth = withReveal(styled(IconList)``, <Flip right cascade />);
+
 const IconContainer = styled.div`
   margin: 0 5px;
   display: flex;
   cursor: pointer;
   position: relative;
   align-items: center;
-  opacity: ${(props) => props.active ? 1 : (props.hasValue ? .8 : .2)};
+  opacity: ${(props) => props.active ? 1 : (props.hasValue ? .8 : .2)} !important;
   
   ${(props) => props.active && `
     &:after {
@@ -39,7 +67,7 @@ const IconContainer = styled.div`
   `}
   
   &:hover {
-    opacity: ${(props) => props.active ? 1 : (props.hasValue ? 1 : .4)};
+    opacity: ${(props) => props.active ? 1 : (props.hasValue ? 1 : .4)} !important;
   }
 `;
 
@@ -52,11 +80,10 @@ const IconLink = styled.a`
   position: relative;
   align-items: center;
   
-  
   &:hover, &:active, &.visited {
     opacity: 1;
     color: ${(props) => props.color};
   }
 `;
 
-export { SocialMediaLinksContainer, IconContainer, IconLink }
+export { SocialMediaLinksContainer, IconContainer, IconLink, IconListUnauth, IconListAuth }

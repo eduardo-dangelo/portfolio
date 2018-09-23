@@ -1,7 +1,8 @@
 import React from 'react'
 import { map } from 'lodash'
+import Fade from 'react-reveal'
 import { OusideClickContainer } from '../../elements'
-import { SocialMediaLinksContainer, IconContainer, IconLink } from './elements'
+import { SocialMediaLinksContainer, IconContainer, IconLink, IconListUnauth, IconListAuth } from './elements'
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa'
 import SocialMediaLinksController from '../../../Controllers/SocialMediaLinksController'
 
@@ -52,19 +53,14 @@ class SocialMediaLinks extends React.PureComponent {
     }
   }
 
-  renderSocialMediaLinks = () => {
+  renderAauthorizedModeLinks = () => {
     const { header, isAuth, cssProps: { color } } = this.props
     const { activeKey } = this.state
 
-    return map(header.social, (value, name) => {
-      return (
-        <div key={name}>
-          {!isAuth && value && (
-            <IconLink color={color} href={value} target="_blank">
-              {this.renderSocialMediaIcon(name)}
-            </IconLink>
-          )}
-          {isAuth && (
+    return (
+      <IconListAuth>
+        {map(header.social, (value, name) => {
+          return (
             <IconContainer
               hasValue={value}
               onClick={this.handleIconClick(name)}
@@ -72,19 +68,43 @@ class SocialMediaLinks extends React.PureComponent {
             >
               {this.renderSocialMediaIcon(name)}
             </IconContainer>
-          )}
-        </div>
-      )
-    })
+          )
+        })}
+      </IconListAuth>
+    )
+  }
+
+  renderUnauthorizedModeLinks = () => {
+    const { header  } = this.props
+    const color = header.box.color
+
+    return (
+      <IconListUnauth>
+        {map(header.social, (value, name) => {
+
+          if (!value) {
+            return null
+          }
+
+          return (
+            <IconLink key={name} color={color} href={value} target="_blank">
+              {this.renderSocialMediaIcon(name)}
+            </IconLink>
+          )
+        })}
+      </IconListUnauth>
+    )
   }
 
   render() {
-    const { isAuth } = this.props
+    const { isAuth, header } = this.props
     const { inputValueTemp, showInput, activeKey } = this.state
+    const color = header.box.color
 
     return (
-      <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeKey}>
-        {this.renderSocialMediaLinks()}
+      <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeKey} color={color}>
+        {isAuth && this.renderAauthorizedModeLinks()}
+        {!isAuth && this.renderUnauthorizedModeLinks()}
         {showInput && (
           <SocialMediaLinksController
             inputValue={inputValueTemp}

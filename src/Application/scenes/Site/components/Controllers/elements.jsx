@@ -1,10 +1,8 @@
+import React from 'react'
+import Fade from 'react-reveal/Fade'
 import styled from 'styled-components'
 import { ButtonToolbar } from 'react-bootstrap'
-import React from 'react'
-import Fade from 'react-reveal/Fade';
-import Slide from 'react-reveal/Slide';
-import Flip from 'react-reveal/Flip';
-import withReveal from 'react-reveal/withReveal';
+import withReveal from 'react-reveal/withReveal'
 
 const ButtonToolbarWapper = styled(ButtonToolbar)`
   color: black;

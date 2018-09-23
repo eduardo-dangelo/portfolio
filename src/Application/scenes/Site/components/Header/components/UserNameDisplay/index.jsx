@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input } from './elements'
-import Fade from 'react-reveal/Fade'
+import Flip from 'react-reveal/Flip'
 
 class UserNameDisplay extends React.PureComponent {
   state = {
@@ -35,9 +35,9 @@ class UserNameDisplay extends React.PureComponent {
     return (
       <div>
         {!isAuth && (
-          <Fade left>
+          <Flip top>
             {header.displayName.content}
-          </Fade>
+          </Flip>
         )}
         {isAuth && (
           <Input

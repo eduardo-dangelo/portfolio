@@ -1,13 +1,17 @@
-import styled from 'styled-components'
+import React from 'react'
+import Fade from 'react-reveal/Fade'
+import withReveal from 'react-reveal/withReveal'
+import styled, { keyframes } from 'styled-components'
 
 const Header = styled.div`
+  top: 0;
+  width: 100%;
   padding: 10px;
   display: flex;
-  width: 100%;
-  top: 0;
-  transition: .3s ease;
+  font-size: 1.2em;
   position: relative;
   align-items: center;
+  transition: .3s ease;
   flex-direction: column;
   color: ${(props) => props.cssProps.color};
   background: ${(props) => props.cssProps.bgColor};
@@ -30,14 +34,30 @@ const getBoxSize = (boxSize) => {
   }
 }
 
+const flash = keyframes`
+  0% {
+    border: 1px dashed transparent;
+  }
+  
+  50% {
+    border: 1px dashed;
+  }
+
+  100% {
+    border: 1px dashed transparent;
+  }
+`;
+
 const Input = styled.input`
   width: 100%;
   margin: auto;
   padding: 8px 5px;
   overflow: visible;
+  transition: .3s ease;
   box-sizing: padding-box;
   background: transparent;
   border: 1px dashed transparent;
+  animation: ${flash} 2s ease-out;
   text-align: ${(props) => props.cssProps.align};
   
   &:focus, &:hover {

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Input, Heading } from '../../elements'
-import Fade from 'react-reveal/Fade'
 import Flip from 'react-reveal/Flip'
+import { Input, Heading } from '../../elements'
 
 class Header extends React.PureComponent {
   state = {
