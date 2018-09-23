@@ -8,12 +8,8 @@ class Application extends React.Component {
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div>
-          <Route
-            path='/admin'
-            render={() => <AdminBar/>}/>
-          <Route
-            path='/'
-            render={() => <Site/>} />
+          <Route path='/admin' render={() => <AdminBar/>}/>
+          <Route path='/' render={() => <Site/>} />
         </div>
       </Router>
     )

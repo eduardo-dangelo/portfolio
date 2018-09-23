@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { FullWidthContainerBox } from '../../elements'
 
-export default class FullWidthBar extends Component {
+export default class FullWidthBar extends React.PureComponent {
   render() {
     return (
       <FullWidthContainerBox align={this.props.align}>

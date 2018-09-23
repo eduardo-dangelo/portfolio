@@ -63,11 +63,10 @@ const Heading = styled.h1`
   padding: 0;
   z-index: 2;
   position: relative;
-  //transition: .3s linear;
   text-align: ${(props) => props.cssProps.align};
   font-size: ${(props) => getFontSize(props.cssProps.size)}px;
-  ${(props) => props.cssProps.bold && `font-weight: bold;`}
   ${(props) => props.cssProps.italic && `font-style: italic;`}
+  ${(props) => props.cssProps.bold && `font-weight: bold;`}
 `;
 
 const OusideClickContainer = styled.div`
@@ -92,14 +91,10 @@ const HeaderBody = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  //border: 1px solid orange;
-
   
   & > div {
     width: 100%;
   }
 `;
-
-
 
 export { Header, Input, Heading, OusideClickContainer, TopHeader, HeaderBody }

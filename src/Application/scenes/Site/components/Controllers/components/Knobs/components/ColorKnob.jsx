@@ -1,6 +1,6 @@
 import React from 'react'
 import { ChromePicker } from 'react-color'
-import { Button, OverlayContainer, HiddenElement } from '../Elements';
+import { Button, OverlayContainer, HiddenElement } from '../elements'
 
 
 class ColorKnob extends React.Component {

@@ -38,8 +38,8 @@ class Header extends React.PureComponent {
               name="test"
               value={inputValueTemp}
               onBlur={this.handleInputBlur}
-              onChange={this.handleChangeTitle}
               cssProps={{ ...header.title }}
+              onChange={this.handleChangeTitle}
             />
           )}
         </Heading>

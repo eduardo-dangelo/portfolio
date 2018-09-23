@@ -2,15 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { FaSpinner } from 'react-icons/fa'
 import { bindActionCreators } from 'redux'
-import { allUsersQuery, loggedInUserQuery, UserQuery } from '../../services/queries'
 import { graphql, compose } from 'react-apollo'
-import { actions as authActions } from '../../services/redux/userAccountReducer'
 import { Bar, Form, Button, Title, Input, Spin, Error } from './elements'
+import { actions as authActions } from '../../services/redux/userAccountReducer'
+import { allUsersQuery, loggedInUserQuery, UserQuery } from '../../services/queries'
 import { authenticateUserMutation, signupUserMutation } from '../../services/mutations'
 
 let userEmail = ''
 
-class AdminBar extends React.Component {
+class AdminBar extends React.PureComponent {
   state = {
     name: '',
     email: '',

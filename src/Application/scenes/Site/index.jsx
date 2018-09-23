@@ -13,7 +13,7 @@ const AlignCenterContainer = styled.div`
   flex-direction: column;
 `
 
-class Site extends React.Component {
+class Site extends React.PureComponent {
   render() {
     const { account, actions } = this.props
     const isAuth = account.isAuth

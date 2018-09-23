@@ -23,6 +23,8 @@ export default class HeaderController extends React.PureComponent {
         return <FaBold/>
       case 'italic':
         return <FaItalic/>
+      default:
+        return null
     }
   }
 

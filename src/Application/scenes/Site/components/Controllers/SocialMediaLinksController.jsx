@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import FixedContainer from './components/FixedContainer'
 
-class SocialMediaLinksController extends PureComponent {
+class SocialMediaLinksController extends React.PureComponent {
   render() {
     const { onBlur, inputValue, onChange } = this.props
     return (
@@ -10,8 +10,8 @@ class SocialMediaLinksController extends PureComponent {
           type="text"
           onBlur={onBlur}
           value={inputValue}
-          placeholder={'paste link here...'}
           onChange={onChange}
+          placeholder={'paste link here...'}
         />
       </FixedContainer>
     );

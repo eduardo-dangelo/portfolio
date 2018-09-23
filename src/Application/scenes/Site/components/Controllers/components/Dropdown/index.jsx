@@ -1,23 +1,23 @@
 import React from 'react'
-import { ButtonToolbarWapper } from '../../elements'
-import { DropdownButton } from "react-bootstrap"
 import { FaEllipsisH } from 'react-icons/fa'
+import { DropdownButton } from "react-bootstrap"
+import { ButtonToolbarWapper } from '../../elements'
 
 class Dropdown extends React.PureComponent {
   render() {
     const { children, color, top, bottom, right } = this.props
     return (
       <ButtonToolbarWapper
-        color={color}
         top={top}
-        bottom={bottom}
+        color={color}
         right={right}
+        bottom={bottom}
       >
         <DropdownButton
-          bsStyle="default"
-          title={<FaEllipsisH/>}
           noCaret
           pullRight
+          bsStyle="default"
+          title={<FaEllipsisH/>}
           id="dropdown-no-caret"
         >
           {children}
