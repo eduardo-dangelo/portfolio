@@ -7,20 +7,26 @@ import SocialMediaLinksController from '../../../Controllers/SocialMediaLinksCon
 
 class SocialMediaLinks extends React.PureComponent {
   state = {
-    inputValueTemp: '',
+    activeKey: '',
+    showInput: false,
+    inputValueTemp: ''
   }
 
   handleIconClick = (key) => () => {
-    const { header, actions } = this.props
+    const { header } = this.props
     this.setState({
-      inputValueTemp: header.social.links[key]
+      activeKey: key,
+      showInput: true,
+      inputValueTemp: header.social[key]
     })
-    actions.showLinkInput(key)
   }
 
   handleInputBlur = (e) => {
-    const { actions, header } = this.props
-    actions.updateSocialMediaValue(header.social.activeKey, e.target.value)
+    const { actions } = this.props
+    const { activeKey } = this.state
+
+    actions.updateHeaderProps('social', activeKey, e.target.value)
+    this.setState({ activeKey: '', showInput: false, inputValueTemp: '' })
   }
 
   handleInputChange = (e) => {
@@ -48,8 +54,9 @@ class SocialMediaLinks extends React.PureComponent {
 
   renderSocialMediaLinks = () => {
     const { header, isAuth, cssProps: { color } } = this.props
+    const { activeKey } = this.state
 
-    return map(header.social.links, (value, name) => {
+    return map(header.social, (value, name) => {
       return (
         <div key={name}>
           {!isAuth && value && (
@@ -61,7 +68,7 @@ class SocialMediaLinks extends React.PureComponent {
             <IconContainer
               hasValue={value}
               onClick={this.handleIconClick(name)}
-              active={header.social.activeKey === name}
+              active={activeKey === name}
             >
               {this.renderSocialMediaIcon(name)}
             </IconContainer>
@@ -72,13 +79,11 @@ class SocialMediaLinks extends React.PureComponent {
   }
 
   render() {
-    const { isAuth, header } = this.props
-    const { inputValueTemp } = this.state
-    const showInput = header.social.showInput
-    const activeItem = header.social.activeKey;
+    const { isAuth } = this.props
+    const { inputValueTemp, showInput, activeKey } = this.state
 
     return (
-      <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeItem}>
+      <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeKey}>
         {this.renderSocialMediaLinks()}
         {showInput && (
           <SocialMediaLinksController
