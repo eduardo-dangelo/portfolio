@@ -15,7 +15,7 @@ class Header extends React.PureComponent {
 
   handleInputBlur = (e) => {
     const { actions } = this.props
-    actions.updatePageTitle(e.target.value)
+    actions.updateHeaderProps('title', 'content', e.target.value)
   }
 
   handleChangeTitle = (e) => {

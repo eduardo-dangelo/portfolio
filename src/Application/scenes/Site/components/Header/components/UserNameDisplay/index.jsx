@@ -10,7 +10,7 @@ class UserNameDisplay extends React.PureComponent {
     const { header } = this.props
 
     this.setState({
-      inputValueTemp: header.displayName,
+      inputValueTemp: header.displayName.content,
     })
   }
 
@@ -26,7 +26,7 @@ class UserNameDisplay extends React.PureComponent {
 
   handleInputBlur = (e) => {
     const { actions } = this.props
-    actions.updateDisplayName(e.target.value)
+    actions.updateHeaderProps('displayName', 'content', e.target.value)
   }
 
   render() {
@@ -35,7 +35,7 @@ class UserNameDisplay extends React.PureComponent {
       <div>
         {!isAuth && (
           <span>
-            {header.displayName}
+            {header.displayName.content}
           </span>
         )}
         {isAuth && (
