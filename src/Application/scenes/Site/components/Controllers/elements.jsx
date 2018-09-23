@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 import { ButtonToolbar } from 'react-bootstrap'
+import React from 'react'
+import Fade from 'react-reveal/Fade';
+import withReveal from 'react-reveal/withReveal';
 
 const ButtonToolbarWapper = styled(ButtonToolbar)`
   color: black;
@@ -74,8 +77,7 @@ const FiexedContainerBox = styled.div`
 
 `;
 
-const FullWidthContainerBox = styled.div`
-  ${(props) => props.align === 'right' ? 'right: 0;' : 'left: 0;'}
+const FullWidthContainerBox = withReveal(styled.div`
   z-index: 2;
   color: black;
   padding: 5px;
@@ -83,9 +85,7 @@ const FullWidthContainerBox = styled.div`
   background: white;
   border-radius: 3px;
   position: relative;
-  //top: calc(100% + 5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-
-`;
+`, <Fade />);
 
 export { ButtonToolbarWapper, List, ListItem, FiexedContainerBox, FullWidthContainerBox }

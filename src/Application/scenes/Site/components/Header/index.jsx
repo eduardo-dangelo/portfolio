@@ -36,9 +36,6 @@ class Header extends React.PureComponent {
 
     return (
       <div onMouseOver={this.handleCardMouseHover} onMouseLeave={this.handleCardMouseLeave}>
-        {showController && isAuth && (
-          <HeaderController header={header} actions={actions}/>
-        )}
         <AppHeader cssProps={{ boxSize, color, bgColor, textAlign }}>
           <TopHeader>
             <UserNameDisplay
@@ -61,6 +58,9 @@ class Header extends React.PureComponent {
             />
           </HeaderBody>
         </AppHeader>
+        {showController && isAuth && (
+          <HeaderController header={header} actions={actions}/>
+        )}
       </div>
     )
   }

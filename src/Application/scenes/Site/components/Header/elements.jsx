@@ -3,6 +3,9 @@ import styled from 'styled-components'
 const Header = styled.div`
   padding: 10px;
   display: flex;
+  width: 100%;
+  top: 0;
+  transition: .3s ease;
   position: relative;
   align-items: center;
   flex-direction: column;
