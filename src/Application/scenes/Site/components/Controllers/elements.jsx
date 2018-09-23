@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { ButtonToolbar } from 'react-bootstrap'
 import React from 'react'
 import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
+import Flip from 'react-reveal/Flip';
 import withReveal from 'react-reveal/withReveal';
 
 const ButtonToolbarWapper = styled(ButtonToolbar)`
@@ -81,11 +83,18 @@ const FullWidthContainerBox = withReveal(styled.div`
   z-index: 2;
   color: black;
   padding: 5px;
+  opacity: .6;
   font-size: 14px;
-  background: white;
-  border-radius: 3px;
+  border-radius: 0;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  background: #636168;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+  
+  button {
+    color: #636168; 
+    border-color: #c0c0c0 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1), inset 0 2px 6px rgba(0,0,0,0.3), inset 0 -2px 6px rgba(255,255,255,0.2) !important;
+  }
 `, <Fade />);
 
 export { ButtonToolbarWapper, List, ListItem, FiexedContainerBox, FullWidthContainerBox }

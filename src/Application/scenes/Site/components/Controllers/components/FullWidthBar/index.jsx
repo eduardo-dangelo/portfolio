@@ -4,7 +4,7 @@ import { FullWidthContainerBox } from '../../elements'
 export default class FullWidthBar extends React.PureComponent {
   render() {
     return (
-      <FullWidthContainerBox align={this.props.align}>
+      <FullWidthContainerBox {...this.props}>
         {this.props.children}
       </FullWidthContainerBox>
     )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Input, Heading } from '../../elements'
 import Fade from 'react-reveal/Fade'
+import Flip from 'react-reveal/Flip'
 
 class Header extends React.PureComponent {
   state = {
@@ -33,9 +34,9 @@ class Header extends React.PureComponent {
       <div>
         <Heading cssProps={{ ...header.title }}>
           {!isAuth ? (
-            <Fade top>
+            <Flip top cascade>
               {header.title.content}
-            </Fade>
+            </Flip>
           ) : (
             <Input
               name="test"

@@ -106,7 +106,7 @@ export default class HeaderController extends React.PureComponent {
     const sizeOptions = ['x-large', 'large', 'medium', 'small', 'x-small']
 
     return (
-      <FullWidthBar align={'right'}>
+      <FullWidthBar>
         <ButtonToolbar>
           <ButtonGroup>
             {this.MultiButtonOptions('align', 'title', alignOptions)}
