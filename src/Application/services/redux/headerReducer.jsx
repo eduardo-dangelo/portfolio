@@ -13,8 +13,8 @@ const initialState = {
   },
   box: {
     size: 'medium',
-    color: '#ffffff',
-    bgColor: '#999170',
+    color: '#323232',
+    bgColor: '#d5d1c0',
   },
   social: {
     links: {
