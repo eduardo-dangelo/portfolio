@@ -30,7 +30,7 @@ class Header extends React.PureComponent {
 
     return (
       <div>
-        <Heading cssProps={{ ...header.title.props }}>
+        <Heading cssProps={{ ...header.title }}>
           {!isAuth ? (
             header.title.content
           ) : (
@@ -39,7 +39,7 @@ class Header extends React.PureComponent {
               value={inputValueTemp}
               onBlur={this.handleInputBlur}
               onChange={this.handleChangeTitle}
-              cssProps={{ ...header.title.props }}
+              cssProps={{ ...header.title }}
             />
           )}
         </Heading>
