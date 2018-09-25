@@ -1,12 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import PageTitle from './components/PageTitle'
 import { HeaderController } from '../Controllers'
 import UserNameDisplay from './components/UserNameDisplay'
 import SocialMediaLinks from './components/SocialMediaLinks'
 import { Header as AppHeader, TopHeader, HeaderBody } from './elements'
-import { actions as headerActions } from '../../../../services/redux/headerReducer'
 
 class Header extends React.PureComponent {
   state = {
@@ -14,16 +12,23 @@ class Header extends React.PureComponent {
   }
 
   handleCardMouseHover = () => {
+    const { account } = this.props
+    const isAuth = account.isAuth
+
+    if (!isAuth) {
+      return null;
+    }
+
     this.setState({
       showController: true
     })
   }
 
-  handleCardMouseLeave = () => {
-    this.setState({
-      showController: false
-    })
-  }
+  // handleCardMouseLeave = () => {
+  //   this.setState({
+  //     showController: false
+  //   })
+  // }
 
   render() {
     const { account, header, actions } = this.props
@@ -41,25 +46,21 @@ class Header extends React.PureComponent {
             <UserNameDisplay
               header={header}
               isAuth={isAuth}
-              actions={actions}
             />
             <SocialMediaLinks
               header={header}
               isAuth={isAuth}
-              actions={actions}
-              cssProps={{ color }}
             />
           </TopHeader>
           <HeaderBody>
             <PageTitle
               header={header}
               isAuth={isAuth}
-              actions={actions}
             />
           </HeaderBody>
         </AppHeader>
         {showController && isAuth && (
-          <HeaderController header={header} actions={actions}/>
+          <HeaderController header={header}/>
         )}
       </div>
     )
@@ -71,7 +72,4 @@ export default connect(
     account: state.account,
     header: state.header
   }),
-  (dispatch) => ({
-    actions: bindActionCreators(headerActions, dispatch)
-  })
 )(Header)

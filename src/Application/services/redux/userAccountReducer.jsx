@@ -7,7 +7,7 @@ const LOG_OUT_USER = 'LOG_OUT_USER'
 
 const initialValues = {
   user: null,
-  isAuth: false,
+  isAuth: true,
   loading: false,
   authType: 'signIn',
 }
@@ -52,8 +52,8 @@ const auth = (payload) => ({ type: AUTH, payload })
 const setUser = (payload) => ({ type: SET_USER, payload })
 
 export const actions = {
-  logOut,
-  loading,
-  setUser,
   auth,
+  logOut,
+  setUser,
+  loading,
 }

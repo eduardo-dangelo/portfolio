@@ -22,13 +22,13 @@ const Header = styled.div`
 const getBoxSize = (boxSize) => {
   switch (boxSize) {
     case 'x-large':
-      return 300
+      return 400
     case 'large':
-      return 250
+      return 300
     case 'medium':
-      return 200
+      return 250
     case 'small':
-      return 150
+      return 200
     case 'x-small':
       return 100
   }

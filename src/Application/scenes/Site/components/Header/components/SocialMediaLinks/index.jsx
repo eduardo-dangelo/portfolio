@@ -1,10 +1,12 @@
 import React from 'react'
 import { map } from 'lodash'
-import Fade from 'react-reveal'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { OusideClickContainer } from '../../elements'
-import { SocialMediaLinksContainer, IconContainer, IconLink, IconListUnauth, IconListAuth } from './elements'
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa'
+import { actions as headerActions } from '../../../../../../services/redux/headerReducer'
 import SocialMediaLinksController from '../../../Controllers/SocialMediaLinksController'
+import { SocialMediaLinksContainer, IconContainer, IconLink, IconListUnauth, IconListAuth } from './elements'
 
 class SocialMediaLinks extends React.PureComponent {
   state = {
@@ -53,8 +55,8 @@ class SocialMediaLinks extends React.PureComponent {
     }
   }
 
-  renderAauthorizedModeLinks = () => {
-    const { header, isAuth, cssProps: { color } } = this.props
+  renderAuthorizedModeLinks = () => {
+    const { header } = this.props
     const { activeKey } = this.state
 
     return (
@@ -103,7 +105,7 @@ class SocialMediaLinks extends React.PureComponent {
 
     return (
       <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeKey} color={color}>
-        {isAuth && this.renderAauthorizedModeLinks()}
+        {isAuth && this.renderAuthorizedModeLinks()}
         {!isAuth && this.renderUnauthorizedModeLinks()}
         {showInput && (
           <SocialMediaLinksController
@@ -118,4 +120,9 @@ class SocialMediaLinks extends React.PureComponent {
   }
 }
 
-export default SocialMediaLinks;
+export default connect(
+  null,
+  (dispatch) => ({
+    actions: bindActionCreators(headerActions, dispatch)
+  })
+)(SocialMediaLinks)

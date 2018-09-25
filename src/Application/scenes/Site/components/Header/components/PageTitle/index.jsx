@@ -1,8 +1,11 @@
 import React from 'react'
 import Flip from 'react-reveal/Flip'
+import { bindActionCreators } from 'redux'
 import { Input, Heading } from '../../elements'
+import connect from 'react-redux/es/connect/connect'
+import { actions as headerActions } from '../../../../../../services/redux/headerReducer'
 
-class Header extends React.PureComponent {
+class PageTitle extends React.PureComponent {
   state = {
     inputValueTemp: ''
   }
@@ -51,4 +54,9 @@ class Header extends React.PureComponent {
   }
 }
 
-export default Header
+export default connect(
+  null,
+  (dispatch) => ({
+    actions: bindActionCreators(headerActions, dispatch)
+  })
+)(PageTitle)

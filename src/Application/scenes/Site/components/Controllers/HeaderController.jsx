@@ -1,11 +1,14 @@
 import React from 'react'
 import { map } from 'lodash'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import FullWidthBar from './components/FullWidthBar'
 import ColorKnob from './components/Knobs/components/ColorKnob'
+import { actions as headerActions } from '../../../../services/redux/headerReducer'
 import { FaBold, FaItalic, FaAlignLeft, FaAlignRight, FaAlignCenter } from 'react-icons/fa'
 import { Button, MenuItem, ButtonGroup, ButtonToolbar, DropdownButton } from 'react-bootstrap'
 
-export default class HeaderController extends React.PureComponent {
+class HeaderController extends React.PureComponent {
   UpdateHeaderProps = (target, prop, value) => () => {
     const { actions } = this.props
     actions.updateHeaderProps(target, prop, value)
@@ -134,3 +137,10 @@ export default class HeaderController extends React.PureComponent {
     )
   }
 }
+
+export default connect(
+  null,
+  (dispatch) => ({
+    actions: bindActionCreators(headerActions, dispatch)
+  })
+)(HeaderController)

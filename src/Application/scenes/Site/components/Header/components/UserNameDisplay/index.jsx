@@ -1,6 +1,9 @@
 import React from 'react'
 import { Input } from './elements'
 import Flip from 'react-reveal/Flip'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actions as headerActions } from '../../../../../../services/redux/headerReducer'
 
 class UserNameDisplay extends React.PureComponent {
   state = {
@@ -53,4 +56,9 @@ class UserNameDisplay extends React.PureComponent {
   }
 }
 
-export default UserNameDisplay
+export default connect(
+  null,
+  (dispatch) => ({
+    actions: bindActionCreators(headerActions, dispatch)
+  })
+)(UserNameDisplay)
