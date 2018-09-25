@@ -63,7 +63,7 @@ const ListItem = styled.li`
   }
 `;
 
-const FiexedContainerBox = styled.div`
+const FixedContainerBox = styled.div`
   z-index: 4;
   color: black;
   padding: 5px;
@@ -95,4 +95,4 @@ const FullWidthContainerBox = withReveal(styled.div`
   }
 `, <Fade />);
 
-export { ButtonToolbarWapper, List, ListItem, FiexedContainerBox, FullWidthContainerBox }
+export { ButtonToolbarWapper, List, ListItem, FixedContainerBox, FullWidthContainerBox }
