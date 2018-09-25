@@ -104,7 +104,7 @@ class SocialMediaLinks extends React.PureComponent {
     const color = header.box.color
 
     if (!header.display.social) {
-      return null;
+      return <div/>
     }
 
     return (

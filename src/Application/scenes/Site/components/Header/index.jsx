@@ -26,9 +26,9 @@ class Header extends React.PureComponent {
   }
 
   handleCardMouseLeave = () => {
-    this.setState({
-      showController: false
-    })
+    // this.setState({
+    //   showController: false
+    // })
   }
 
   render() {

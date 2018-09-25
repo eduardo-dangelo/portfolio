@@ -37,7 +37,7 @@ class UserNameDisplay extends React.PureComponent {
     const { isAuth, header } = this.props
 
     if (!header.display.name) {
-      return null;
+      return <div/>
     }
 
     return (
