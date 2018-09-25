@@ -6,9 +6,18 @@ import FullWidthBar from './components/FullWidthBar'
 import ColorKnob from './components/Knobs/components/ColorKnob'
 import { actions as headerActions } from '../../../../services/redux/headerReducer'
 import { FaBold, FaItalic, FaAlignLeft, FaAlignRight, FaAlignCenter } from 'react-icons/fa'
-import { Button, MenuItem, ButtonGroup, ButtonToolbar, DropdownButton } from 'react-bootstrap'
+import {
+  Button,
+  MenuItem,
+  ButtonGroup,
+  ButtonToolbar,
+  DropdownButton,
+} from 'react-bootstrap'
 
 class HeaderController extends React.PureComponent {
+  state = {
+    value: [1, 3]
+  }
   UpdateHeaderProps = (target, prop, value) => () => {
     const { actions } = this.props
     actions.updateHeaderProps(target, prop, value)
@@ -50,7 +59,7 @@ class HeaderController extends React.PureComponent {
     })
   }
 
-  SingleButtonOption = (prop, target) => {
+  SingleButtonOption = (prop, target, label) => {
     const { header } = this.props
     const value = header[target][prop]
 
@@ -61,7 +70,8 @@ class HeaderController extends React.PureComponent {
         onClick={this.UpdateHeaderProps(target, prop, !value)}
         bsStyle={value ? 'info' : 'default'}
       >
-        {this.getIcon(prop)}
+        {label && label}
+        {!label && (this.getIcon(prop) ? this.getIcon(prop) : `${target} ${prop}`)}
       </Button>
     )
   }
@@ -104,6 +114,11 @@ class HeaderController extends React.PureComponent {
     )
   }
 
+  handleChange = (e) => {
+    this.setState({ value: e });
+  }
+
+
   render() {
     const alignOptions = ['left', 'center', 'right']
     const sizeOptions = ['x-large', 'large', 'medium', 'small', 'x-small']
@@ -131,6 +146,15 @@ class HeaderController extends React.PureComponent {
           </ButtonGroup>
           <ButtonGroup>
             {this.ColorKnobOption('color', 'box')}
+          </ButtonGroup>
+          <ButtonGroup>
+            {this.SingleButtonOption('title', 'display')}
+          </ButtonGroup>
+          <ButtonGroup>
+            {this.SingleButtonOption('name', 'display')}
+          </ButtonGroup>
+          <ButtonGroup>
+            {this.SingleButtonOption('social', 'display', 'display social-links')}
           </ButtonGroup>
         </ButtonToolbar>
       </FullWidthBar>

@@ -103,6 +103,10 @@ class SocialMediaLinks extends React.PureComponent {
     const { inputValueTemp, showInput, activeKey } = this.state
     const color = header.box.color
 
+    if (!header.display.social) {
+      return null;
+    }
+
     return (
       <SocialMediaLinksContainer isAuth={isAuth} hasActiveItem={activeKey} color={color}>
         {isAuth && this.renderAuthorizedModeLinks()}

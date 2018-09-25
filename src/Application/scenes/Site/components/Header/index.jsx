@@ -26,15 +26,13 @@ class Header extends React.PureComponent {
   }
 
   handleCardMouseLeave = () => {
-    setTimeout(() => {
-      this.setState({
-        showController: false
-      })
-    }, 2000)
+    this.setState({
+      showController: false
+    })
   }
 
   render() {
-    const { account, header, actions } = this.props
+    const { account, header } = this.props
     const isAuth = account.isAuth
     const color = header.box.color
     const boxSize = header.box.size

@@ -32,6 +32,10 @@ class PageTitle extends React.PureComponent {
     const { isAuth, header } = this.props
     const { inputValueTemp } = this.state
 
+    if (!header.display.title) {
+      return null;
+    }
+
     return (
       <div>
         <Heading cssProps={{ ...header.title }}>

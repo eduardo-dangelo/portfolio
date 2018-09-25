@@ -20,9 +20,14 @@ const initialState = {
     linkedIn: '',
     facebook: '',
   },
-  displayName: {
+  name: {
     content: 'Author name'
   },
+  display: {
+    name: true,
+    title: true,
+    social: true,
+  }
 }
 
 export function reducer(state = initialState, action) {
