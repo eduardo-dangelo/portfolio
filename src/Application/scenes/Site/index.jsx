@@ -10,10 +10,12 @@ const AlignCenterContainer = styled.div`
   display: flex;
   text-align: center;
   align-items: center;
+  width: 100%;
+  border: 1px solid orange;
   flex-direction: column;
 `
 
-class Site extends React.PureComponent {
+class Site extends React.Component {
   render() {
     const { account, actions } = this.props
     const isAuth = account.isAuth

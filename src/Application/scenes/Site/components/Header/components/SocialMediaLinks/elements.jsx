@@ -18,6 +18,7 @@ const flash = keyframes`
 `;
 
 const SocialMediaLinksContainer = styled.div`
+  z-index: 1;
   padding: 5px;
   display: flex;
   position: relative;

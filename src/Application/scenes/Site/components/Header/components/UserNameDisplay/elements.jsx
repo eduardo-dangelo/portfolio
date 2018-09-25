@@ -15,6 +15,7 @@ const flash = keyframes`
 `;
 
 const Input = styled.input`
+  z-index: 1;
   padding: 5px;
   width: 260px;
   position: relative;

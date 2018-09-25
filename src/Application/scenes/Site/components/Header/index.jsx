@@ -4,6 +4,7 @@ import PageTitle from './components/PageTitle'
 import { HeaderController } from '../Controllers'
 import UserNameDisplay from './components/UserNameDisplay'
 import SocialMediaLinks from './components/SocialMediaLinks'
+import Fade from 'react-reveal/Fade'
 import { Header as AppHeader, TopHeader, HeaderBody } from './elements'
 
 class Header extends React.PureComponent {
@@ -24,11 +25,13 @@ class Header extends React.PureComponent {
     })
   }
 
-  // handleCardMouseLeave = () => {
-  //   this.setState({
-  //     showController: false
-  //   })
-  // }
+  handleCardMouseLeave = () => {
+    setTimeout(() => {
+      this.setState({
+        showController: false
+      })
+    }, 2000)
+  }
 
   render() {
     const { account, header, actions } = this.props

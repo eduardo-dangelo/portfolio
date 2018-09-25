@@ -1,6 +1,4 @@
 import React from 'react'
-import Fade from 'react-reveal/Fade'
-import withReveal from 'react-reveal/withReveal'
 import styled, { keyframes } from 'styled-components'
 
 const Header = styled.div`
@@ -49,6 +47,7 @@ const flash = keyframes`
 `;
 
 const Input = styled.input`
+  z-index: 0;
   width: 100%;
   margin: auto;
   padding: 8px 5px;
@@ -84,7 +83,7 @@ const getFontSize = (fontSize) => {
 const Heading = styled.h1`
   flex: 1;
   padding: 0;
-  z-index: 2;
+  z-index: 0;
   position: relative;
   text-align: ${(props) => props.cssProps.align};
   font-size: ${(props) => getFontSize(props.cssProps.size)}px;
@@ -95,7 +94,7 @@ const Heading = styled.h1`
 const OusideClickContainer = styled.div`
   top: 0;
   right: 0;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   height: 100%;
   position: fixed;
