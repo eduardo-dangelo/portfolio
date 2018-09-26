@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import PageTitle from './components/PageTitle'
-import { HeaderController } from '../Controllers'
-import UserNameDisplay from './components/UserNameDisplay'
-import SocialMediaLinks from './components/SocialMediaLinks'
+import PageTitle from './components/PageTitle/index'
+import { HeaderController } from '../components/Controllers/index'
+import UserNameDisplay from './components/UserNameDisplay/index'
+import SocialMediaLinks from './components/SocialMediaLinks/index'
 import Fade from 'react-reveal/Fade'
 import { Header as AppHeader, TopHeader, HeaderBody } from './elements'
 
@@ -44,6 +44,9 @@ class Header extends React.PureComponent {
 
     return (
       <div onMouseOver={this.handleCardMouseHover} onMouseLeave={this.handleCardMouseLeave}>
+        {showController && isAuth && (
+          <HeaderController header={header}/>
+        )}
         <AppHeader cssProps={{ boxSize, color, bgColor1, bgColor2, angle, textAlign }}>
           <TopHeader>
             <UserNameDisplay
@@ -62,9 +65,6 @@ class Header extends React.PureComponent {
             />
           </HeaderBody>
         </AppHeader>
-        {showController && isAuth && (
-          <HeaderController header={header}/>
-        )}
       </div>
     )
   }

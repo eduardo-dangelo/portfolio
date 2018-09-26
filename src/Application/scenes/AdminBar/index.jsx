@@ -4,7 +4,7 @@ import { FaSpinner } from 'react-icons/fa'
 import { bindActionCreators } from 'redux'
 import { graphql, compose } from 'react-apollo'
 import { Bar, Form, Button, Title, Input, Spin, Error } from './elements'
-import { actions as authActions } from '../../services/redux/userAccountReducer'
+import { actions as authActions } from './reducer'
 import { allUsersQuery, loggedInUserQuery, UserQuery } from '../../services/queries'
 import { authenticateUserMutation, signupUserMutation } from '../../services/mutations'
 

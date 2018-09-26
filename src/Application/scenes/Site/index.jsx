@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import Header from './components/Header'
+import Header from './Header'
 import { bindActionCreators } from 'redux'
 import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap'
-import { actions as authActions } from '../../services/redux/userAccountReducer'
+import { actions as authActions } from '../AdminBar/reducer'
+import Body from './Body'
+import Footer from './Footer'
 
 const AlignCenterContainer = styled.div`
   display: flex;
@@ -23,6 +25,8 @@ class Site extends React.Component {
     return (
       <div>
         <Header/>
+        <Body/>
+        <Footer/>
         <AlignCenterContainer>
           <h2>
             {isAuth ? 'authenticated' : 'not authenticated'}

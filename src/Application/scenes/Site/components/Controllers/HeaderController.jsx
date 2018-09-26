@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import FullWidthBar from './components/FullWidthBar'
 import ColorKnob from './components/Knobs/components/ColorKnob'
-import { actions as headerActions } from '../../../../services/redux/headerReducer'
+import { actions as headerActions } from '../../Header/reducer'
 import { FaBold, FaItalic, FaAlignLeft, FaAlignRight, FaAlignCenter } from 'react-icons/fa'
 import {
   Button,
@@ -162,6 +162,9 @@ class HeaderController extends React.PureComponent {
           </ButtonGroup>
           <ButtonGroup>
             {this.SingleButtonOption('social', 'display', 'display social-links')}
+          </ButtonGroup>
+          <ButtonGroup>
+            {this.SingleButtonOption('bold', 'title')}
           </ButtonGroup>
         </ButtonToolbar>
       </FullWidthBar>

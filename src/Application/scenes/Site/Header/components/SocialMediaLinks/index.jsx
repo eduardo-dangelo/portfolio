@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { OusideClickContainer } from '../../elements'
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa'
-import { actions as headerActions } from '../../../../../../services/redux/headerReducer'
-import SocialMediaLinksController from '../../../Controllers/SocialMediaLinksController'
+import { actions as headerActions } from '../../reducer'
+import SocialMediaLinksController from '../../../components/Controllers/SocialMediaLinksController'
 import { SocialMediaLinksContainer, IconContainer, IconLink, IconListUnauth, IconListAuth } from './elements'
 
 class SocialMediaLinks extends React.PureComponent {

@@ -3,7 +3,7 @@ import { Input, NameContainer } from './elements'
 import Flip from 'react-reveal/Flip'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { actions as headerActions } from '../../../../../../services/redux/headerReducer'
+import { actions as headerActions } from '../../reducer'
 
 class UserNameDisplay extends React.PureComponent {
   state = {

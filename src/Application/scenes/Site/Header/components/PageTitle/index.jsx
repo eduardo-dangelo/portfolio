@@ -3,7 +3,7 @@ import Flip from 'react-reveal/Flip'
 import { bindActionCreators } from 'redux'
 import { Input, Heading } from '../../elements'
 import connect from 'react-redux/es/connect/connect'
-import { actions as headerActions } from '../../../../../../services/redux/headerReducer'
+import { actions as headerActions } from '../../reducer'
 
 class PageTitle extends React.PureComponent {
   state = {
