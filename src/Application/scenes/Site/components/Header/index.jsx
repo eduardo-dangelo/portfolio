@@ -36,13 +36,15 @@ class Header extends React.PureComponent {
     const isAuth = account.isAuth
     const color = header.box.color
     const boxSize = header.box.size
-    const bgColor = header.box.bgColor
+    const bgColor1 = header.box.bgColor1
+    const bgColor2 = header.box.bgColor2
+    const angle = header.box.angle
     const textAlign = header.title.align
     const { showController, } = this.state
 
     return (
       <div onMouseOver={this.handleCardMouseHover} onMouseLeave={this.handleCardMouseLeave}>
-        <AppHeader cssProps={{ boxSize, color, bgColor, textAlign }}>
+        <AppHeader cssProps={{ boxSize, color, bgColor1, bgColor2, angle, textAlign }}>
           <TopHeader>
             <UserNameDisplay
               header={header}

@@ -11,7 +11,9 @@ const initialState = {
   box: {
     size: 'medium',
     color: '#323232',
-    bgColor: '#d5d1c0',
+    bgColor1: '#d5d1c0',
+    bgColor2: '#69665a',
+    angle: 90
   },
   social: {
     github: 'http://github.com',

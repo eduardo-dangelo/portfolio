@@ -122,6 +122,7 @@ class HeaderController extends React.PureComponent {
   render() {
     const alignOptions = ['left', 'center', 'right']
     const sizeOptions = ['x-large', 'large', 'medium', 'small', 'x-small']
+    const angleOptions = [0, 45, 90, 135, 180, 225, 270, 315, 360]
 
     return (
       <FullWidthBar>
@@ -142,7 +143,13 @@ class HeaderController extends React.PureComponent {
             {this.DropDownOptions('size', 'box', sizeOptions)}
           </ButtonGroup>
           <ButtonGroup>
-            {this.ColorKnobOption('bgColor', 'box')}
+            {this.ColorKnobOption('bgColor1', 'box')}
+          </ButtonGroup>
+          <ButtonGroup>
+            {this.ColorKnobOption('bgColor2', 'box')}
+          </ButtonGroup>
+          <ButtonGroup>
+            {this.DropDownOptions('angle', 'box', angleOptions)}
           </ButtonGroup>
           <ButtonGroup>
             {this.ColorKnobOption('color', 'box')}

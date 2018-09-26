@@ -12,7 +12,8 @@ const Header = styled.div`
   transition: .3s ease;
   flex-direction: column;
   color: ${(props) => props.cssProps.color};
-  background: ${(props) => props.cssProps.bgColor};
+  //background: ${(props) => props.cssProps.bgColor};
+  background: linear-gradient(${({ cssProps }) => cssProps.angle}deg, ${({ cssProps }) => cssProps.bgColor1}, ${({ cssProps }) => cssProps.bgColor2});
   text-align: ${(props) => props.cssProps.textAlign};
   height: ${(props) => getBoxSize(props.cssProps.boxSize)}px;
 `;
