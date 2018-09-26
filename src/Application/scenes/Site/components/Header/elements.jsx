@@ -103,9 +103,12 @@ const OusideClickContainer = styled.div`
 
 const TopHeader = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  top: 10px;
+  padding: 0 15px;
+  //display: flex;
+  //align-items: center;
+  //justify-content: space-between;
+  position: absolute;
 `;
 
 const HeaderBody = styled.div`

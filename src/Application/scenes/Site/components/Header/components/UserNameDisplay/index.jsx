@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from './elements'
+import { Input, NameContainer } from './elements'
 import Flip from 'react-reveal/Flip'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -41,7 +41,7 @@ class UserNameDisplay extends React.PureComponent {
     }
 
     return (
-      <div>
+      <NameContainer>
         {!isAuth && (
           <Flip top>
             {header.name.content}
@@ -56,7 +56,7 @@ class UserNameDisplay extends React.PureComponent {
             value={this.state.inputValueTemp}
           />
         )}
-      </div>
+      </NameContainer>
     )
   }
 }

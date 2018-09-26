@@ -20,11 +20,12 @@ const flash = keyframes`
 const SocialMediaLinksContainer = styled.div`
   z-index: 1;
   padding: 5px;
+  float: right;
   display: flex;
   position: relative;
   align-items: center;
+  justify-content: space-around;
   border: 1px dashed transparent;
-  justify-content: space-between;
   animation: ${(props) => props.isAuth && flash} 2s ease-out;
   
   &:hover {
@@ -33,6 +34,11 @@ const SocialMediaLinksContainer = styled.div`
   
   input {
     padding: 2px 5px;
+  }
+  
+  @media all and (max-width: 400px) {
+    width: 100%;
+    text-align: center;
   }
 `;
 

@@ -28,6 +28,19 @@ const Input = styled.input`
     outline: none;
     border: 1px dashed;
   }
+  
+  @media all and (max-width: 400px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
-export { Input }
+const NameContainer = styled.div`
+  float: left;
+  
+  @media all and (max-width: 400px) {
+    float: none;
+  }
+`;
+
+export { Input, NameContainer }
