@@ -7,6 +7,10 @@ const initialValues = {
 
 export function reducer(state = initialValues, action) {
   switch(action.type) {
+    case SELECT_BODY_TYPE:
+      return {
+        bodyType: action.payload
+      }
     default:
       return state
   }
