@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { bindActionCreators } from 'redux'
+import { Footer as FooterWrapper } from './elements'
 import { actions as bodyActions } from '../Body/reducer'
 import { actions as accountActions } from '../../AdminBar/reducer'
 import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap'
@@ -12,7 +13,6 @@ const AlignCenterContainer = styled.div`
   text-align: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid orange;
 `
 
 class Footer extends React.PureComponent {
@@ -22,7 +22,7 @@ class Footer extends React.PureComponent {
     const bodyType = body.bodyType
 
     return (
-      <div>
+      <FooterWrapper>
         <AlignCenterContainer>
           <h2>
             {isAuth ? 'authenticated' : 'not authenticated'}
@@ -61,7 +61,7 @@ class Footer extends React.PureComponent {
             </ButtonGroup>
           </ButtonToolbar>
         </AlignCenterContainer>
-      </div>
+      </FooterWrapper>
     )
   }
 }

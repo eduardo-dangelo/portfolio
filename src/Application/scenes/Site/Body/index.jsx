@@ -2,6 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Portfolio from './scenes/Portfolio'
 import Documentation from './scenes/Documentation'
+import styled from 'styled-components'
+
+const BodyContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  clear: both;
+  position: relative;
+`;
 
 class Body extends React.PureComponent {
   renderBodyByType = () => {
@@ -18,7 +26,11 @@ class Body extends React.PureComponent {
   }
 
   render() {
-    return this.renderBodyByType()
+    return (
+      <BodyContainer>
+        {this.renderBodyByType()}
+      </BodyContainer>
+    )
   }
 }
 

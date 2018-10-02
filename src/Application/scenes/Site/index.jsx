@@ -4,35 +4,38 @@ import Header from './Header'
 import Footer from './Footer'
 import styled from 'styled-components'
 
-const SiteWrapper = styled.div`
+const FlexBox = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
   position: absolute;
+  display: flex;
   flex-direction: column;
-  border: 1px solid orange;
 `;
 
-const PageWrapper = styled.div`
+const FlexBody = styled.div`
   flex: 1 0 auto;
+  position: relative;
+  display: flex;
+  clear: both;
+  flex-direction: column;
 `;
 
-const FooterWrapper = styled.div`
+const FlexFooter = styled.div`
   flex-shrink: 0;
 `
 
 class Site extends React.PureComponent {
   render() {
     return (
-      <SiteWrapper>
-        <PageWrapper>
+      <FlexBox>
+        <FlexBody>
           <Header/>
           <Body/>
-        </PageWrapper>
-        <FooterWrapper>
+        </FlexBody>
+        <FlexFooter>
           <Footer/>
-        </FooterWrapper>
-      </SiteWrapper>
+        </FlexFooter>
+      </FlexBox>
     )
   }
 }
