@@ -12,10 +12,6 @@ class Posts extends React.PureComponent {
     return (
       <PostContainer>
         <h2>Posts here</h2>
-        <h2>Posts here</h2>
-        <h2>Posts here</h2>
-        <h2>Posts here</h2>
-        <h2>Posts here</h2>
       </PostContainer>
     )
   }
