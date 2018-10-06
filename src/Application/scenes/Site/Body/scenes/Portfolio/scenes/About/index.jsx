@@ -4,11 +4,12 @@ import { FaUser, FaStar, FaEnvelope, FaLink } from 'react-icons/fa'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actions } from '../../reducer'
+import Flip from 'react-reveal/Flip'
 
 const AboutContainer = styled.div`
-  background: #dfd6ab;
   padding: 15px;
   flex-shrink: 0;
+  background: #dfd6ab;
   box-sizing: padding-box;
 `;
 
@@ -49,6 +50,15 @@ const TextArea = styled.textarea`
   }
 `;
 
+const Heading = styled.h3`
+  display: flex;
+  align-items: center;
+  
+  svg {
+    margin-right: 10px;
+  }
+`;
+
 class About extends React.PureComponent {
   state = {
     profileValueTemp: '',
@@ -84,9 +94,18 @@ class About extends React.PureComponent {
 
     return (
       <AboutContainer>
-        <h3><FaUser/> Profile</h3>
+          <Heading>
+            <FaUser/>
+            <Flip top cascade>
+              Profile
+            </Flip>
+          </Heading>
         {!isAuth ? (
-          <Text>{about.profile.content}</Text>
+          <Text>
+            <Flip top cascade>
+              {about.profile.content}
+            </Flip>
+          </Text>
         ) : (
           <TextArea
             value={profileValueTemp}
@@ -94,9 +113,18 @@ class About extends React.PureComponent {
             onChange={this.handleChangeText('profileValueTemp')}
           />
         )}
-        <h3><FaStar/> Skills</h3>
+          <Heading>
+            <FaStar/>
+            <Flip top cascade>
+              Skills
+            </Flip>
+          </Heading>
         {!isAuth ? (
-          <Text>{about.skills.content}</Text>
+          <Text>
+            <Flip top cascade>
+              {about.skills.content}
+            </Flip>
+          </Text>
         ) : (
           <TextArea
             value={skillsValueTemp}
@@ -104,9 +132,18 @@ class About extends React.PureComponent {
             onChange={this.handleChangeText('skillsValueTemp')}
           />
         )}
-        <h3><FaEnvelope/> Contact</h3>
+        <Heading>
+          <FaEnvelope/>
+          <Flip top cascade>
+            Contact
+          </Flip>
+        </Heading>
         {!isAuth ? (
-          <Text>{about.contact.content}</Text>
+          <Text>
+            <Flip top cascade>
+              {about.contact.content}
+            </Flip>
+          </Text>
         ) : (
           <TextArea
             value={contactValueTemp}
@@ -115,7 +152,7 @@ class About extends React.PureComponent {
           />
         )}
         <Text>{about.contact.email}</Text>
-        <h3><FaLink/> Links</h3>
+        <Heading><FaLink/> Links</Heading>
         <Text>links here...</Text>
       </AboutContainer>
     )

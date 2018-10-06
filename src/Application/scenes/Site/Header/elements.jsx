@@ -1,4 +1,3 @@
-import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const Header = styled.div`
@@ -30,6 +29,8 @@ const getBoxSize = (boxSize) => {
       return 200
     case 'x-small':
       return 100
+    default:
+      return null;
   }
 }
 
@@ -78,6 +79,8 @@ const getFontSize = (fontSize) => {
       return 25
     case 'x-small':
       return 18
+    default:
+      return null;
   }
 }
 

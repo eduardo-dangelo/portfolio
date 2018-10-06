@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PageTitle from './components/PageTitle/index'
-import { HeaderController } from '../components/Controllers/index'
 import UserNameDisplay from './components/UserNameDisplay/index'
 import SocialMediaLinks from './components/SocialMediaLinks/index'
-import Fade from 'react-reveal/Fade'
+import { HeaderController } from '../components/Controllers/index'
 import { Header as AppHeader, TopHeader, HeaderBody } from './elements'
 
 class Header extends React.PureComponent {

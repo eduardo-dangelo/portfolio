@@ -64,6 +64,7 @@ class SocialMediaLinks extends React.PureComponent {
         {map(header.social, (value, name) => {
           return (
             <IconContainer
+              key={name}
               hasValue={value}
               onClick={this.handleIconClick(name)}
               active={activeKey === name}
