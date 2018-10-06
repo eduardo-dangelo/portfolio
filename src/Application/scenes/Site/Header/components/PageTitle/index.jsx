@@ -48,8 +48,8 @@ class PageTitle extends React.PureComponent {
               name="test"
               value={inputValueTemp}
               onBlur={this.handleInputBlur}
-              cssProps={{ ...header.title }}
               onChange={this.handleChangeTitle}
+              cssProps={{ ...header.title }}
             />
           )}
         </Heading>
