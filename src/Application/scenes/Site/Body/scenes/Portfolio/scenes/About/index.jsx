@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actions } from '../../reducer'
 import Flip from 'react-reveal/Flip'
+import withReveal from 'react-reveal/withReveal'
+import { Button, FormControl, FormGroup, InputGroup } from 'react-bootstrap'
+
 
 const AboutContainer = styled.div`
   padding: 15px;
@@ -13,9 +16,9 @@ const AboutContainer = styled.div`
   box-sizing: padding-box;
 `;
 
-const Text = styled.p`
-  margin: 0 15px;
-`;
+const Text = withReveal(styled.p`
+  margin: 15px;
+`, <Flip top cascade />);
 
 const flash = keyframes`
   0% {
@@ -59,11 +62,55 @@ const Heading = styled.h3`
   }
 `;
 
+const EmailContainer = styled.div`
+  border: 1px solid black;
+  padding: 6px;
+  border-radius: 0 3px 3px 0;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  float: left;
+  //background: #343434;
+  //color: white;
+`;
+
+const FormControlContainer = styled(FormControl)`
+  border: 1px solid black;
+  padding: 6px;
+  border-radius: 0 3px 3px 0;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  float: left;
+`;
+
+const InputGroupButton = styled(Button)`
+  border: 1px solid black;
+  background: #2b2b2b;
+  color: #c0c0c0;
+  display: flex;
+  height: 34px;
+  padding: auto 5px;
+  align-items: center;
+  float: left;
+  
+  &:hover {
+    border: 1px solid black;
+    background: black;
+    color: white;
+  }
+`;
+
+const FormGroupContainer = styled(FormGroup)`
+  margin-left: 15px;
+`;
+
 class About extends React.PureComponent {
   state = {
     profileValueTemp: '',
     skillsValueTemp: '',
-    contactValueTemp: ''
+    contactValueTemp: '',
+    emailValueTemp: '',
   }
 
   componentDidMount() {
@@ -71,7 +118,8 @@ class About extends React.PureComponent {
     this.setState({
       profileValueTemp: portfolio.about.profile.content,
       skillsValueTemp: portfolio.about.skills.content,
-      contactValueTemp: portfolio.about.contact.content
+      contactValueTemp: portfolio.about.contact.content,
+      emailValueTemp: portfolio.about.contact.email
     })
   }
 
@@ -88,24 +136,15 @@ class About extends React.PureComponent {
 
   render() {
     const { portfolio, account } = this.props
-    const { profileValueTemp, skillsValueTemp, contactValueTemp } = this.state
+    const { profileValueTemp, skillsValueTemp, contactValueTemp, emailValueTemp } = this.state
     const about = portfolio.about
     const isAuth = account.isAuth
 
     return (
       <AboutContainer>
-          <Heading>
-            <FaUser/>
-            <Flip top cascade>
-              Profile
-            </Flip>
-          </Heading>
+        <Heading><FaUser/><Flip top cascade>Profile</Flip></Heading>
         {!isAuth ? (
-          <Text>
-            <Flip top cascade>
-              {about.profile.content}
-            </Flip>
-          </Text>
+          <Text>{about.profile.content}</Text>
         ) : (
           <TextArea
             value={profileValueTemp}
@@ -113,18 +152,9 @@ class About extends React.PureComponent {
             onChange={this.handleChangeText('profileValueTemp')}
           />
         )}
-          <Heading>
-            <FaStar/>
-            <Flip top cascade>
-              Skills
-            </Flip>
-          </Heading>
+        <Heading><FaStar/><Flip top cascade>Skills</Flip></Heading>
         {!isAuth ? (
-          <Text>
-            <Flip top cascade>
-              {about.skills.content}
-            </Flip>
-          </Text>
+          <Text>{about.skills.content}</Text>
         ) : (
           <TextArea
             value={skillsValueTemp}
@@ -132,18 +162,9 @@ class About extends React.PureComponent {
             onChange={this.handleChangeText('skillsValueTemp')}
           />
         )}
-        <Heading>
-          <FaEnvelope/>
-          <Flip top cascade>
-            Contact
-          </Flip>
-        </Heading>
+        <Heading><FaEnvelope/><Flip top cascade>Contact</Flip></Heading>
         {!isAuth ? (
-          <Text>
-            <Flip top cascade>
-              {about.contact.content}
-            </Flip>
-          </Text>
+          <Text>{about.contact.content}</Text>
         ) : (
           <TextArea
             value={contactValueTemp}
@@ -151,7 +172,23 @@ class About extends React.PureComponent {
             onChange={this.handleChangeText('contactValueTemp')}
           />
         )}
-        <Text>{about.contact.email}</Text>
+        <FormGroupContainer>
+          <InputGroup>
+            <InputGroup.Button>
+              <InputGroupButton><FaEnvelope/></InputGroupButton>
+            </InputGroup.Button>
+            {!isAuth ? (
+              <EmailContainer>{about.contact.email}</EmailContainer>
+            ) : (
+              <FormControlContainer
+                type="text"
+                value={emailValueTemp}
+                onBlur={this.handleInputBlur('contact', 'email')}
+                onChange={this.handleChangeText('emailValueTemp')}
+              />
+            )}
+          </InputGroup>
+        </FormGroupContainer>
         <Heading><FaLink/> Links</Heading>
         <Text>links here...</Text>
       </AboutContainer>
