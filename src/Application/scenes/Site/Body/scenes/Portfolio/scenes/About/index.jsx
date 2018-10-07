@@ -7,6 +7,7 @@ import { actions } from '../../reducer'
 import Flip from 'react-reveal/Flip'
 import withReveal from 'react-reveal/withReveal'
 import { Button, FormControl, FormGroup, InputGroup } from 'react-bootstrap'
+import Link from './components/Link'
 
 
 const AboutContainer = styled.div`
@@ -63,41 +64,40 @@ const Heading = styled.h3`
 `;
 
 const EmailContainer = styled.div`
-  border: 1px solid black;
+  float: left;
   padding: 6px;
-  border-radius: 0 3px 3px 0;
   height: 34px;
   display: flex;
   align-items: center;
-  float: left;
-  //background: #343434;
-  //color: white;
+  border: 1px solid black;
+  border-radius: 0 3px 3px 0;
 `;
 
 const FormControlContainer = styled(FormControl)`
-  border: 1px solid black;
-  padding: 6px;
-  border-radius: 0 3px 3px 0;
-  height: 34px;
-  display: flex;
-  align-items: center;
   float: left;
+  height: 34px;
+  padding: 6px;
+  display: flex;
+  max-width: 200px;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 0 3px 3px 0;
 `;
 
 const InputGroupButton = styled(Button)`
-  border: 1px solid black;
-  background: #2b2b2b;
-  color: #c0c0c0;
-  display: flex;
+  float: left;
   height: 34px;
+  display: flex;
+  color: #c0c0c0;
   padding: auto 5px;
   align-items: center;
-  float: left;
+  background: #2b2b2b;
+  border: 1px solid black;
   
   &:hover {
-    border: 1px solid black;
-    background: black;
     color: white;
+    background: black;
+    border: 1px solid black;
   }
 `;
 
@@ -105,12 +105,24 @@ const FormGroupContainer = styled(FormGroup)`
   margin-left: 15px;
 `;
 
-class About extends React.PureComponent {
+const UnAuthLinkContainer = styled.div`
+  display: flex;
+  margin-left: 15px;
+  align-items: center;
+`;
+
+const UnAuthLink = styled.a`
+  margin-right: 15px;
+`;
+
+
+class About extends React.Component {
   state = {
     profileValueTemp: '',
     skillsValueTemp: '',
     contactValueTemp: '',
     emailValueTemp: '',
+    linksValueTemp: [],
   }
 
   componentDidMount() {
@@ -119,8 +131,21 @@ class About extends React.PureComponent {
       profileValueTemp: portfolio.about.profile.content,
       skillsValueTemp: portfolio.about.skills.content,
       contactValueTemp: portfolio.about.contact.content,
-      emailValueTemp: portfolio.about.contact.email
+      emailValueTemp: portfolio.about.contact.email,
+      linksValueTemp: portfolio.about.links,
     })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { portfolio } = this.props
+    const links = portfolio.about.links
+    const linksNextProps = nextProps.portfolio.about.links
+
+    if (links.length !== linksNextProps.length) {
+      this.setState({
+        linksValueTemp: linksNextProps
+      })
+    }
   }
 
   handleInputBlur = (target, prop) => (e) => {
@@ -134,6 +159,64 @@ class About extends React.PureComponent {
     })
   }
 
+  updateLinksTempValue = () => {
+    const { portfolio } = this.props
+    const links = portfolio.about.links
+    this.setState({
+      linksValueTemp: links
+    })
+  }
+
+  renderLinksComponent = () => {
+    const { portfolio, account, actions } = this.props
+    const { linksValueTemp } = this.state
+    const links = portfolio.about.links
+    const isAuth = account.isAuth
+
+    if (links.length === 0) {
+      return null;
+    }
+
+    if (!isAuth) {
+      return (
+        <UnAuthLinkContainer>
+          {linksValueTemp.map((link, key) => {
+            return (
+              <UnAuthLink key={key} href={link.href} target="_blank">
+                {link.label}
+              </UnAuthLink>
+            )
+          })}
+        </UnAuthLinkContainer>
+      )
+    }
+
+    return (
+      <div>
+        {linksValueTemp.map((link, key) => {
+          return (
+            <Link
+              key={key}
+              link={link}
+              linkIndex={key}
+              actions={actions}
+              links={linksValueTemp}
+              onRemove={this.updateLinksTempValue}
+            />
+          )
+        })}
+        <Button onClick={this.handleAddLink}>
+          Add link
+        </Button>
+      </div>
+    )
+  }
+
+  handleAddLink = () => {
+    const { actions } = this.props
+    actions.addLink()
+  }
+
   render() {
     const { portfolio, account } = this.props
     const { profileValueTemp, skillsValueTemp, contactValueTemp, emailValueTemp } = this.state
@@ -142,7 +225,9 @@ class About extends React.PureComponent {
 
     return (
       <AboutContainer>
-        <Heading><FaUser/><Flip top cascade>Profile</Flip></Heading>
+        <Heading>
+          <FaUser/><Flip top cascade>Profile</Flip>
+        </Heading>
         {!isAuth ? (
           <Text>{about.profile.content}</Text>
         ) : (
@@ -152,7 +237,9 @@ class About extends React.PureComponent {
             onChange={this.handleChangeText('profileValueTemp')}
           />
         )}
-        <Heading><FaStar/><Flip top cascade>Skills</Flip></Heading>
+        <Heading>
+          <FaStar/><Flip top cascade>Skills</Flip>
+        </Heading>
         {!isAuth ? (
           <Text>{about.skills.content}</Text>
         ) : (
@@ -162,7 +249,9 @@ class About extends React.PureComponent {
             onChange={this.handleChangeText('skillsValueTemp')}
           />
         )}
-        <Heading><FaEnvelope/><Flip top cascade>Contact</Flip></Heading>
+        <Heading>
+          <FaEnvelope/><Flip top cascade>Contact</Flip>
+        </Heading>
         {!isAuth ? (
           <Text>{about.contact.content}</Text>
         ) : (
@@ -189,8 +278,10 @@ class About extends React.PureComponent {
             )}
           </InputGroup>
         </FormGroupContainer>
-        <Heading><FaLink/> Links</Heading>
-        <Text>links here...</Text>
+        <Heading>
+          <FaLink/><Flip top cascade>Links</Flip>
+        </Heading>
+        {this.renderLinksComponent()}
       </AboutContainer>
     )
   }
