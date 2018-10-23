@@ -7,11 +7,11 @@ const initialValues = {
   posts: [],
   about: {
     profile: {
-      content: 'Your profile text here',
+      content: 'I am a highly talented and ambitious front end developer, application developer and graphic designer with a proven record of delivering creative and innovative design solutions. My key skills are communication skills, excellent IT skills, an understanding of latest trends and their role within a commercial environment and professional approach to time, costs and deadlines. I am currently looking a role matching my profile where I can use my skills, be challenged and grow professionally.',
       display: true
     },
     skills: {
-      content: 'Your skills list here',
+      content: '**Business awareness:** After several years of working within different organisations and industries I have gained a high level of understanding of business processes and constraints.\n\n **Communication skills:** I have developed excellent communication skills, both verbally and written. Including the ability to convey information to non-technical colleagues in a concise and clear way.\n\n **Attention to detail:** I have developed to achieve thoroughness and accuracy when accomplishing a task, this I have especially developed with my paintings.   ',
       display: true
     },
     contact: {
