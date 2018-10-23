@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Heading, Text, TextArea } from '../../elements'
+import { Heading, Text } from '../../elements'
 import { FaUser } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
 

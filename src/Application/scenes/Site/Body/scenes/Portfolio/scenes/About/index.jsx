@@ -7,6 +7,7 @@ import { AboutContainer, Container } from './elements'
 import { bindActionCreators } from 'redux'
 import { actions } from '../../reducer'
 import { connect } from 'react-redux'
+import AboutHeader from './components/AboutHeader'
 
 
 class About extends React.Component {
@@ -14,6 +15,7 @@ class About extends React.Component {
     return (
       <AboutContainer>
         <Container>
+          <AboutHeader/>
           <Profile/>
           <Skills/>
           <Contact/>
