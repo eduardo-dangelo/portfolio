@@ -1,24 +1,9 @@
 import React from 'react'
-import { Heading, Text, TextArea } from '../../elements'
+import { Heading, Text } from '../../elements'
 import { FaStar } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
 
 class Skills extends React.PureComponent {
-  state = {
-    value: ''
-  }
-
-  handleInputBlur = (target, prop) => (e) => {
-    const { actions } = this.props
-    actions.updateAboutProps(target, prop, e.target.value)
-  }
-
-  handleChangeText = () => (e) => {
-    this.setState({
-      value: e.target.value
-    })
-  }
-
   render() {
     return (
       <div>

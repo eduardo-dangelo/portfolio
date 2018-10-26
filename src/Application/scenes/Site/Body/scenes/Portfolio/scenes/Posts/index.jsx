@@ -22,8 +22,6 @@ class Posts extends React.PureComponent {
         <Post/>
         <Post/>
         <Post/>
-        <Post/>
-        <Post/>
       </PostsContainer>
     )
   }
