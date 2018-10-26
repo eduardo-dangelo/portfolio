@@ -7,17 +7,19 @@ import React from 'react'
 const AboutContainer = styled.div`
   padding: 15px;
   flex-shrink: 0;
-  background: #dfd6ab;
+  background: white;
   box-sizing: padding-box;
 `;
 
 const Container = styled.div`
-  max-width: 700px;
+  max-width: 600px;
   margin: auto;
 `;
 
 const Text = styled.p`
   margin: 15px;
+  text-align: justify;
+  text-justify: inter-word;
 `;
 
 const flash = keyframes`

@@ -4,21 +4,36 @@ import styled from 'styled-components'
 const ProfileContainer = styled.div`
   display: flex;
   margin-top: 30px;
+  align-items: center;
   justify-content: flex-start;
 `;
 
 const ImgContainer = styled.div`
   //float: right;
-  max-width: 100px;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid black;
   
   img {
     width: 100%;
-    border: 1px solid black;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    border-radius: 50%;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,1);
   }
 `;
 
-class AboutHeader extends React.Component {
+const Content = styled.div`
+  padding: 0 15px;
+  
+  h2 {
+    //font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 3px;
+  }
+`;
+
+class AboutHeader extends React.PureComponent {
   render() {
     return (
       <div>
@@ -26,11 +41,9 @@ class AboutHeader extends React.Component {
           <ImgContainer>
             <img src={require('./img/img-perfil.jpg')} alt="perfil"/>
           </ImgContainer>
-          <div>
-            <h4>Eduardo D'Angelo</h4>
-            <p>10/07/1988</p>
-            <p>Brazilian / Italian</p>
-          </div>
+          <Content>
+            <h2>Eduardo D'Angelo</h2>
+          </Content>
         </ProfileContainer>
       </div>
     )

@@ -3,14 +3,14 @@ import Links from './components/Links'
 import Skills from './components/Skills'
 import Profile from './components/Profile'
 import Contact from './components/Contact'
+import AboutHeader from './components/AboutHeader'
 import { AboutContainer, Container } from './elements'
 import { bindActionCreators } from 'redux'
 import { actions } from '../../reducer'
 import { connect } from 'react-redux'
-import AboutHeader from './components/AboutHeader'
 
 
-class About extends React.Component {
+class About extends React.PureComponent {
   render() {
     return (
       <AboutContainer>
