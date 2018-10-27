@@ -8,7 +8,9 @@ import styled from 'styled-components'
 const FlexBox = styled.div`
   width: 100%;
   height: 100%;
+  font-weight: 100;
   display: flex;
+  font-size: 16px;
   position: absolute;
   flex-direction: column;
   font-family: 'Source Sans Pro', sans-serif;
