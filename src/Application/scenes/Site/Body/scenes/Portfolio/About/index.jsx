@@ -6,7 +6,7 @@ import Contact from './Contact'
 import AboutHeader from './AboutHeader'
 import { AboutContainer, Container } from './elements'
 import { bindActionCreators } from 'redux'
-import { actions } from '../../reducer'
+import { actions } from '../reducer'
 import { connect } from 'react-redux'
 
 

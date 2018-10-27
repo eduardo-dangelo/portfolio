@@ -63,6 +63,7 @@ class Post extends React.PureComponent {
   }
 
   handleToggleModal = () => {
+    console.log('called')
     this.setState({
       showModal: !this.state.showModal
     })
@@ -80,7 +81,7 @@ class Post extends React.PureComponent {
               description of your project, any
             </p>
             <ButtonBar>
-              <Button>
+              <Button onClick={this.handleToggleModal}>
                 + Info
               </Button>
               <Button>
@@ -90,7 +91,7 @@ class Post extends React.PureComponent {
           </OverlayInfo>
         </Fade>
         {showModal && (
-          <MoreInfoModal/>
+          <MoreInfoModal onClose={this.handleToggleModal}/>
         )}
         {/*<img src={require('./temp_img.jpg')} alt="test"/>*/}
       </PostWrapper>
