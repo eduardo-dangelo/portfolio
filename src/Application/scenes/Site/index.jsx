@@ -4,19 +4,21 @@ import Header from './Header'
 import Footer from './Footer'
 import styled from 'styled-components'
 
+
 const FlexBox = styled.div`
   width: 100%;
   height: 100%;
-  position: absolute;
   display: flex;
+  position: absolute;
   flex-direction: column;
+  font-family: 'Source Sans Pro', sans-serif;
 `;
 
 const FlexBody = styled.div`
+  clear: both;
+  display: flex;
   flex: 1 0 auto;
   position: relative;
-  display: flex;
-  clear: both;
   flex-direction: column;
 `;
 

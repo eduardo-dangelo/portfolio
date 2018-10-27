@@ -6,30 +6,30 @@ import MoreInfoModal from '../MoreInfoModal/index'
 
 const PostWrapper = styled.div`
   opacity: 1;
-  height: 300px;
+  height: 350px;
   width: 33.33%;
   overflow: hidden;
   position: relative;
   background: url(${img}); 
   
   img {
-    position: absolute;
     top: 0;
     z-index: 0;
+    position: absolute;
   }
 `;
 
 const OverlayInfo = styled.div`
   z-index: 3;
   color: white;
-  height: 300px;
+  height: 350px;
   padding: 30px;
+  display: flex;
   position: relative;
   text-align: center;
-  background: rgba(0,0,0,0.8);
-  display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  background: rgba(0,0,0,0.8);
 `;
 
 const ButtonBar = styled.div`

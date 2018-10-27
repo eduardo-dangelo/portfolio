@@ -13,7 +13,7 @@ const AboutContainer = styled.div`
 
 const Container = styled.div`
   max-width: 600px;
-  margin: auto;
+  margin: 45px auto;
 `;
 
 const Text = styled.p`

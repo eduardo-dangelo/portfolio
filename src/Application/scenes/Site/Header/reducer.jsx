@@ -2,18 +2,18 @@ const UPDATE_HEADER_PROPS = 'header/UPDATE_HEADER_PROPS'
 
 const initialState = {
   title: {
-    bold: true,
-    italic: true,
-    size: 'medium',
+    bold: false,
+    italic: false,
+    size: 'x-large',
     align: 'center',
-    content: 'Hello World'
+    content: 'Web Developer'
   },
   box: {
-    size: 'medium',
-    color: '#323232',
-    bgColor1: '#d5d1c0',
-    bgColor2: '#69665a',
-    angle: 90
+    size: 'x-large',
+    color: '#fafafa',
+    bgColor1: '#2a6192',
+    bgColor2: '#3f8f7d',
+    angle: 315
   },
   social: {
     github: 'http://github.com',
@@ -23,7 +23,7 @@ const initialState = {
     facebook: '',
   },
   name: {
-    content: 'Author name'
+    content: 'Eduardo D\'Angelo'
   },
   display: {
     name: true,
