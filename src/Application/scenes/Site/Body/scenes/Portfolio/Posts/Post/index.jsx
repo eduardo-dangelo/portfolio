@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
 import img from './temp_img.jpg';
-import MoreInfoModal from '../MoreInfoModal'
+import MoreInfoModal from '../MoreInfoModal/index'
 
 const PostWrapper = styled.div`
   opacity: 1;

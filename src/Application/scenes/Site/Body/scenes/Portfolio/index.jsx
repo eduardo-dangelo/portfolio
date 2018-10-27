@@ -1,6 +1,6 @@
 import React from 'react'
-import About from './scenes/About'
-import Posts from './scenes/Posts'
+import About from './About'
+import Posts from './Posts'
 import styled from 'styled-components'
 
 const FlexContainer = styled.div`

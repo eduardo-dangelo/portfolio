@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
 import withReveal from 'react-reveal/withReveal'
-import Post from './components/Post'
+import Post from './Post'
 
 const PostsContainer = withReveal(styled.div`
   background: #d9d7d4;

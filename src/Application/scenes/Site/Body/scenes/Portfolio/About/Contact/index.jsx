@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, EmailContainer, FormControlContainer, FormGroupContainer, Heading, InputGroupButton, Text, TextArea } from '../../elements'
+import { Container, EmailContainer, FormControlContainer, FormGroupContainer, Heading, InputGroupButton, Text, TextArea } from '../elements'
 import { FaEnvelope } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
 import { InputGroup } from 'react-bootstrap'

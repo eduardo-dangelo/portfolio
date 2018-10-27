@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Text } from '../../elements'
+import { Heading, Text } from '../elements'
 import { FaStar } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
 
