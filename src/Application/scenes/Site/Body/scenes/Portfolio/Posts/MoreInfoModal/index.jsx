@@ -32,6 +32,32 @@ const Modal = styled.div`
   box-shadow: 0 2px 10px rgba(0,0,0,0.7);
 `;
 
+const ModalHeader = styled.div`
+  border-bottom: 1px dashed black;
+  padding-bottom: 15px;
+  
+  h1 {
+    margin: 0;
+  }
+`;
+
+const ModalBody = styled.div`
+  width: 100%;
+  padding: 0;
+`;
+
+const ImgsContainer = styled.div`
+  background: lightgrey;
+  min-width: 700px;
+  width: 100%;
+  height: 400px;
+  margin: 15px 0;
+`;
+
+const Content = styled.div`
+  
+`;
+
 class MoreInfoModal extends React.PureComponent {
   handleOnClose = () => {
     console.log('calle too')
@@ -43,7 +69,18 @@ class MoreInfoModal extends React.PureComponent {
       <div>
         <ModalContainer>
           <Modal>
-            <h1>Social Media App</h1>
+            <ModalHeader>
+              <h1>Social Media App</h1>
+            </ModalHeader>
+            <ModalBody>
+              <ImgsContainer/>
+              <Content>
+                <p>
+                  A clone of a shocial media app just to show how badass Im bich! and more, I dont super
+                  gia a shit about this shit!
+                </p>
+              </Content>
+            </ModalBody>
           </Modal>
           <DarkScreen onClick={this.handleOnClose}/>
         </ModalContainer>
