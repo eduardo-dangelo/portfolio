@@ -5,18 +5,18 @@ import Footer from './Footer'
 import styled from 'styled-components'
 
 
-const FlexBox = styled.div`
+const SiteContainer = styled.div`
   width: 100%;
   height: 100%;
-  font-weight: 100;
   display: flex;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 300;
   position: absolute;
   flex-direction: column;
   font-family: 'Source Sans Pro', sans-serif;
 `;
 
-const FlexBody = styled.div`
+const SiteBody = styled.div`
   clear: both;
   display: flex;
   flex: 1 0 auto;
@@ -24,22 +24,22 @@ const FlexBody = styled.div`
   flex-direction: column;
 `;
 
-const FlexFooter = styled.div`
+const SiteFooter = styled.div`
   flex-shrink: 0;
 `
 
 class Site extends React.PureComponent {
   render() {
     return (
-      <FlexBox>
-        <FlexBody>
+      <SiteContainer>
+        <SiteBody>
           <Header/>
           <Body/>
-        </FlexBody>
-        <FlexFooter>
+        </SiteBody>
+        <SiteFooter>
           <Footer/>
-        </FlexFooter>
-      </FlexBox>
+        </SiteFooter>
+      </SiteContainer>
     )
   }
 }

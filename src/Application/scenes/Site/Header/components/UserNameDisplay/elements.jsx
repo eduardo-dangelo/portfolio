@@ -37,6 +37,7 @@ const Input = styled.input`
 
 const NameContainer = styled.div`
   float: left;
+  font-weight: 400;
   
   @media all and (max-width: 400px) {
     float: none;

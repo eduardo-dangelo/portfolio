@@ -5,16 +5,15 @@ const Header = styled.div`
   width: 100%;
   padding: 10px;
   display: flex;
-  font-size: 1.2em;
   position: relative;
   align-items: center;
   transition: .3s ease;
   flex-direction: column;
   color: ${(props) => props.cssProps.color};
   //background: ${(props) => props.cssProps.bgColor};
-  background: linear-gradient(${({ cssProps }) => cssProps.angle}deg, ${({ cssProps }) => cssProps.bgColor1}, ${({ cssProps }) => cssProps.bgColor2});
   text-align: ${(props) => props.cssProps.textAlign};
   height: ${(props) => getBoxSize(props.cssProps.boxSize)}px;
+  background: linear-gradient(${({ cssProps }) => cssProps.angle}deg, ${({ cssProps }) => cssProps.bgColor1}, ${({ cssProps }) => cssProps.bgColor2});
 `;
 
 const getBoxSize = (boxSize) => {
@@ -92,7 +91,7 @@ const Heading = styled.h1`
   text-align: ${(props) => props.cssProps.align};
   font-size: ${(props) => getFontSize(props.cssProps.size)}px;
   ${(props) => props.cssProps.italic && `font-style: italic;`}
-  ${(props) => props.cssProps.bold && `font-weight: bold;`}
+  ${(props) => props.cssProps.bold ? `font-weight: bold;` : `font-weight: lighter;`}
 `;
 
 const OusideClickContainer = styled.div`
@@ -106,12 +105,9 @@ const OusideClickContainer = styled.div`
 `;
 
 const TopHeader = styled.div`
-  width: 100%;
   top: 10px;
+  width: 100%;
   padding: 0 15px;
-  //display: flex;
-  //align-items: center;
-  //justify-content: space-between;
   position: absolute;
 `;
 

@@ -6,20 +6,20 @@ const initialState = {
     italic: false,
     size: 'x-large',
     align: 'center',
-    content: 'Web Developer'
+    content: 'Full Stack Developer'
   },
   box: {
     size: 'x-large',
     color: '#fafafa',
     bgColor1: '#2a6192',
-    bgColor2: '#3f8f7d',
+    bgColor2: '#163b35',
     angle: 315
   },
   social: {
-    github: 'http://github.com',
+    github: 'http://github.com/eduardo-dangelo',
     twitter: '',
-    codepen: 'http://codepen.com',
-    linkedIn: '',
+    codepen: 'https://codepen.io/eduardodangelo',
+    linkedIn: 'https://www.linkedin.com/in/eduardo-d-angelo-profile/',
     facebook: '',
   },
   name: {

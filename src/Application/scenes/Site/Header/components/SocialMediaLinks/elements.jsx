@@ -56,6 +56,7 @@ const IconContainer = styled.div`
   margin: 0 5px;
   display: flex;
   cursor: pointer;
+  font-weight: 200;
   position: relative;
   align-items: center;
   opacity: ${(props) => props.active ? 1 : (props.hasValue ? .8 : .2)} !important;
@@ -84,6 +85,7 @@ const IconLink = styled.a`
   margin: 0 5px;
   display: flex;
   cursor: pointer;
+  font-size: 16px;
   position: relative;
   align-items: center;
   
