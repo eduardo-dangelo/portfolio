@@ -12,6 +12,14 @@ const PostWrapper = styled.div`
   position: relative;
   background: url(${img}); 
   
+  @media all and (max-width: 1230px) {
+    width: 50%;
+  }
+  
+    @media all and (max-width: 860px) {
+    width: 100%;
+  }
+  
   img {
     top: 0;
     z-index: 0;
