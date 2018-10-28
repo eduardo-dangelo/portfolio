@@ -1,8 +1,6 @@
-import styled, { keyframes } from 'styled-components'
-import withReveal from 'react-reveal/withReveal'
-import Flip from 'react-reveal/Flip'
-import { Button, FormControl, FormGroup } from 'react-bootstrap'
 import React from 'react'
+import { Button, FormGroup } from 'react-bootstrap'
+import styled, { keyframes } from 'styled-components'
 
 const AboutContainer = styled.div`
   padding: 15px;
@@ -12,14 +10,19 @@ const AboutContainer = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 600px;
+  max-width: 700px;
   margin: 45px auto;
 `;
 
 const Text = styled.p`
   margin: 15px;
+  font-size: 20px;
   text-align: justify;
   text-justify: inter-word;
+  
+  strong {
+    font-weight: 600;
+  }
 `;
 
 const flash = keyframes`
@@ -57,6 +60,7 @@ const TextArea = styled.textarea`
 
 const Heading = styled.h3`
   display: flex;
+  font-weight: 600;
   align-items: center;
   
   svg {
@@ -65,24 +69,13 @@ const Heading = styled.h3`
 `;
 
 const EmailContainer = styled.div`
-  float: left;
-  padding: 6px;
   height: 34px;
   display: flex;
+  padding: 0 10px;
+  font-weight: 500;
   align-items: center;
   border: 1px solid black;
-  border-radius: 0 3px 3px 0;
-`;
-
-const FormControlContainer = styled(FormControl)`
-  float: left;
-  height: 34px;
-  padding: 6px;
-  display: flex;
-  max-width: 200px;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 0 3px 3px 0;
+  border-radius: 3px 0 0 3px;
 `;
 
 const InputGroupButton = styled(Button)`
@@ -95,7 +88,7 @@ const InputGroupButton = styled(Button)`
   background: #2b2b2b;
   border: 1px solid black;
   
-  &:hover {
+  &:hover, &:active, &:focus {
     color: white;
     background: black;
     border: 1px solid black;
@@ -103,7 +96,9 @@ const InputGroupButton = styled(Button)`
 `;
 
 const FormGroupContainer = styled(FormGroup)`
+  max-width: 350px;
   margin-left: 15px;
+  position: relative;
 `;
 
 const UnAuthLinkContainer = styled.div`
@@ -113,19 +108,20 @@ const UnAuthLinkContainer = styled.div`
 `;
 
 const UnAuthLink = styled.a`
+  font-size: 20px;
+  font-weight: 400;
   margin-right: 15px;
 `;
 
 export {
-  AboutContainer,
-  Container,
   Text,
-  TextArea,
-  InputGroupButton,
   Heading,
+  TextArea,
+  Container,
+  UnAuthLink,
+  AboutContainer,
   EmailContainer,
-  FormControlContainer,
+  InputGroupButton,
   FormGroupContainer,
   UnAuthLinkContainer,
-  UnAuthLink,
 }

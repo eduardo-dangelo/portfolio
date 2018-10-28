@@ -9,7 +9,6 @@ const ProfileContainer = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  //float: right;
   width: 80px;
   height: 80px;
   overflow: hidden;
@@ -26,9 +25,10 @@ const ImgContainer = styled.div`
 const Content = styled.div`
   padding: 0 15px;
   
-  h2 {
-    //font-weight: bold;
+  h1 {
     margin-top: 0;
+    font-weight: 300;
+    font-size: 2.5em;
     margin-bottom: 3px;
   }
 `;
@@ -42,7 +42,7 @@ class AboutHeader extends React.PureComponent {
             <img src={require('./img/img-perfil.jpg')} alt="perfil"/>
           </ImgContainer>
           <Content>
-            <h2>Eduardo D'Angelo</h2>
+            <h1>Eduardo D'Angelo</h1>
           </Content>
         </ProfileContainer>
       </div>

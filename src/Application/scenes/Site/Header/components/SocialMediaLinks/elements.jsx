@@ -85,7 +85,6 @@ const IconLink = styled.a`
   margin: 0 5px;
   display: flex;
   cursor: pointer;
-  font-size: 16px;
   position: relative;
   align-items: center;
   
