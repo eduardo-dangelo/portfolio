@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
-import img from './temp_img.jpg';
+// import img from './temp_img.jpg';
+import img from '../img/weather_icon.png'
 import MoreInfoModal from '../MoreInfoModal/index'
+
 
 const PostWrapper = styled.div`
   opacity: 1;
@@ -10,7 +12,8 @@ const PostWrapper = styled.div`
   width: 33.33%;
   overflow: hidden;
   position: relative;
-  background: url(${img}); 
+  background: ${({ bg }) => bg};
+  box-shadow: inset 0 0 49px rgba(0,0,0,0.3);
   
   @media all and (max-width: 1230px) {
     width: 50%;
@@ -78,23 +81,25 @@ class Post extends React.PureComponent {
   }
 
   render() {
+    const { post } = this.props
     const { showOverlay, showModal } = this.state
     return (
-      <PostWrapper onMouseOver={this.handleShow} onMouseLeave={this.handleHide}>
+      <PostWrapper bg={post.bg} onMouseOver={this.handleShow} onMouseLeave={this.handleHide}>
         <Fade when={showOverlay}>
           <OverlayInfo>
-            <h2>Social Media App</h2>
+            <h2>{post.title}</h2>
             <p>
-              description of your project, any bulllshit that nobody will read
-              description of your project, any
+              {post.description}
             </p>
             <ButtonBar>
               <Button onClick={this.handleToggleModal}>
                 + Info
               </Button>
-              <Button>
-                Demo
-              </Button>
+              <a href={post.demo} target="_blank">
+                <Button>
+                  Demo
+                </Button>
+              </a>
             </ButtonBar>
           </OverlayInfo>
         </Fade>
