@@ -15,10 +15,19 @@ const PostsContainer = withReveal(styled.div`
 
 const posts = [
   {
+    title: 'Social Media App',
+    key: 'social-media-app',
+    bg: '#4b0a07',
+    description: 'An example of a social-media type of application',
+    technologies: ['react', 'redux', 'scss', 'bootstrap'],
+    demo: 'https://eduardo-dangelo.github.io/social-media-app',
+    github: 'https://github.com/eduardo-dangelo/social-media-app'
+  },
+  {
     title: 'Weather App',
     key: 'weather_app',
     bg: '#0e9a88',
-    description: 'Serach for multiple cities and receive weather information.(source: openweathermap.org)',
+    description: 'Search for multiple cities and receive weather information',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/react-redux-weather-app/',
     github: 'https://github.com/eduardo-dangelo/react-redux-weather-app'
@@ -27,7 +36,7 @@ const posts = [
     title: 'Redux Playground',
     key: 'redux_playground',
     bg: '#9a5a18',
-    description: 'Examples of redux and redux-form usage',
+    description: 'Examples of React-redux and Redux-form usage',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/redux-playground/',
     github: 'https://github.com/eduardo-dangelo/redux-playground'
@@ -36,7 +45,7 @@ const posts = [
     title: 'Styling Via Props',
     key: 'styling_via_props',
     bg: '#4b129a',
-    description: 'change the style of component with redux and styled-components',
+    description: 'Style your component with Redux and Styled-components',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/styling-components-via-props/',
     github: 'https://github.com/eduardo-dangelo/styling-components-via-props'
@@ -45,7 +54,7 @@ const posts = [
     title: 'Youtube Api Search',
     key: 'youtube_api_serach',
     bg: '#9a1e10',
-    description: 'An application that\'s search and play youtube videos',
+    description: 'An interface to search and play youtube videos',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/youtube-api-search-app/',
     github: 'https://github.com/eduardo-dangelo/youtube-api-search-app'
@@ -56,8 +65,8 @@ const posts = [
     bg: '#2967ac',
     description: 'Select your players and start your fight',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
-    demo: 'https://eduardo-dangelo.github.io/youtube-api-search-app/',
-    github: 'https://github.com/eduardo-dangelo/youtube-api-search-app'
+    demo: 'https://eduardo-dangelo.github.io/redux-simple-example/',
+    github: 'https://github.com/eduardo-dangelo/redux-simple-example'
   },
 ]
 

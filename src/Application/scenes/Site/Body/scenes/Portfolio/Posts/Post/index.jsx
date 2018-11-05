@@ -2,8 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
 // import img from './temp_img.jpg';
-import img from '../img/weather_icon.png'
+import img from './IconType/img/weather_icon.png'
 import MoreInfoModal from '../MoreInfoModal/index'
+import { FaYoutube } from 'react-icons/fa'
+import IconType from './IconType'
 
 
 const PostWrapper = styled.div`
@@ -40,7 +42,7 @@ const OverlayInfo = styled.div`
   text-align: center;
   flex-direction: column;
   justify-content: flex-end;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.1);
 `;
 
 const ButtonBar = styled.div`
@@ -55,29 +57,52 @@ const Button = styled.button`
   border: 1px solid white;
 `;
 
+const IconContainer = styled.div`
+  z-index: 0;
+  color: white;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  padding: 30px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 6.5em;
+  opacity: 0.1;
+  transition: .6s ease;
+  
+  &:hover {
+    font-size: 4em;
+    
+    > div {
+      width: 135px;
+      height: 135px;
+    }
+  }
+  
+  > div {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: .6s ease;
+    
+    img {
+      position: relative;
+      width: 90%;
+    }
+  }
+`;
+
 class Post extends React.PureComponent {
   state = {
     showOverlay: false,
     showModal: false
-  }
-
-  handleShow = () => {
-    this.setState({
-      showOverlay: true
-    })
-  }
-
-  handleHide = () => {
-    this.setState({
-      showOverlay: false
-    })
-  }
-
-  handleToggleModal = () => {
-    console.log('called')
-    this.setState({
-      showModal: !this.state.showModal
-    })
   }
 
   render() {
@@ -106,9 +131,30 @@ class Post extends React.PureComponent {
         {showModal && (
           <MoreInfoModal onClose={this.handleToggleModal}/>
         )}
-        {/*<img src={require('./temp_img.jpg')} alt="test"/>*/}
+        <IconContainer>
+          <IconType type={post.key}/>
+        </IconContainer>
       </PostWrapper>
     )
+  }
+
+  handleShow = () => {
+    this.setState({
+      showOverlay: true
+    })
+  }
+
+  handleHide = () => {
+    this.setState({
+      showOverlay: false
+    })
+  }
+
+  handleToggleModal = () => {
+    console.log('called')
+    this.setState({
+      showModal: !this.state.showModal
+    })
   }
 }
 
