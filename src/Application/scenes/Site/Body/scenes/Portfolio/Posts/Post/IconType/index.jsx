@@ -1,12 +1,13 @@
 import React from 'react'
 import { FaThumbsUp, FaSun, FaCogs, FaYoutube } from 'react-icons/fa'
-import reduxLogo from './img/redux _logo.png'
-import graphQlLogo from './img/GraphQL_Logo.png'
-import vsLogo from './img/vs_logo.png'
-import weatherLogo from './img/weather_icon.png'
-import youtubeLogo from './img/youtube_logo.png'
+import reduxLogo from './img/redux _logo_xs.png'
+import graphQlLogo from './img/graphql_logo_xs.png'
+import vsLogo from './img/logo_vs_xs.png'
+import weatherLogo from './img/weather_icon_xs.png'
+import youtubeLogo from './img/youtube_logo_xs.png'
 import stylingLogo from './img/logo_styling.png'
-import stylingLogo2 from './img/logo_styling_2.png'
+import stylingLogo2 from './img/logo_styling_xs.png'
+import Fade from 'react-reveal/Fade'
 
 class IconType extends React.Component {
   render() {

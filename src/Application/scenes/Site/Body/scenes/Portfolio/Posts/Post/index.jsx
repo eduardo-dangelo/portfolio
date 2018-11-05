@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Fade from 'react-reveal/Fade'
 // import img from './temp_img.jpg';
 import img from './IconType/img/weather_icon.png'
@@ -57,6 +57,16 @@ const Button = styled.button`
   border: 1px solid white;
 `;
 
+const FadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`;
+
 const IconContainer = styled.div`
   z-index: 0;
   color: white;
@@ -95,8 +105,14 @@ const IconContainer = styled.div`
     img {
       position: relative;
       width: 90%;
+      animation: ${FadeIn} 1.2s ease-out;
     }
   }
+`;
+
+const Wrapper = styled.div`
+  z-index: 2;
+  position: relative;
 `;
 
 class Post extends React.PureComponent {
@@ -110,24 +126,26 @@ class Post extends React.PureComponent {
     const { showOverlay, showModal } = this.state
     return (
       <PostWrapper bg={post.bg} onMouseOver={this.handleShow} onMouseLeave={this.handleHide}>
-        <Fade when={showOverlay}>
-          <OverlayInfo>
-            <h2>{post.title}</h2>
-            <p>
-              {post.description}
-            </p>
-            <ButtonBar>
-              <Button onClick={this.handleToggleModal}>
-                + Info
-              </Button>
-              <a href={post.demo} target="_blank">
-                <Button>
-                  Demo
+        <Wrapper>
+          <Fade when={showOverlay}>
+            <OverlayInfo>
+              <h2>{post.title}</h2>
+              <p>
+                {post.description}
+              </p>
+              <ButtonBar>
+                <Button onClick={this.handleToggleModal}>
+                  + Info
                 </Button>
-              </a>
-            </ButtonBar>
-          </OverlayInfo>
-        </Fade>
+                <a href={post.demo} target="_blank">
+                  <Button>
+                    Demo
+                  </Button>
+                </a>
+              </ButtonBar>
+            </OverlayInfo>
+          </Fade>
+        </Wrapper>
         {showModal && (
           <MoreInfoModal onClose={this.handleToggleModal}/>
         )}
