@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Fade from 'react-reveal/Fade'
 
 const DarkScreen = styled.div`
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 0;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -68,6 +69,8 @@ class MoreInfoModal extends React.PureComponent {
     return (
       <div>
         <ModalContainer>
+          <DarkScreen onClick={this.handleOnClose}/>
+          <Fade>
           <Modal>
             <ModalHeader>
               <h1>Social Media App</h1>
@@ -82,7 +85,7 @@ class MoreInfoModal extends React.PureComponent {
               </Content>
             </ModalBody>
           </Modal>
-          <DarkScreen onClick={this.handleOnClose}/>
+          </Fade>
         </ModalContainer>
       </div>
     );

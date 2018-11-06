@@ -6,6 +6,7 @@ import img from './IconType/img/weather_icon.png'
 import MoreInfoModal from '../MoreInfoModal/index'
 import { FaYoutube } from 'react-icons/fa'
 import IconType from './IconType'
+import Flip from 'react-reveal/Flip'
 
 
 const PostWrapper = styled.div`
@@ -46,7 +47,9 @@ const OverlayInfo = styled.div`
 `;
 
 const ButtonBar = styled.div`
-  
+   a, a:active {
+    color: white;
+   }
 `;
 
 const Button = styled.button`
@@ -55,6 +58,11 @@ const Button = styled.button`
   border-radius: 4px;
   margin-right: 15px;
   border: 1px solid white;
+  transition: .3s ease;
+  
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
 `;
 
 const FadeIn = keyframes`
@@ -135,11 +143,15 @@ class Post extends React.PureComponent {
               </p>
               <ButtonBar>
                 <Button onClick={this.handleToggleModal}>
-                  + Info
+                  <Flip top when={showOverlay} cascade>
+                    + Info
+                  </Flip>
                 </Button>
                 <a href={post.demo} target="_blank">
                   <Button>
-                    Demo
+                    <Flip top when={showOverlay} cascade>
+                      Demo
+                    </Flip>
                   </Button>
                 </a>
               </ButtonBar>
