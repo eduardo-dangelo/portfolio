@@ -1,6 +1,6 @@
 import React from 'react'
-import AdminBar from './scenes/AdminBar'
 import Site from './scenes/Site'
+import AdminBar from './scenes/AdminBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class Application extends React.Component {
@@ -12,7 +12,7 @@ class Application extends React.Component {
           <Route path='/' render={() => <Site/>} />
         </div>
       </Router>
-    )
+    );
   }
 }
 

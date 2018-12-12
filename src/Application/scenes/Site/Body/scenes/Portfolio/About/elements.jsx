@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const Text = styled.p`
   margin: 15px;
-  font-size: 20px;
+  font-size: 16px;
   text-align: justify;
   text-justify: inter-word;
   

@@ -1,12 +1,9 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import Fade from 'react-reveal/Fade'
-// import img from './temp_img.jpg';
-import img from './IconType/img/weather_icon.png'
-import MoreInfoModal from '../MoreInfoModal/index'
-import { FaYoutube } from 'react-icons/fa'
 import IconType from './IconType'
 import Flip from 'react-reveal/Flip'
+import Fade from 'react-reveal/Fade'
+import MoreInfoModal from '../MoreInfoModal/index'
+import styled, { keyframes } from 'styled-components'
 
 
 const PostWrapper = styled.div`
@@ -44,21 +41,25 @@ const OverlayInfo = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   background: rgba(0,0,0,0.1);
+  
+  h2 {
+    font-weight: 400;
+  }
 `;
 
-const ButtonBar = styled.div`
+export const ButtonBar = styled.div`
    a, a:active {
     color: white;
    }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   background: none;
   padding: 5px 10px;
   border-radius: 4px;
   margin-right: 15px;
-  border: 1px solid white;
   transition: .3s ease;
+  border: 1px solid white;
   
   &:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.7);
@@ -76,20 +77,20 @@ const FadeIn = keyframes`
 `;
 
 const IconContainer = styled.div`
-  z-index: 0;
-  color: white;
-  height: 100%;
-  width: 100%;
   top: 0;
   right: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
   padding: 30px;
   display: flex;
+  opacity: 0.1;
+  font-size: 6.5em;
   position: absolute;
   align-items: center;
-  justify-content: space-around;
-  font-size: 6.5em;
-  opacity: 0.1;
   transition: .6s ease;
+  justify-content: space-around;
   
   &:hover {
     font-size: 4em;
@@ -103,16 +104,16 @@ const IconContainer = styled.div`
   > div {
     width: 150px;
     height: 150px;
+    display: flex;
     position: relative;
     border-radius: 50%;
-    display: flex;
     align-items: center;
-    justify-content: space-around;
     transition: .6s ease;
+    justify-content: space-around;
     
     img {
-      position: relative;
       width: 90%;
+      position: relative;
       animation: ${FadeIn} 1.2s ease-out;
     }
   }
@@ -159,7 +160,7 @@ class Post extends React.PureComponent {
           </Fade>
         </Wrapper>
         {showModal && (
-          <MoreInfoModal onClose={this.handleToggleModal}/>
+          <MoreInfoModal post={post} onClose={this.handleToggleModal}/>
         )}
         <IconContainer>
           <IconType type={post.key}/>

@@ -1,27 +1,27 @@
 import React from 'react'
-import styled from 'styled-components'
-import Fade from 'react-reveal/Fade'
-import withReveal from 'react-reveal/withReveal'
 import Post from './Post'
+import Fade from 'react-reveal/Fade'
+import styled from 'styled-components'
+import withReveal from 'react-reveal/withReveal'
 
 const PostsContainer = withReveal(styled.div`
-  background: #d9d7d4;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
   flex: 1 0 auto;
+  flex-wrap: wrap;
+  background: #d9d7d4;
 `, <Fade cascade/>);
 
 
 const posts = [
   {
-    title: 'Social Media App',
-    key: 'social-media-app',
+    title: 'Social Media Demo',
+    key: 'social_media_demo',
     bg: '#4b0a07',
     description: 'An example of a social-media type of application',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
-    demo: 'https://eduardo-dangelo.github.io/social-media-app',
-    github: 'https://github.com/eduardo-dangelo/social-media-app'
+    demo: 'https://eduardo-dangelo.github.io/social-media-demo',
+    github: 'https://github.com/eduardo-dangelo/social-media-demo'
   },
   {
     title: 'Weather App',

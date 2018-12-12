@@ -1,17 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-import { ApolloClient } from 'apollo-client'
-import { ApolloProvider } from 'react-apollo'
-import { createHttpLink } from 'apollo-link-http'
-import { ApolloLink} from 'apollo-link'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import 'tachyons'
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import { rootReducer } from "./Application/services/redux";
+import React from 'react';
+import App from './App';
+import 'tachyons';
+import thunk from 'redux-thunk';
+import ReactDOM from 'react-dom';
 import { compose } from 'redux';
-import thunk from 'redux-thunk'
+import { Provider } from 'react-redux';
+import { ApolloLink} from 'apollo-link';
+import { ApolloClient } from 'apollo-client';
+import { ApolloProvider } from 'react-apollo';
+import { createHttpLink } from 'apollo-link-http';
+import { createStore, applyMiddleware } from 'redux';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { rootReducer } from "./Application/services/redux";
 
 const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/cjlff6bg55guo0104m4lg6s6e` })
 
