@@ -1,16 +1,13 @@
 {
   "main.css": "static/css/main.19f3c8fe.css",
   "main.css.map": "static/css/main.19f3c8fe.css.map",
-  "main.js": "static/js/main.6079f468.js",
-  "main.js.map": "static/js/main.6079f468.js.map",
+  "main.js": "static/js/main.fc53aa78.js",
+  "main.js.map": "static/js/main.fc53aa78.js.map",
   "static\\media\\graphql_logo_xs.png": "static/media/graphql_logo_xs.e88df733.png",
   "static\\media\\img-perfil.jpg": "static/media/img-perfil.296257e6.jpg",
-  "static\\media\\logo_styling.png": "static/media/logo_styling.37a5005c.png",
   "static\\media\\logo_styling_xs.png": "static/media/logo_styling_xs.3ad6cc56.png",
   "static\\media\\logo_vs_xs.png": "static/media/logo_vs_xs.995814d6.png",
   "static\\media\\redux _logo_xs.png": "static/media/redux _logo_xs.69554cd0.png",
-  "static\\media\\weather_app.gif": "static/media/weather_app.8a4f3c9f.gif",
-  "static\\media\\weather_icon.png": "static/media/weather_icon.98e7b9bf.png",
   "static\\media\\weather_icon_xs.png": "static/media/weather_icon_xs.45178365.png",
   "static\\media\\youtube_logo_xs.png": "static/media/youtube_logo_xs.ff90121e.png"
 }
