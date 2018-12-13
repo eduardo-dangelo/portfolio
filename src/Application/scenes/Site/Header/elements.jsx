@@ -4,11 +4,11 @@ const Header = styled.div`
   top: 0;
   width: 100%;
   padding: 10px;
-  display: flex;
+  //display: flex;
   position: relative;
-  align-items: center;
+  //align-items: center;
   transition: .3s ease;
-  flex-direction: column;
+  //flex-direction: column;
   color: ${(props) => props.cssProps.color};
   //background: ${(props) => props.cssProps.bgColor};
   text-align: ${(props) => props.cssProps.textAlign};
@@ -16,10 +16,22 @@ const Header = styled.div`
   background: linear-gradient(${({ cssProps }) => cssProps.angle}deg, ${({ cssProps }) => cssProps.bgColor1}, ${({ cssProps }) => cssProps.bgColor2});
 `;
 
+const HeaderContent = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 2px 16px rgba(0,0,0,0.2);
+`;
+
 const getBoxSize = (boxSize) => {
   switch (boxSize) {
     case 'x-large':
-      return 400
+      return 500
     case 'large':
       return 300
     case 'medium':
@@ -122,4 +134,4 @@ const HeaderBody = styled.div`
   }
 `;
 
-export { Header, Input, Heading, OusideClickContainer, TopHeader, HeaderBody }
+export { Header, Input, Heading, OusideClickContainer, TopHeader, HeaderBody, HeaderContent }

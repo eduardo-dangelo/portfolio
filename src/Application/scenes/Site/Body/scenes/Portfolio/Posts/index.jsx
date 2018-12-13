@@ -17,7 +17,7 @@ const posts = [
   {
     title: 'Social Media Demo',
     key: 'social_media_demo',
-    bg: '#4b0a07',
+    bg: '#c60039',
     description: 'An example of a social-media type of application',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/social-media-demo',
@@ -26,7 +26,7 @@ const posts = [
   {
     title: 'Weather App',
     key: 'weather_app',
-    bg: '#0e9a88',
+    bg: '#fdab39',
     description: 'Search for multiple cities and receive weather information',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/react-redux-weather-app/',
@@ -35,7 +35,7 @@ const posts = [
   {
     title: 'Redux Playground',
     key: 'redux_playground',
-    bg: '#9a5a18',
+    bg: '#571845',
     description: 'Examples of React-redux and Redux-form usage',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/redux-playground/',
@@ -44,7 +44,7 @@ const posts = [
   {
     title: 'Styling Via Props',
     key: 'styling_via_props',
-    bg: '#4b129a',
+    bg: '#2869fd',
     description: 'Style your component with Redux and Styled-components',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/styling-components-via-props/',
@@ -53,7 +53,7 @@ const posts = [
   {
     title: 'Youtube Api Search',
     key: 'youtube_api_serach',
-    bg: '#9a1e10',
+    bg: '#d12423',
     description: 'An interface to search and play youtube videos',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/youtube-api-search-app/',
@@ -62,7 +62,7 @@ const posts = [
   {
     title: 'Fight Game Menu',
     key: 'fight_game_menu',
-    bg: '#2967ac',
+    bg: '#412782',
     description: 'Select your players and start your fight',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/redux-simple-example/',
