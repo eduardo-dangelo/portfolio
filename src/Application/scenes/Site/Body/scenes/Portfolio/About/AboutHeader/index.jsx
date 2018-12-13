@@ -11,14 +11,12 @@ const ProfileContainer = styled.div`
 const ImgContainer = styled.div`
   width: 80px;
   height: 80px;
-  overflow: hidden;
   border-radius: 50%;
-  border: 2px solid black;
   
   img {
     width: 100%;
     border-radius: 50%;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,1);
+    box-shadow: 1px 2px 16px rgba(0,0,0,0.1);
   }
 `;
 
