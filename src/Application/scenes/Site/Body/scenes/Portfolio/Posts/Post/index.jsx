@@ -2,7 +2,6 @@ import React from 'react'
 import IconType from './IconType'
 import Flip from 'react-reveal/Flip'
 import Fade from 'react-reveal/Fade'
-import MoreInfoModal from '../MoreInfoModal/index'
 import styled, { keyframes } from 'styled-components'
 
 
@@ -143,11 +142,13 @@ class Post extends React.PureComponent {
                 {post.description}
               </p>
               <ButtonBar>
-                <Button onClick={this.handleToggleModal}>
-                  <Flip top when={showOverlay} cascade>
-                    + Info
-                  </Flip>
-                </Button>
+                <a href={post.github} target="_blank">
+                  <Button>
+                    <Flip top when={showOverlay} cascade>
+                      Github
+                    </Flip>
+                  </Button>
+                </a>
                 <a href={post.demo} target="_blank">
                   <Button>
                     <Flip top when={showOverlay} cascade>
@@ -159,9 +160,6 @@ class Post extends React.PureComponent {
             </OverlayInfo>
           </Fade>
         </Wrapper>
-        {showModal && (
-          <MoreInfoModal post={post} onClose={this.handleToggleModal}/>
-        )}
         <IconContainer>
           <IconType type={post.key}/>
         </IconContainer>
