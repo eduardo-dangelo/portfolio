@@ -87,6 +87,7 @@ const InputGroupButton = styled(Button)`
   align-items: center;
   background: #2b2b2b;
   border: 1px solid black;
+  margin-right: 10px;
   
   &:hover, &:active, &:focus {
     color: white;
@@ -99,6 +100,16 @@ const FormGroupContainer = styled(FormGroup)`
   max-width: 350px;
   margin-left: 15px;
   position: relative;
+`;
+
+const FlexBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  > div:first-child {
+    margin-right: 10px;
+  }
 `;
 
 const UnAuthLinkContainer = styled.div`
@@ -116,6 +127,7 @@ const UnAuthLink = styled.a`
 export {
   Text,
   Heading,
+  FlexBox,
   TextArea,
   Container,
   UnAuthLink,
