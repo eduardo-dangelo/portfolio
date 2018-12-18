@@ -12,7 +12,7 @@ class Links extends React.PureComponent {
         </Heading>
         <UnAuthLinkContainer>
           <UnAuthLink href={''} target="_blank">
-            Example link
+            Cv
           </UnAuthLink>
         </UnAuthLinkContainer>
       </div>

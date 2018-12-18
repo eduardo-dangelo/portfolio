@@ -6,13 +6,13 @@ const initialState = {
     italic: false,
     size: 'x-large',
     align: 'center',
-    content: 'Full Stack Developer'
+    content: 'Web Developer'
   },
   box: {
     size: 'x-large',
     color: '#fafafa',
     bgColor1: '#062123',
-    bgColor2: '#062123',
+    bgColor2: '#051618',
     angle: 315
   },
   social: {

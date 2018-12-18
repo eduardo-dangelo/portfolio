@@ -122,6 +122,7 @@ const UnAuthLink = styled.a`
   font-size: 20px;
   font-weight: 400;
   margin-right: 15px;
+  transition: .3s ease;
 `;
 
 export {
