@@ -4,15 +4,15 @@ const initialState = {
   title: {
     bold: false,
     italic: false,
-    size: 'x-large',
+    size: 'large',
     align: 'center',
-    content: 'Web Developer'
+    content: 'Full Stack'
   },
   box: {
     size: 'x-large',
     color: '#fafafa',
-    bgColor1: '#062123',
-    bgColor2: '#051618',
+    bgColor1: '#152651',
+    bgColor2: '#1a1a3a',
     angle: 315
   },
   social: {

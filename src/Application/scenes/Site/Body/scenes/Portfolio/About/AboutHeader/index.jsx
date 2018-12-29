@@ -40,7 +40,7 @@ class AboutHeader extends React.PureComponent {
             <img src={require('./img/img-perfil.jpg')} alt="perfil"/>
           </ImgContainer>
           <Content>
-            <h1>Eduardo D'Angelo</h1>
+            <h2>Eduardo D'Angelo</h2>
           </Content>
         </ProfileContainer>
       </div>

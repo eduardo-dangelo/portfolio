@@ -6,6 +6,7 @@ import SocialMediaLinks from './components/SocialMediaLinks/index'
 import { HeaderController } from '../components/Controllers/index'
 import { Header as AppHeader, TopHeader, HeaderBody, HeaderContent } from './elements'
 import Particles from 'react-particles-js';
+import AboutHeader from '../Body/scenes/Portfolio/About/AboutHeader'
 
 class Header extends React.PureComponent {
   state = {

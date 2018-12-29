@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { Input, Heading } from '../../elements'
 import connect from 'react-redux/es/connect/connect'
 import { actions as headerActions } from '../../reducer'
+import AboutHeader from '../../../Body/scenes/Portfolio/About/AboutHeader'
 
 class PageTitle extends React.PureComponent {
   state = {
@@ -42,6 +43,7 @@ class PageTitle extends React.PureComponent {
           {!isAuth ? (
             <Flip top cascade>
               {header.title.content}
+              {/*<AboutHeader/>*/}
             </Flip>
           ) : (
             <Input
