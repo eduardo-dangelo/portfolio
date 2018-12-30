@@ -4,7 +4,7 @@ import PageTitle from './components/PageTitle/index'
 import UserNameDisplay from './components/UserNameDisplay/index'
 import SocialMediaLinks from './components/SocialMediaLinks/index'
 import { HeaderController } from '../components/Controllers/index'
-import { Header as AppHeader, TopHeader, HeaderBody, HeaderContent } from './elements'
+import { Header as AppHeader, TopHeader, HeaderBody, HeaderContent, ParticlesContainer } from './elements'
 import Particles from 'react-particles-js';
 import AboutHeader from '../Body/scenes/Portfolio/About/AboutHeader'
 
@@ -50,26 +50,28 @@ class Header extends React.PureComponent {
         )}
 
         <AppHeader cssProps={{ boxSize, color, bgColor1, bgColor2, angle, textAlign }}>
-          <Particles
-            params={{
-              "particles": {
-                "number": {
-                  "value": 50
+          <ParticlesContainer>
+            <Particles
+              params={{
+                "particles": {
+                  "number": {
+                    "value": 50
+                  },
+                  "size": {
+                    "value": 1
+                  }
                 },
-                "size": {
-                  "value": 1
-                }
-              },
-              "interactivity": {
-                "events": {
-                  "onhover": {
-                    "enable": true,
-                    "mode": "repulse"
+                "interactivity": {
+                  "events": {
+                    "onhover": {
+                      "enable": true,
+                      "mode": "repulse"
+                    }
                   }
                 }
-              }
-            }}
-          />
+              }}
+            />
+          </ParticlesContainer>
           <HeaderContent>
             <TopHeader>
               <UserNameDisplay

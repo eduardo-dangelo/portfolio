@@ -6,14 +6,29 @@ const Header = styled.div`
   padding: 10px;
   //display: flex;
   position: relative;
-  //align-items: center;
+  //align-items: center; 
   transition: .3s ease;
   //flex-direction: column;
+  //border: 1px solid orange;
+  overflow: hidden;
   color: ${(props) => props.cssProps.color};
   //background: ${(props) => props.cssProps.bgColor};
   text-align: ${(props) => props.cssProps.textAlign};
   height: ${(props) => getBoxSize(props.cssProps.boxSize)}px;
   background: linear-gradient(${({ cssProps }) => cssProps.angle}deg, ${({ cssProps }) => cssProps.bgColor1}, ${({ cssProps }) => cssProps.bgColor2});
+`;
+
+const ParticlesContainer = styled.div`
+  //border: 1px paleturquoise dashed;
+  position: fixed;
+  width: 100%;
+  height: 450px;
+  top: 0;
+  left: 0;
+  
+  @media all and (max-width: 1200px) {
+    width: 1200px;
+  }
 `;
 
 const HeaderContent = styled.div`
@@ -134,4 +149,4 @@ const HeaderBody = styled.div`
   }
 `;
 
-export { Header, Input, Heading, OusideClickContainer, TopHeader, HeaderBody, HeaderContent }
+export { Header, Input, Heading, OusideClickContainer, TopHeader, HeaderBody, HeaderContent, ParticlesContainer }

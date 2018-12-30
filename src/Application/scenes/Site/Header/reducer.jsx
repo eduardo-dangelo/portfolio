@@ -11,7 +11,7 @@ const initialState = {
   box: {
     size: 'x-large',
     color: '#fafafa',
-    bgColor1: '#152651',
+    bgColor1: '#1b3170',
     bgColor2: '#1a1a3a',
     angle: 315
   },
