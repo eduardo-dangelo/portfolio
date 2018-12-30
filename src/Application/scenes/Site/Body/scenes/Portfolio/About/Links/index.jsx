@@ -11,8 +11,8 @@ class Links extends React.PureComponent {
           <FaLink/><Flip top cascade>Links</Flip>
         </Heading>
         <UnAuthLinkContainer>
-          <UnAuthLink href={''} target="_blank">
-            Cv
+          <UnAuthLink href={'https://drive.google.com/file/d/1WUsaMdiK0CfaW2gXP2LXGDsphQCptByM/view'} target="_blank">
+            Resume
           </UnAuthLink>
           <UnAuthLink href={'https://www.linkedin.com/in/eduardo-d-angelo-profile/'} target="_blank">
             LinkedIn
