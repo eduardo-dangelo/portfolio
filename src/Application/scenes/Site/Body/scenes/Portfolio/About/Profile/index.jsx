@@ -1,7 +1,7 @@
-import React from 'react'
-import { Heading, Text } from '../elements'
-import { FaUser } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
+import React from 'react';
+import Flip from 'react-reveal/Flip';
+import { FaUser } from 'react-icons/fa';
+import { Heading, Text } from '../elements';
 
 class Profile extends React.PureComponent {
   render() {
@@ -22,8 +22,8 @@ class Profile extends React.PureComponent {
           be challenged and grow professionally.
         </Text>
       </div>
-    )
+    );
   }
 }
 
-export default Profile
+export default Profile;

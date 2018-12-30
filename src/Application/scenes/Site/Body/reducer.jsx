@@ -1,5 +1,5 @@
 
-const SELECT_BODY_TYPE = 'body/SELECT_BODY_TYPE'
+const SELECT_BODY_TYPE = 'body/SELECT_BODY_TYPE';
 
 const initialValues = {
   bodyType: 'portfolio'
@@ -20,4 +20,4 @@ const selectBodyType = (payload) => ({ type: SELECT_BODY_TYPE, payload})
 
 export const actions = {
   selectBodyType,
-}
+};

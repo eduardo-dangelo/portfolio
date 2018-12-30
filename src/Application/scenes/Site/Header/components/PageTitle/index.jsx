@@ -1,10 +1,9 @@
-import React from 'react'
-import Flip from 'react-reveal/Flip'
-import { bindActionCreators } from 'redux'
-import { Input, Heading } from '../../elements'
-import connect from 'react-redux/es/connect/connect'
-import { actions as headerActions } from '../../reducer'
-import AboutHeader from '../../../Body/scenes/Portfolio/About/AboutHeader'
+import React from 'react';
+import Flip from 'react-reveal/Flip';
+import { bindActionCreators } from 'redux';
+import { Input, Heading } from '../../elements';
+import connect from 'react-redux/es/connect/connect';
+import { actions as headerActions } from '../../reducer';
 
 class PageTitle extends React.PureComponent {
   state = {
@@ -15,7 +14,7 @@ class PageTitle extends React.PureComponent {
     const { header } = this.props
     this.setState({
       inputValueTemp: header.title.content
-    })
+    });
   }
 
   handleInputBlur = (e) => {
@@ -26,12 +25,12 @@ class PageTitle extends React.PureComponent {
   handleChangeTitle = (e) => {
     this.setState({
       inputValueTemp: e.target.value
-    })
+    });
   }
 
   render() {
-    const { isAuth, header } = this.props
-    const { inputValueTemp } = this.state
+    const { isAuth, header } = this.props;
+    const { inputValueTemp } = this.state;
 
     if (!header.display.title) {
       return null;
@@ -56,7 +55,7 @@ class PageTitle extends React.PureComponent {
           )}
         </Heading>
       </div>
-    )
+    );
   }
 }
 
@@ -65,4 +64,4 @@ export default connect(
   (dispatch) => ({
     actions: bindActionCreators(headerActions, dispatch)
   })
-)(PageTitle)
+)(PageTitle);

@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 
-const Bar = styled.div`
+export const Bar = styled.div`
   width: 100%;
   height: 60px;
   display: flex;
@@ -9,7 +9,7 @@ const Bar = styled.div`
   justify-content: space-between;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   padding: 8px;
   margin-right: 15px;
   transition: .3s ease;
@@ -21,12 +21,12 @@ const Input = styled.input`
   }
 `;
 
-const Form = styled.div`
+export const Form = styled.div`
   display: flex;
   padding: 0 15px;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
   cursor: pointer;
   padding: 6px 15px;
@@ -41,12 +41,12 @@ const Button = styled.button`
   }
 `;
 
-const Title = styled.h4`
+export const Title = styled.h4`
   padding: 0 15px;
   font-weight: lighter;
 `;
 
-const rotate360 = keyframes`
+export const rotate360 = keyframes`
   from {
     transform: rotate(0deg);
   }
@@ -56,7 +56,7 @@ const rotate360 = keyframes`
   }
 `;
 
-const Spin = styled.div`
+export const Spin = styled.div`
   padding: 5px;
   display: flex;
   align-items: center;
@@ -64,9 +64,7 @@ const Spin = styled.div`
   animation: ${rotate360} 1s linear infinite;
 `;
 
-const Error = styled.span`
+export const Error = styled.span`
   color: #7a0000;
   padding: 10px 15px;
-`
-
-export { Bar, Title, Input, Button, Form, Spin, Error }
+`;

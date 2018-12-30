@@ -1,9 +1,9 @@
-import React from 'react'
-import Flip from 'react-reveal/Flip'
-import styled, { keyframes } from 'styled-components'
-import withReveal from 'react-reveal/withReveal'
+import React from 'react';
+import Flip from 'react-reveal/Flip';
+import withReveal from 'react-reveal/withReveal';
+import styled, { keyframes } from 'styled-components';
 
-const flash = keyframes`
+export const flash = keyframes`
   0% {
     border: 1px dashed transparent;
   }
@@ -17,7 +17,7 @@ const flash = keyframes`
   }
 `;
 
-const SocialMediaLinksContainer = styled.div`
+export const SocialMediaLinksContainer = styled.div`
   z-index: 1;
   padding: 5px;
   float: right;
@@ -42,17 +42,17 @@ const SocialMediaLinksContainer = styled.div`
   }
 `;
 
-const IconList = styled.div`
+export const IconList = styled.div`
   margin: 0;
   display: flex;
   position: relative;
   align-items: center;
 `;
 
-const IconListAuth = withReveal(styled(IconList)``, <Flip right cascade />);
-const IconListUnauth = withReveal(styled(IconList)``, <Flip right cascade />);
+export const IconListAuth = withReveal(styled(IconList)``, <Flip right cascade />);
+export const IconListUnauth = withReveal(styled(IconList)``, <Flip right cascade />);
 
-const IconContainer = styled.div`
+export const IconContainer = styled.div`
   margin: 0 5px;
   display: flex;
   cursor: pointer;
@@ -79,7 +79,7 @@ const IconContainer = styled.div`
   }
 `;
 
-const IconLink = styled.a`
+export const IconLink = styled.a`
   color: ${(props) => props.color};
   opacity: 8;
   margin: 0 5px;
@@ -93,5 +93,3 @@ const IconLink = styled.a`
     color: ${(props) => props.color};
   }
 `;
-
-export { SocialMediaLinksContainer, IconContainer, IconLink, IconListUnauth, IconListAuth }

@@ -1,8 +1,8 @@
-import React from 'react'
-import Post from './Post'
-import Fade from 'react-reveal/Fade'
-import styled from 'styled-components'
-import withReveal from 'react-reveal/withReveal'
+import React from 'react';
+import Post from './Post';
+import Fade from 'react-reveal/Fade';
+import styled from 'styled-components';
+import withReveal from 'react-reveal/withReveal';
 
 const PostsContainer = withReveal(styled.div`
   padding: 0;
@@ -68,7 +68,7 @@ const posts = [
     demo: 'https://eduardo-dangelo.github.io/redux-simple-example/',
     github: 'https://github.com/eduardo-dangelo/redux-simple-example'
   },
-]
+];
 
 class Posts extends React.PureComponent {
   render() {
@@ -84,4 +84,5 @@ class Posts extends React.PureComponent {
   }
 }
 
-export default Posts
+export default Posts;
+

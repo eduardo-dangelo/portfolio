@@ -1,9 +1,9 @@
-import React from 'react'
-import { Input, NameContainer } from './elements'
-import Flip from 'react-reveal/Flip'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { actions as headerActions } from '../../reducer'
+import React from 'react';
+import Flip from 'react-reveal/Flip';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Input, NameContainer } from './elements';
+import { actions as headerActions } from '../../reducer';
 
 class UserNameDisplay extends React.PureComponent {
   state = {
@@ -11,33 +11,33 @@ class UserNameDisplay extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { header } = this.props
+    const { header } = this.props;
 
     this.setState({
       inputValueTemp: header.name.content,
-    })
+    });
   }
 
   handleInputChange = (e) => {
-    const { inputValueTemp } = this.state
+    const { inputValueTemp } = this.state;
 
     if (inputValueTemp.length <= 30 || inputValueTemp.length === 31) {
       this.setState({
         inputValueTemp: e.target.value
-      })
+      });
     }
   }
 
   handleInputBlur = (e) => {
-    const { actions } = this.props
-    actions.updateHeaderProps('name', 'content', e.target.value)
+    const { actions } = this.props;
+    actions.updateHeaderProps('name', 'content', e.target.value);
   }
 
   render() {
-    const { isAuth, header } = this.props
+    const { isAuth, header } = this.props;
 
     if (!header.display.name) {
-      return <div/>
+      return <div/>;
     }
 
     return (
@@ -57,7 +57,7 @@ class UserNameDisplay extends React.PureComponent {
           />
         )}
       </NameContainer>
-    )
+    );
   }
 }
 
@@ -66,4 +66,4 @@ export default connect(
   (dispatch) => ({
     actions: bindActionCreators(headerActions, dispatch)
   })
-)(UserNameDisplay)
+)(UserNameDisplay);

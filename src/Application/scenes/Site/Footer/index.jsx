@@ -1,27 +1,16 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import styled from 'styled-components'
-import { bindActionCreators } from 'redux'
-import { Footer as FooterWrapper } from './elements'
-import { actions as bodyActions } from '../Body/reducer'
-import { actions as accountActions } from '../../AdminBar/reducer'
-import SocialMediaLinks from '../Header/components/SocialMediaLinks'
-// import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap'
-// import { TopHeader } from '../Header/elements'
-
-const AlignCenterContainer = styled.div`
-  width: 100%;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: space-around;
-`
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actions as bodyActions } from '../Body/reducer';
+import { actions as accountActions } from '../../AdminBar/reducer';
+import SocialMediaLinks from '../Header/components/SocialMediaLinks';
+import { Footer as FooterWrapper, AlignCenterContainer } from './elements';
 
 class Footer extends React.PureComponent {
   render() {
-    const { account, body, header, actions } = this.props
-    const isAuth = account.isAuth
-    const bodyType = body.bodyType
+    const { account, body, header, actions } = this.props;
+    const isAuth = account.isAuth;
+    const bodyType = body.bodyType;
 
     return (
       <FooterWrapper>
@@ -85,4 +74,4 @@ export default connect(
       body: bindActionCreators(bodyActions, dispatch)
     }
   })
-)(Footer)
+)(Footer);

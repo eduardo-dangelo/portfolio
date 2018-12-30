@@ -1,8 +1,8 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Portfolio from './scenes/Portfolio'
-import Documentation from './scenes/Documentation'
-import styled from 'styled-components'
+import React from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import Portfolio from './scenes/Portfolio';
+import Documentation from './scenes/Documentation';
 
 const BodyContainer = styled.div`
   width: 100%;
@@ -38,4 +38,4 @@ export default connect(
   (state) => ({
     body: state.body
   }),
-)(Body)
+)(Body);

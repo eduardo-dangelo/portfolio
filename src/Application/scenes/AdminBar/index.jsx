@@ -1,14 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { FaSpinner } from 'react-icons/fa'
-import { bindActionCreators } from 'redux'
-import { graphql, compose } from 'react-apollo'
-import { Bar, Form, Button, Title, Input, Spin, Error } from './elements'
-import { actions as authActions } from './reducer'
-import { allUsersQuery, loggedInUserQuery, UserQuery } from '../../services/queries'
-import { authenticateUserMutation, signupUserMutation } from '../../services/mutations'
+import React from 'react';
+import { connect } from 'react-redux';
+import { FaSpinner } from 'react-icons/fa';
+import { bindActionCreators } from 'redux';
+import { graphql, compose } from 'react-apollo';
+import { actions as authActions } from './reducer';
+import { Bar, Form, Button, Title, Input, Spin, Error } from './elements';
+import { allUsersQuery, loggedInUserQuery, UserQuery } from '../../services/queries';
+import { authenticateUserMutation, signupUserMutation } from '../../services/mutations';
 
-let userEmail = ''
+let userEmail = '';
 
 class AdminBar extends React.PureComponent {
   state = {
@@ -21,18 +21,14 @@ class AdminBar extends React.PureComponent {
     emailSubscription: false,
   }
 
-  // componentWillMount() {
-  //   localStorage.removeItem('graphcoolToken')
-  // }
-
   handleLogOut = () => {
-    const { actions } = this.props
-    actions.loading(true)
+    const { actions } = this.props;
+    actions.loading(true);
     setTimeout(() => {
-      localStorage.removeItem('graphcoolToken')
-      actions.logOut()
-      actions.loading(false)
-      window.location.reload()
+      localStorage.removeItem('graphcoolToken');
+      actions.logOut();
+      actions.loading(false);
+      window.location.reload();
     }, 1000);
   }
 
@@ -41,16 +37,14 @@ class AdminBar extends React.PureComponent {
   }
 
   handleSignupUser = async () => {
-    const { email, password, name } = this.state
+    const { email, password, name } = this.state;
 
     try {
       const user = await this.props.signupUserMutation({variables: {email, password, name}})
       localStorage.setItem('graphcoolToken', user.data.signupUser.token)
-      // this.props.history.replace('/')
       return console.log('heyy you have created an user')
     } catch (e) {
       console.error(`An error occured: `, e)
-      // this.props.history.replace('/')
     }
   }
 
@@ -60,9 +54,9 @@ class AdminBar extends React.PureComponent {
       userQuery,
       loggedInUserQuery,
       authenticateUserMutation,
-    } = this.props
+    } = this.props;
 
-    const { email, password } = this.state
+    const { email, password } = this.state;
     userEmail = email
 
     actions.loading(true)
@@ -173,7 +167,7 @@ class AdminBar extends React.PureComponent {
           </Form>
         </form>
       </Bar>
-    )
+    );
   }
 }
 
@@ -196,4 +190,4 @@ export default compose(
       return { variables: { email: userEmail }}
     }
   }),
-)(AdminBar)
+)(AdminBar);

@@ -1,7 +1,7 @@
-import React from 'react'
-import About from './About'
-import Posts from './Posts'
-import styled from 'styled-components'
+import React from 'react';
+import About from './About';
+import Posts from './Posts';
+import styled from 'styled-components';
 
 const FlexContainer = styled.div`
   width: 100%;
@@ -19,8 +19,8 @@ class Portfolio extends React.PureComponent {
         <Posts/>
         <About/>
       </FlexContainer>
-    )
+    );
   }
 }
 
-export default Portfolio
+export default Portfolio;

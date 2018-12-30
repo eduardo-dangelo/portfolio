@@ -1,7 +1,7 @@
-import React from 'react'
-import { Heading, Text } from '../elements'
-import { FaStar } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
+import React from 'react';
+import Flip from 'react-reveal/Flip';
+import { FaStar } from 'react-icons/fa';
+import { Heading, Text } from '../elements';
 
 class Skills extends React.PureComponent {
   render() {
@@ -35,4 +35,4 @@ class Skills extends React.PureComponent {
   }
 }
 
-export default Skills
+export default Skills;

@@ -1,49 +1,44 @@
 import styled, { keyframes } from 'styled-components'
 
-const Header = styled.div`
+export const Header = styled.div`
   top: 0;
   width: 100%;
   padding: 10px;
-  //display: flex;
-  position: relative;
-  //align-items: center; 
-  transition: .3s ease;
-  //flex-direction: column;
-  //border: 1px solid orange;
   overflow: hidden;
+  position: relative;
+  transition: .3s ease;
   color: ${(props) => props.cssProps.color};
-  //background: ${(props) => props.cssProps.bgColor};
   text-align: ${(props) => props.cssProps.textAlign};
   height: ${(props) => getBoxSize(props.cssProps.boxSize)}px;
   background: linear-gradient(${({ cssProps }) => cssProps.angle}deg, ${({ cssProps }) => cssProps.bgColor1}, ${({ cssProps }) => cssProps.bgColor2});
 `;
 
-const ParticlesContainer = styled.div`
-  //border: 1px paleturquoise dashed;
-  position: fixed;
-  width: 100%;
-  height: 450px;
+export const ParticlesContainer = styled.div`
   top: 0;
   left: 0;
+  opacity: .5;
+  width: 100%;
+  height: 450px;
+  position: fixed;
   
   @media all and (max-width: 1200px) {
     width: 1200px;
   }
 `;
 
-const HeaderContent = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  position: absolute;
-  bottom: 0;
+export const HeaderContent = styled.div`
   left: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
   box-shadow: inset 0 2px 16px rgba(0,0,0,0.2);
 `;
 
-const getBoxSize = (boxSize) => {
+export const getBoxSize = (boxSize) => {
   switch (boxSize) {
     case 'x-large':
       return 450
@@ -60,7 +55,7 @@ const getBoxSize = (boxSize) => {
   }
 }
 
-const flash = keyframes`
+export const flash = keyframes`
   0% {
     border: 1px dashed transparent;
   }
@@ -74,7 +69,7 @@ const flash = keyframes`
   }
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   z-index: 0;
   width: 100%;
   margin: auto;
@@ -93,7 +88,7 @@ const Input = styled.input`
   }
 `;
 
-const getFontSize = (fontSize) => {
+export const getFontSize = (fontSize) => {
   switch (fontSize) {
     case 'x-large':
       return 55
@@ -110,7 +105,7 @@ const getFontSize = (fontSize) => {
   }
 }
 
-const Heading = styled.h1`
+export const Heading = styled.h1`
   flex: 1;
   padding: 0;
   z-index: 0;
@@ -121,7 +116,7 @@ const Heading = styled.h1`
   ${(props) => props.cssProps.bold ? `font-weight: bold;` : `font-weight: lighter;`}
 `;
 
-const OusideClickContainer = styled.div`
+export const OusideClickContainer = styled.div`
   top: 0;
   right: 0;
   z-index: 3;
@@ -131,14 +126,14 @@ const OusideClickContainer = styled.div`
   background: rgba(0,0,20,0);
 `;
 
-const TopHeader = styled.div`
+export const TopHeader = styled.div`
   top: 10px;
   width: 100%;
   padding: 0 15px;
   position: absolute;
 `;
 
-const HeaderBody = styled.div`
+export const HeaderBody = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -148,5 +143,3 @@ const HeaderBody = styled.div`
     width: 100%;
   }
 `;
-
-export { Header, Input, Heading, OusideClickContainer, TopHeader, HeaderBody, HeaderContent, ParticlesContainer }

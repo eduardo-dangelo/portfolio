@@ -1,12 +1,18 @@
-import React from 'react'
-import { map } from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { OusideClickContainer } from '../../elements'
-import { FaFacebook, FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa'
-import { actions as headerActions } from '../../reducer'
-import SocialMediaLinksController from '../../../components/Controllers/SocialMediaLinksController'
-import { SocialMediaLinksContainer, IconContainer, IconLink, IconListUnauth, IconListAuth } from './elements'
+import React from 'react';
+import { map } from 'lodash';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { OusideClickContainer } from '../../elements';
+import { actions as headerActions } from '../../reducer';
+import { FaFacebook, FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa';
+import SocialMediaLinksController from '../../../components/Controllers/SocialMediaLinksController';
+import {
+  IconLink,
+  IconListAuth,
+  IconContainer,
+  IconListUnauth,
+  SocialMediaLinksContainer,
+} from './elements';
 
 class SocialMediaLinks extends React.PureComponent {
   state = {
@@ -16,26 +22,27 @@ class SocialMediaLinks extends React.PureComponent {
   }
 
   handleIconClick = (key) => () => {
-    const { header } = this.props
+    const { header } = this.props;
+
     this.setState({
       activeKey: key,
       showInput: true,
       inputValueTemp: header.social[key]
-    })
+    });
   }
 
   handleInputBlur = (e) => {
-    const { actions } = this.props
-    const { activeKey } = this.state
+    const { actions } = this.props;
+    const { activeKey } = this.state;
 
-    actions.updateHeaderProps('social', activeKey, e.target.value)
-    this.setState({ activeKey: '', showInput: false, inputValueTemp: '' })
+    actions.updateHeaderProps('social', activeKey, e.target.value);
+    this.setState({ activeKey: '', showInput: false, inputValueTemp: '' });
   }
 
   handleInputChange = (e) => {
     this.setState({
       inputValueTemp: e.target.value
-    })
+    });
   }
 
   renderSocialMediaIcon = (name) => {
@@ -56,8 +63,8 @@ class SocialMediaLinks extends React.PureComponent {
   }
 
   renderAuthorizedModeLinks = () => {
-    const { header } = this.props
-    const { activeKey } = this.state
+    const { header } = this.props;
+    const { activeKey } = this.state;
 
     return (
       <IconListAuth>
@@ -78,8 +85,8 @@ class SocialMediaLinks extends React.PureComponent {
   }
 
   renderUnauthorizedModeLinks = () => {
-    const { header  } = this.props
-    const color = header.box.color
+    const { header  } = this.props;
+    const color = header.box.color;
 
     return (
       <IconListUnauth>
@@ -93,19 +100,19 @@ class SocialMediaLinks extends React.PureComponent {
             <IconLink key={name} color={color} href={value} target="_blank">
               {this.renderSocialMediaIcon(name)}
             </IconLink>
-          )
+          );
         })}
       </IconListUnauth>
     )
   }
 
   render() {
-    const { isAuth, header } = this.props
-    const { inputValueTemp, showInput, activeKey } = this.state
-    const color = header.box.color
+    const { isAuth, header } = this.props;
+    const { inputValueTemp, showInput, activeKey } = this.state;
+    const color = header.box.color;
 
     if (!header.display.social) {
-      return <div/>
+      return <div/>;
     }
 
     return (
@@ -130,4 +137,4 @@ export default connect(
   (dispatch) => ({
     actions: bindActionCreators(headerActions, dispatch)
   })
-)(SocialMediaLinks)
+)(SocialMediaLinks);

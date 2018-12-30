@@ -1,13 +1,13 @@
-import React from 'react'
-import Links from './Links'
-import Skills from './Skills'
-import Profile from './Profile'
-import Contact from './Contact'
-import AboutHeader from './AboutHeader'
-import { AboutContainer, Container } from './elements'
-import { bindActionCreators } from 'redux'
-import { actions } from '../reducer'
-import { connect } from 'react-redux'
+import React from 'react';
+import Links from './Links';
+import Skills from './Skills';
+import Profile from './Profile';
+import Contact from './Contact';
+import { actions } from '../reducer';
+import { connect } from 'react-redux';
+import AboutHeader from './AboutHeader';
+import { bindActionCreators } from 'redux';
+import { AboutContainer, Container } from './elements';
 
 
 class About extends React.PureComponent {
@@ -22,7 +22,7 @@ class About extends React.PureComponent {
           <Links/>
         </Container>
       </AboutContainer>
-    )
+    );
   }
 }
 
@@ -34,4 +34,4 @@ export default connect(
   (dispatch) => ({
     actions: bindActionCreators(actions, dispatch)
   })
-)(About)
+)(About);

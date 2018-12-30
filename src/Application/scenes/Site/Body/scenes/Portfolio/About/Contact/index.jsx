@@ -1,10 +1,11 @@
 import React from 'react';
 import {
-  EmailContainer, FlexBox,
-  FormGroupContainer,
-  Heading,
-  InputGroupButton,
   Text,
+  FlexBox,
+  Heading,
+  EmailContainer,
+  InputGroupButton,
+  FormGroupContainer,
 } from '../elements';
 import Flip from 'react-reveal/Flip';
 import Fade from 'react-reveal/Fade';
@@ -57,4 +58,4 @@ class Contact extends React.PureComponent {
   }
 }
 
-export default Contact
+export default Contact;

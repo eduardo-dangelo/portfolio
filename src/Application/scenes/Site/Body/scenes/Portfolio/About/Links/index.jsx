@@ -1,7 +1,7 @@
-import React from 'react'
-import { FaLink } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
-import { Heading, UnAuthLink, UnAuthLinkContainer } from '../elements'
+import React from 'react';
+import Flip from 'react-reveal/Flip';
+import { FaLink } from 'react-icons/fa';
+import { Heading, UnAuthLink, UnAuthLinkContainer } from '../elements';
 
 class Links extends React.PureComponent {
   render() {
@@ -25,8 +25,8 @@ class Links extends React.PureComponent {
           </UnAuthLink>
         </UnAuthLinkContainer>
       </div>
-    )
+    );
   }
 }
 
-export default Links
+export default Links;

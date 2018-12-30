@@ -1,12 +1,11 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import PageTitle from './components/PageTitle/index'
-import UserNameDisplay from './components/UserNameDisplay/index'
-import SocialMediaLinks from './components/SocialMediaLinks/index'
-import { HeaderController } from '../components/Controllers/index'
-import { Header as AppHeader, TopHeader, HeaderBody, HeaderContent, ParticlesContainer } from './elements'
+import React from 'react';
+import { connect } from 'react-redux';
 import Particles from 'react-particles-js';
-import AboutHeader from '../Body/scenes/Portfolio/About/AboutHeader'
+import PageTitle from './components/PageTitle/index';
+import UserNameDisplay from './components/UserNameDisplay/index';
+import SocialMediaLinks from './components/SocialMediaLinks/index';
+import { HeaderController } from '../components/Controllers/index';
+import { Header as AppHeader, TopHeader, HeaderBody, HeaderContent, ParticlesContainer } from './elements';
 
 class Header extends React.PureComponent {
   state = {
@@ -92,7 +91,7 @@ class Header extends React.PureComponent {
           </HeaderContent>
         </AppHeader>
       </div>
-    )
+    );
   }
 }
 
@@ -101,4 +100,4 @@ export default connect(
     account: state.account,
     header: state.header
   }),
-)(Header)
+)(Header);

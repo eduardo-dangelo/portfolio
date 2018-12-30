@@ -1,6 +1,6 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
-const flash = keyframes`
+export const flash = keyframes`
   0% {
     border: 1px dashed transparent;
   }
@@ -14,7 +14,7 @@ const flash = keyframes`
   }
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   z-index: 1;
   padding: 5px;
   width: 260px;
@@ -35,7 +35,7 @@ const Input = styled.input`
   }
 `;
 
-const NameContainer = styled.div`
+export const NameContainer = styled.div`
   float: left;
   font-size: 1.1em;
   font-weight: 400;
@@ -44,5 +44,3 @@ const NameContainer = styled.div`
     float: none;
   }
 `;
-
-export { Input, NameContainer }

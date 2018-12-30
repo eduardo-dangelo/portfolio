@@ -1,7 +1,7 @@
-import React from 'react'
-import Site from './scenes/Site'
-import AdminBar from './scenes/AdminBar'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React from 'react';
+import Site from './scenes/Site';
+import AdminBar from './scenes/AdminBar';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class Application extends React.Component {
   render() {
@@ -16,4 +16,4 @@ class Application extends React.Component {
   }
 }
 
-export default Application
+export default Application;
