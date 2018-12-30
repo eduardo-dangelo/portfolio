@@ -11,14 +11,15 @@ class Profile extends React.PureComponent {
           <FaUser/><Flip top cascade>Profile</Flip>
         </Heading>
         <Text>
-          I am a highly talented and ambitious front end developer, with a strong
-          background in graphic design and a proven record of delivering
-          creative and innovative solutions. My key skills are
-          communication skills, excellent IT skills, professional approach
-          to time, costs, deadlines and an understanding of latest
-          trends and their role within a commercial environment. Always
-          looking for projects where I can use my skills, be challenged
-          and grow professionally.
+          I am a highly talented and ambitious full-stack developer,
+          with a strong background in front-end & graphic design and
+          a proven record of delivering creative and innovative
+          solutions. My key skills are communication skills,
+          excellent IT skills, professional approach to time,
+          costs, deadlines and an understanding of latest trends
+          and their role within a commercial environment. Always
+          looking for projects where I can use my skills,
+          be challenged and grow professionally.
         </Text>
       </div>
     )

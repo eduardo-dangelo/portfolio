@@ -18,7 +18,7 @@ const posts = [
     title: 'Social Media Demo',
     key: 'social_media_demo',
     bg: '#c50039',
-    description: 'An example of a social-media type of application',
+    description: 'An example of a social media application.',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/social-media-demo',
     github: 'https://github.com/eduardo-dangelo/social-media-demo'
@@ -27,7 +27,7 @@ const posts = [
     title: 'Weather App',
     key: 'weather_app',
     bg: '#fbaa39',
-    description: 'Search for multiple cities and receive weather information',
+    description: 'Search for multiple cities and receive weather information.',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/react-redux-weather-app/',
     github: 'https://github.com/eduardo-dangelo/react-redux-weather-app'
@@ -36,7 +36,7 @@ const posts = [
     title: 'Redux Playground',
     key: 'redux_playground',
     bg: '#571845',
-    description: 'Examples of React-redux and Redux-form usage',
+    description: 'Examples of usages of ReactJs + Redux and Redux-form.',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/redux-playground/',
     github: 'https://github.com/eduardo-dangelo/redux-playground'
@@ -45,7 +45,7 @@ const posts = [
     title: 'Styling Via Props',
     key: 'styling_via_props',
     bg: '#2561e9',
-    description: 'Style your component with Redux and Styled-components',
+    description: 'Controlling component style with Redux and Styled-components.',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/styling-components-via-props/',
     github: 'https://github.com/eduardo-dangelo/styling-components-via-props'
@@ -54,7 +54,7 @@ const posts = [
     title: 'Youtube Api Search',
     key: 'youtube_api_serach',
     bg: '#992322',
-    description: 'An interface to search and play youtube videos',
+    description: 'An interface to search and play youtube videos.',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/youtube-api-search-app/',
     github: 'https://github.com/eduardo-dangelo/youtube-api-search-app'
@@ -63,7 +63,7 @@ const posts = [
     title: 'Fight Game Menu',
     key: 'fight_game_menu',
     bg: '#412781',
-    description: 'Select your players and start your fight',
+    description: 'Select your players and start your fight.',
     technologies: ['react', 'redux', 'scss', 'bootstrap'],
     demo: 'https://eduardo-dangelo.github.io/redux-simple-example/',
     github: 'https://github.com/eduardo-dangelo/redux-simple-example'

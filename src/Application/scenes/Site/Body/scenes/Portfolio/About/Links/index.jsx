@@ -14,6 +14,15 @@ class Links extends React.PureComponent {
           <UnAuthLink href={''} target="_blank">
             Cv
           </UnAuthLink>
+          <UnAuthLink href={'https://www.linkedin.com/in/eduardo-d-angelo-profile/'} target="_blank">
+            LinkedIn
+          </UnAuthLink>
+          <UnAuthLink href={'http://github.com/eduardo-dangelo'} target="_blank">
+            Github
+          </UnAuthLink>
+          <UnAuthLink href={'https://codepen.io/eduardodangelo'} target="_blank">
+            Codepen
+          </UnAuthLink>
         </UnAuthLinkContainer>
       </div>
     )
