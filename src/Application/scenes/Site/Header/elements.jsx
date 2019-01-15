@@ -41,7 +41,7 @@ export const HeaderContent = styled.div`
 export const getBoxSize = (boxSize) => {
   switch (boxSize) {
     case 'x-large':
-      return 450
+      return 550
     case 'large':
       return 300
     case 'medium':
