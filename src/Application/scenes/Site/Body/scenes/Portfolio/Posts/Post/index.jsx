@@ -35,15 +35,15 @@ class PostBlock extends React.PureComponent {
               onMouseLeave={this.handleHide}
             >
               <Wrapper>
-                <Fade >
+                <Fade when={showOverlay === key}>
                   <OverlayInfo displayMode={displayMode}>
                     <h2>
-                      <Flip top  cascade>
+                      <Flip top  cascade when={showOverlay === key}>
                         {post.title}
                       </Flip>
                     </h2>
                     <p>
-                      <Flip top  cascade>
+                      <Flip top  cascade when={showOverlay === key}>
                         {post.description}
                       </Flip>
                     </p>
@@ -52,7 +52,7 @@ class PostBlock extends React.PureComponent {
                         <a href={post.github} target="_blank">
                           <Button>
                             <FaGithub/>
-                            <Flip top  cascade>
+                            <Flip top  cascade when={showOverlay === key}>
                               Github
                             </Flip>
                           </Button>
@@ -60,7 +60,7 @@ class PostBlock extends React.PureComponent {
                         <a href={post.demo} target="_blank">
                           <Button>
                             <FaDesktop/>
-                            <Flip top  cascade>
+                            <Flip top  cascade when={showOverlay === key}>
                               Demo
                             </Flip>
                           </Button>

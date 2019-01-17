@@ -13,11 +13,14 @@ import {
   ParticlesContainer,
   DisplayModeContainer,
   DisplayModeItem,
-  Divider
+  Divider,
+  Label,
+  TooltipCustom
 } from './elements';
 import { FaAlignJustify, FaList, FaThLarge, FaTh } from 'react-icons/fa'
 import { bindActionCreators } from 'redux';
 import { actions as portfolioActions } from '../Body/scenes/Portfolio/reducer';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 class Header extends React.PureComponent {
   state = {
@@ -54,6 +57,12 @@ class Header extends React.PureComponent {
     const textAlign = header.title.align
     const displayMode = portfolio.displayMode
     const { showController, } = this.state
+
+    const tooltip = (displayMode) => (
+      <TooltipCustom id="tooltip">
+        <Label>Display mode:</Label> {displayMode}.
+      </TooltipCustom>
+    );
 
     return (
       <div onMouseOver={this.handleCardMouseHover} onMouseLeave={this.handleCardMouseLeave}>
@@ -102,19 +111,23 @@ class Header extends React.PureComponent {
               />
             </HeaderBody>
             <DisplayModeContainer>
+              <OverlayTrigger placement="top" overlay={tooltip('Block')}>
               <DisplayModeItem
                 onClick={this.handleChangeDisplayMode('block')}
                 active={displayMode === 'block'}
               >
                 <FaTh/>
               </DisplayModeItem>
+              </OverlayTrigger>
               <Divider/>
+                <OverlayTrigger placement="top" overlay={tooltip('List')}>
               <DisplayModeItem
                 onClick={this.handleChangeDisplayMode('list')}
                 active={displayMode === 'list'}
               >
-                <FaList/>
+                  <FaList/>
               </DisplayModeItem>
+                </OverlayTrigger>
             </DisplayModeContainer>
           </HeaderContent>
         </AppHeader>

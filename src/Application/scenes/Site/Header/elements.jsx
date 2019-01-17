@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import { Tooltip } from 'react-bootstrap'
 
 export const Header = styled.div`
   top: 0;
@@ -170,4 +171,13 @@ export const Divider = styled.div`
   align-self: stretch;
   width: 1px;
   background: white;
+`;
+
+export const Label = styled.i`
+  opacity: .6;
+  margin-right: 5px;
+`;
+
+export const TooltipCustom = styled(Tooltip)`
+  padding: 10px;
 `;
