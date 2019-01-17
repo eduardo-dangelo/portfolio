@@ -5,7 +5,19 @@ import PageTitle from './components/PageTitle/index';
 import UserNameDisplay from './components/UserNameDisplay/index';
 import SocialMediaLinks from './components/SocialMediaLinks/index';
 import { HeaderController } from '../components/Controllers/index';
-import { Header as AppHeader, TopHeader, HeaderBody, HeaderContent, ParticlesContainer } from './elements';
+import {
+  Header as AppHeader,
+  TopHeader,
+  HeaderBody,
+  HeaderContent,
+  ParticlesContainer,
+  DisplayModeContainer,
+  DisplayModeItem,
+  Divider
+} from './elements';
+import { FaAlignJustify, FaList, FaThLarge, FaTh } from 'react-icons/fa'
+import { bindActionCreators } from 'redux';
+import { actions as portfolioActions } from '../Body/scenes/Portfolio/reducer';
 
 class Header extends React.PureComponent {
   state = {
@@ -32,7 +44,7 @@ class Header extends React.PureComponent {
   }
 
   render() {
-    const { account, header } = this.props
+    const { account, header, portfolio } = this.props
     const isAuth = account.isAuth
     const color = header.box.color
     const boxSize = header.box.size
@@ -40,6 +52,7 @@ class Header extends React.PureComponent {
     const bgColor2 = header.box.bgColor2
     const angle = header.box.angle
     const textAlign = header.title.align
+    const displayMode = portfolio.displayMode
     const { showController, } = this.state
 
     return (
@@ -88,16 +101,40 @@ class Header extends React.PureComponent {
                 isAuth={isAuth}
               />
             </HeaderBody>
+            <DisplayModeContainer>
+              <DisplayModeItem
+                onClick={this.handleChangeDisplayMode('block')}
+                active={displayMode === 'block'}
+              >
+                <FaTh/>
+              </DisplayModeItem>
+              <Divider/>
+              <DisplayModeItem
+                onClick={this.handleChangeDisplayMode('list')}
+                active={displayMode === 'list'}
+              >
+                <FaList/>
+              </DisplayModeItem>
+            </DisplayModeContainer>
           </HeaderContent>
         </AppHeader>
       </div>
     );
+  }
+
+  handleChangeDisplayMode = (displayMode) => () => {
+    const { actions } = this.props;
+    actions.selectDisplayMode(displayMode);
   }
 }
 
 export default connect(
   (state) => ({
     account: state.account,
-    header: state.header
+    header: state.header,
+    portfolio: state.portfolio
   }),
+  (dispatch) => ({
+    actions: bindActionCreators(portfolioActions, dispatch)
+  })
 )(Header);

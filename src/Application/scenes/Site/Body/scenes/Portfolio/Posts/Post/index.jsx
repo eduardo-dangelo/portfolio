@@ -2,55 +2,87 @@ import React from 'react';
 import IconType from './IconType';
 import Flip from 'react-reveal/Flip';
 import Fade from 'react-reveal/Fade';
-import { OverlayInfo, PostWrapper, Wrapper, ButtonBar, Button, IconContainer } from './elements';
+import {
+  OverlayInfo,
+  PostWrapper,
+  Wrapper,
+  ButtonBar,
+  Button,
+  ButtonBarContainer,
+  IconContainer,
+} from './elements';
+import { PostsContainer } from '../index'
+import { FaDesktop, FaGithub } from 'react-icons/fa'
 
-class Post extends React.PureComponent {
+class PostBlock extends React.PureComponent {
   state = {
-    showOverlay: false,
+    showOverlay: null,
     showModal: false
   }
 
   render() {
-    const { post } = this.props;
+    const { posts, displayMode } = this.props;
     const { showOverlay, showModal } = this.state;
     return (
-      <PostWrapper bg={post.bg} onMouseOver={this.handleShow} onMouseLeave={this.handleHide}>
-        <Wrapper>
-          <Fade when={showOverlay}>
-            <OverlayInfo>
-              <h2>{post.title}</h2>
-              <p>
-                {post.description}
-              </p>
-              <ButtonBar>
-                <a href={post.github} target="_blank">
-                  <Button>
-                    <Flip top when={showOverlay} cascade>
-                      Github
-                    </Flip>
-                  </Button>
-                </a>
-                <a href={post.demo} target="_blank">
-                  <Button>
-                    <Flip top when={showOverlay} cascade>
-                      Demo
-                    </Flip>
-                  </Button>
-                </a>
-              </ButtonBar>
-            </OverlayInfo>
-          </Fade>
-        </Wrapper>
-        <IconContainer>
-          <IconType type={post.key}/>
-        </IconContainer>
-      </PostWrapper>
+      <PostsContainer>
+        {posts.length > 0 && posts.map((post, key) => {
+          return (
+            <PostWrapper
+              key={key}
+              bg={post.bg}
+              displayMode={displayMode}
+              onMouseOver={this.handleShow(key)}
+              onMouseLeave={this.handleHide}
+            >
+              <Wrapper>
+                <Fade >
+                  <OverlayInfo displayMode={displayMode}>
+                    <h2>
+                      <Flip top  cascade>
+                        {post.title}
+                      </Flip>
+                    </h2>
+                    <p>
+                      <Flip top  cascade>
+                        {post.description}
+                      </Flip>
+                    </p>
+                    <ButtonBarContainer>
+                      <ButtonBar>
+                        <a href={post.github} target="_blank">
+                          <Button>
+                            <FaGithub/>
+                            <Flip top  cascade>
+                              Github
+                            </Flip>
+                          </Button>
+                        </a>
+                        <a href={post.demo} target="_blank">
+                          <Button>
+                            <FaDesktop/>
+                            <Flip top  cascade>
+                              Demo
+                            </Flip>
+                          </Button>
+                        </a>
+                      </ButtonBar>
+                    </ButtonBarContainer>
+                  </OverlayInfo>
+                </Fade>
+              </Wrapper>
+              <IconContainer>
+                <IconType type={post.key}/>
+              </IconContainer>
+            </PostWrapper>
+          );
+        })}
+      </PostsContainer>
     )
   }
 
-  handleShow = () => {
+  handleShow = (key) => () => {
     this.setState({
-      showOverlay: true
+      showOverlay: key
     })
   }
 
@@ -61,5 +93,5 @@ class Post extends React.PureComponent {
   }
 }
 
-export default Post;
+export default PostBlock;
 

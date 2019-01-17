@@ -11,7 +11,7 @@ class Profile extends React.PureComponent {
           <FaUser/><Flip top cascade>Profile</Flip>
         </Heading>
         <Text>
-          I am a highly talented and ambitious full-stack developer,
+          I am a talented and ambitious full-stack developer,
           with a strong background in front-end & graphic design and
           a proven record of delivering creative and innovative
           solutions. My key skills are communication skills,

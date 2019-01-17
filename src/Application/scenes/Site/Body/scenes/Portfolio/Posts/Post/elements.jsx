@@ -27,8 +27,11 @@ export const PostWrapper = styled.div`
 
 export const OverlayInfo = styled.div`
   z-index: 3;
-  color: white;
-  height: 350px;
+  color: ${({ displayMode }) => displayMode === 'block' ? `white` : `grey`};
+  height: ${({ displayMode }) => displayMode === 'block' ? `350px` : `auto`};
+  margin: ${({ displayMode }) => displayMode === 'block' ? `0` : `15px`};
+  border: ${({ displayMode }) => displayMode === 'block' ? `none` : `1px solid grey`};
+  border-radius: ${({ displayMode }) => displayMode === 'block' ? `0` : `4px`};
   padding: 30px;
   display: flex;
   position: relative;
@@ -36,15 +39,41 @@ export const OverlayInfo = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   background: rgba(0,0,0,0.1);
+  opacity: .7;
+  transition: .6s ease;
+  
+  &:hover {
+    opacity: 1;
+  }
   
   h2 {
     font-weight: 400;
   }
 `;
 
+export const ButtonBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+
 export const ButtonBar = styled.div`
+   display: flex;
+   align-items: center;
+   width: auto;
+   justify-content: space-around;
+   
    a, a:active {
     color: white;
+    
+    &:first-child {
+      //margin-right: 5px;
+    }
+    
+    &:last-child {
+      //margin-left: 5px;
+    }
    }
 `;
 
@@ -55,6 +84,13 @@ export const Button = styled.button`
   margin-right: 15px;
   transition: .3s ease;
   border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  
+  svg {
+    margin-right: 5px;
+  }
   
   &:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.7);

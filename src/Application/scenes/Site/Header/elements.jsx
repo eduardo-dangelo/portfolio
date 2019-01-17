@@ -143,3 +143,31 @@ export const HeaderBody = styled.div`
     width: 100%;
   }
 `;
+
+export const DisplayModeContainer = styled.div`
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+`;
+
+export const DisplayModeItem = styled.div`
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  ${(props) => props.active ? `opacity: 1` : `opacity: .4`};
+  transition: .3s ease;
+  
+  &:hover {
+    ${(props) => props.active ? `opacity: 1` : `opacity: .8`};
+  }
+`;
+
+export const Divider = styled.div`
+  align-self: stretch;
+  width: 1px;
+  background: white;
+`;
