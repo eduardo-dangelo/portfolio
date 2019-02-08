@@ -8,7 +8,7 @@ class Application extends React.Component {
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Redirect from='/og_img.png' to='/'/>
+          <Redirect from='/ogimg.png' to='/'/>
           <Route path='/admin' component={AdminBar}/>
           <Route path='/' component={Site} />
         </Switch>
