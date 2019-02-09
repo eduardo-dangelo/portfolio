@@ -12,6 +12,7 @@ export const Header = styled.div`
   text-align: ${(props) => props.cssProps.textAlign};
   height: ${(props) => getBoxSize(props.cssProps.boxSize)}px;
   background: linear-gradient(${({ cssProps }) => cssProps.angle}deg, ${({ cssProps }) => cssProps.bgColor1}, ${({ cssProps }) => cssProps.bgColor2});
+  box-shadow: inset 0 -14px 66px rgba(0,0,0,0.1);
 `;
 
 export const ParticlesContainer = styled.div`

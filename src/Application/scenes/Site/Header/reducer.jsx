@@ -6,7 +6,7 @@ const initialState = {
     italic: false,
     size: 'large',
     align: 'center',
-    content: 'Full Stack'
+    content: 'Software Developer'
   },
   box: {
     size: 'x-large',
