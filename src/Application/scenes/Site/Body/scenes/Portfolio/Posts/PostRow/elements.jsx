@@ -23,16 +23,17 @@ export const PostRowContainer = styled.div`
   margin-bottom: 15px;
   border: 1px solid grey;
   padding: 15px;
-  background: #e2e2e2;
+  background: #eeeeee;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   position: relative;
   transition: .6s ease;
-  box-shadow: 0 4px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 4px rgba(0,0,0,0);
   
   &:hover {
     box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    background: #ffffff;
   }
 `;
 
@@ -94,6 +95,20 @@ export const Button = styled.button`
   justify-content: space-between;
   font-size: 1em;
   transition: .3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    transform: rotateZ(-45deg);
+    background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,0));
+    position: absolute;
+    left: -100%;
+    transition: .4s ease;
+    opacity: .2;
+  }
   
     
   svg {
@@ -102,5 +117,9 @@ export const Button = styled.button`
   
   &:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    
+    &:before {
+      left: 100%;
+    }
   }
 `;

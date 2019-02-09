@@ -26,11 +26,6 @@ class PostRow extends React.Component {
         <PostsListContainer>
         <Fade bottom cascade>
           <div>
-            <Row>
-              <TitleContainer>
-                <h2>Projects</h2>
-              </TitleContainer>
-            </Row>
             {posts.length > 0 && posts.map((post, key) => {
               return (
                 <Row key={key}>

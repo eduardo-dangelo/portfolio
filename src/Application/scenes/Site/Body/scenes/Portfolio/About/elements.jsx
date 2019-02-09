@@ -88,11 +88,29 @@ export const InputGroupButton = styled(Button)`
   background: #2b2b2b;
   border: 1px solid black;
   margin-right: 10px;
+  position: relative;
+  overflow: hidden;
+  
+  &:before {
+    content: "";
+    width: 200%;
+    height: 100%;
+    transform: rotateZ(-45deg);
+    background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,0));
+    position: absolute;
+    left: -200%;
+    transition: .4s ease;
+    opacity: .2;
+  }
   
   &:hover, &:active, &:focus {
     color: white;
-    background: black;
+    background: black !important;
     border: 1px solid black;
+    
+    &:before {
+      left: 100%;
+    }
   }
 `;
 
@@ -116,6 +134,7 @@ export const UnAuthLinkContainer = styled.div`
   display: flex;
   margin-left: 15px;
   align-items: center;
+  position: relative;
 `;
 
 export const UnAuthLink = styled.a`
@@ -123,6 +142,26 @@ export const UnAuthLink = styled.a`
   font-weight: 400;
   margin-right: 15px;
   transition: .3s ease;
+  text-decoration: none;
+  position: relative;
+  
+  &:before {
+    content: "";
+    border-bottom: 2px solid;
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 1%;
+    transition: .3s ease;
+  }
+  
+  &:hover {
+    text-decoration: none;
+    
+    &:before {
+      width: 100%;
+    }
+  }
 `;
 
 export const ProfileContainer = styled.div`

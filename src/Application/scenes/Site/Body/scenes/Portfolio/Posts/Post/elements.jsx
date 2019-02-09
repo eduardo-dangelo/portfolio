@@ -87,13 +87,31 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: relative;
+  overflow: hidden;
   
   svg {
     margin-right: 5px;
   }
   
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    transform: rotateZ(-45deg);
+    background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,0));
+    position: absolute;
+    left: -100%;
+    transition: .4s ease;
+    opacity: .2;
+  }
+  
   &:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    
+    &:before {
+      left: 100%;
+    }
   }
 `;
 

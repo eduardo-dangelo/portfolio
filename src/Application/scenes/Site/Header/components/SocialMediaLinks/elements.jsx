@@ -81,15 +81,23 @@ export const IconContainer = styled.div`
 
 export const IconLink = styled.a`
   color: ${(props) => props.color};
-  opacity: 8;
   margin: 0 5px;
   display: flex;
   cursor: pointer;
   position: relative;
   align-items: center;
   
+  svg {
+    transition: .3s ease;
+    opacity: .7;
+  }
+  
   &:hover, &:active, &.visited {
-    opacity: 1;
     color: ${(props) => props.color};
+    
+    svg {
+      //transform: translateY(-1px);
+      opacity: 1;
+    }
   }
 `;
