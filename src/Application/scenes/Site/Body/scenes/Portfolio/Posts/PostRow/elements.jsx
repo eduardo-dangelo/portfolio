@@ -19,7 +19,7 @@ export const TitleContainer = styled.div`
 
 export const PostRowContainer = styled.div`
   max-width: 800px;
-  width: 100%;
+  width: 500%;
   margin-bottom: 15px;
   border: 1px solid grey;
   padding: 15px;
@@ -30,6 +30,7 @@ export const PostRowContainer = styled.div`
   position: relative;
   transition: .6s ease;
   box-shadow: 0 4px 4px rgba(0,0,0,0);
+  height: 400px;
   
   &:hover {
     box-shadow: 0 4px 14px rgba(0,0,0,0.2);
@@ -106,7 +107,6 @@ export const Button = styled.button`
     background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,0));
     position: absolute;
     left: -100%;
-    transition: .4s ease;
     opacity: .2;
   }
   
@@ -117,6 +117,7 @@ export const Button = styled.button`
   
   &:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: .4s ease;
     
     &:before {
       left: 100%;

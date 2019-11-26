@@ -12,6 +12,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { createStore, applyMiddleware } from 'redux';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { rootReducer } from "./Application/services/redux";
+import Portfolio from './Portfolio';
 
 const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/cjlff6bg55guo0104m4lg6s6e` })
 
@@ -46,7 +47,7 @@ const store = createStore(
 ReactDOM.render((
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <App/>
+        <Portfolio/>
       </Provider>
     </ApolloProvider>
   ),
