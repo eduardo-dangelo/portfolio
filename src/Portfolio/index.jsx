@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Header } from './Header';
 import styled from 'styled-components';
+import {Projects} from './Projects';
+import {About} from './About';
+import {Footer} from './Footer';
 
 const Body = styled.div`
   font-family: 'Source Sans Pro', sans-serif;
@@ -12,6 +15,9 @@ class Portfolio extends React.Component {
     return (
       <Body>
         <Header />
+        <Projects/>
+        <About/>
+        <Footer/>
       </Body>
     );
   }
