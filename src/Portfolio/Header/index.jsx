@@ -1,26 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-import { data } from '../data';
+import { data, style } from '../data';
+import {BgParticles} from './Particles';
+import Flip from 'react-reveal/Flip';
 
 const Container = styled.div`
   color: #fafafa;
   padding: 15px;
+  height: 600px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  background: linear-gradient(315deg, #152552, #152552);
+  box-shadow: ${style.boxShadowInset};
+  background: linear-gradient(315deg, #152552, #101023);
 `;
 
 const Name = styled.div`
-  font-size: 14px;
+  text-shadow: ${style.textShadow};
 `;
 
 const Title = styled.h1`
   text-align: center;
   grid-row-start: 2;
   grid-row-end: 2;
+  font-size: 45px;
+  font-weight: 100;
+  align-self: center;
   grid-column-start: 1;
   grid-column-end: span col3-end;
+  text-shadow: ${style.textShadow}
 `;
 
 const Links = styled.div`
@@ -28,14 +36,17 @@ const Links = styled.div`
   justify-self: end;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  align-self: start;
+
 
   a {
     padding: 5px;
     cursor: pointer;
     color: white;
-    opacity: 0.8;
-    transition: 0.6s ease;
+    opacity: 0.6;
+    transition: .3s ease;
     font-size: 1.1em;
+    text-shadow: ${style.textShadow};
 
     &:hover {
       opacity: 1;
@@ -46,7 +57,12 @@ const Links = styled.div`
 export const Header = () => {
   return (
     <Container>
-      <Name>{data.name}</Name>
+      <BgParticles/>
+      <Name>
+        <Flip top cascade>
+          {data.name}
+        </Flip>
+      </Name>
       <Links>
         {data.links.map(link => (
           <a href={link.url} target="_blank">
@@ -54,7 +70,9 @@ export const Header = () => {
           </a>
         ))}
       </Links>
-      <Title>{data.title}</Title>
+      <Title>
+        <Flip top cascade>{data.title}</Flip>
+      </Title>
     </Container>
   );
 };

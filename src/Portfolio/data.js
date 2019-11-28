@@ -28,4 +28,9 @@ export const data = {
     { name: linkType.CODE_PEN, url:'https://codepen.io/eduardodangelo', icon: renderIcon(linkType.CODE_PEN)},
     { name: linkType.LINKED_IN, url:'https://www.linkedin.com/in/eduardo-d-angelo-profile/', icon: renderIcon(linkType.LINKED_IN)},
   ],
-}
+};
+
+export const style = {
+  textShadow: '0 4px 6px rgba(0,0,0,1), 0 -2px 6px rgba(255,255,255,0.1)',
+  boxShadowInset: 'rgba(0, 0, 0, 0.2) 0px 2px 16px inset'
+};
