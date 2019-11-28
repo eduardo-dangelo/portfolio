@@ -47,7 +47,7 @@ const store = createStore(
 ReactDOM.render((
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <Portfolio/>
+        <Portfolio />
       </Provider>
     </ApolloProvider>
   ),

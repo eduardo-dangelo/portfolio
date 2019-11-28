@@ -1,12 +1,14 @@
-import React from "react";
-import { Header } from "./Header";
+import * as React from 'react';
+import { Header } from './Header';
 
-const Portfolio = () => {
-  return (
-    <React.Fragment>
-      <Header />
-    </React.Fragment>
-  );
-};
+class Portfolio extends React.Component {
+  render() {
+    return (
+      <div>
+        <Header />
+      </div>
+    );
+  }
+}
 
 export default Portfolio;
