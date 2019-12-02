@@ -20,6 +20,7 @@ export const Name = styled.div`
   text-shadow: ${style.textShadow};
   opacity: 0.8;
   transition: 0.3s ease;
+  cursor: default;
 
   &:hover {
     opacity: 1;
@@ -28,7 +29,7 @@ export const Name = styled.div`
 
 export const Title = styled.h1`
   text-align: center;
-  font-size: 45px;
+  font-size: 60px;
   font-weight: 100;
   align-self: center;
   grid-column-start: 1;
@@ -38,6 +39,7 @@ export const Title = styled.h1`
   text-shadow: ${style.textShadow};
   opacity: 0.8;
   transition: 0.3s ease;
+  cursor: default;
 
   &:hover {
     opacity: 1;
@@ -68,6 +70,7 @@ export const Links = styled.div`
     &:focus {
       outline: none;
       box-shadow: ${style.outlineBoxShadow};
+      background: ${style.outlineBg};  
       opacity: 1;
     }
 
@@ -104,6 +107,7 @@ export const CallToAction = styled.button`
   &:focus {
     outline: none;
     box-shadow: ${style.outlineBoxShadow};
+    background: ${style.outlineBg};
     opacity: 1;
   }
 `;
