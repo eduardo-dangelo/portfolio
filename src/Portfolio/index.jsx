@@ -8,7 +8,6 @@ import { Footer } from './Footer';
 const Body = styled.div`
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
-  letter-spacing: 3px;
 `;
 
 class Portfolio extends React.Component {

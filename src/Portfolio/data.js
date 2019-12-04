@@ -5,7 +5,7 @@ const linkType = {
   GITHUB: 'github',
   CODE_PEN: 'codepen',
   LINKED_IN: 'linkedIn'
-}
+};
 
 const renderIcon = name => {
   switch (name) {

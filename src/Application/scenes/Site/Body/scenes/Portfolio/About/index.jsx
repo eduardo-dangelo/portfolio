@@ -1,25 +1,27 @@
 import React from 'react';
-import Links from './Links';
-import Skills from './Skills';
-import Profile from './Profile';
-import Contact from './Contact';
+import Links from '../../../../../../../Portfolio/About/Links';
+import Skills from '../../../../../../../Portfolio/About/Skills';
+import Profile from '../../../../../../../Portfolio/About/Profile';
+import Contact from '../../../../../../../Portfolio/About/Contact';
 import { actions } from '../reducer';
 import { connect } from 'react-redux';
-import AboutHeader from './AboutHeader';
+import AboutHeader from '../../../../../../../Portfolio/About/AboutHeader';
 import { bindActionCreators } from 'redux';
-import { AboutContainer, Container } from './elements';
-
+import {
+  AboutContainer,
+  Container
+} from '../../../../../../../Portfolio/About/elements';
 
 class About extends React.PureComponent {
   render() {
     return (
       <AboutContainer>
         <Container>
-          <AboutHeader/>
-          <Profile/>
-          <Skills/>
-          <Contact/>
-          <Links/>
+          <AboutHeader />
+          <Profile />
+          <Skills />
+          <Contact />
+          <Links />
         </Container>
       </AboutContainer>
     );
@@ -27,11 +29,11 @@ class About extends React.PureComponent {
 }
 
 export default connect(
-  (state) => ({
+  state => ({
     account: state.account,
     portfolio: state.portfolio
   }),
-  (dispatch) => ({
+  dispatch => ({
     actions: bindActionCreators(actions, dispatch)
   })
 )(About);
